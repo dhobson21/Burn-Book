@@ -1,22 +1,17 @@
 {
-  "users": [
+  "grudges":[
     {
       "id": 1,
-      "username": "newUser",
-      "email": "newUser@newUser.com",
-      "password": "password123",
-      "firstname": "New",
-      "lastname": "User"
-    },
-    {
-      "firstname": "Dustin",
-      "lastname": "Hobson",
-      "username": "dhob21",
-      "password": "password123",
-      "email": "dhobson21@gmail.com",
-      "id": 2
+      "userId": 1,
+      "enemyName": "My Enemy",
+      "incident": "My Enemy stepped on my foot on the third day of 5th grade and i'll NEVER forget this.",
+      "date": "09/10/1998",
+      "insult": "",
+      "isResolved": false
     }
   ],
+
+
   "images": [
     {
       "id": 1,
@@ -37,6 +32,24 @@
     {
       "id": 5,
       "url": ""
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "newUser",
+      "email": "newUser@newUser.com",
+      "password": "password123",
+      "firstname": "New",
+      "lastname": "User"
+    },
+    {
+      "firstname": "Dustin",
+      "lastname": "Hobson",
+      "username": "dhob21",
+      "password": "password123",
+      "email": "dhobson21@gmail.com",
+      "id": 2
     }
   ]
 }
