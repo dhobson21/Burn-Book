@@ -1,31 +1,29 @@
 import React, { Component } from 'react'
-import { Card, Icon, Image } from 'semantic-ui-react'
+import "./dash.css"
+import GrudgeCard from "../grudge/GrudgeCard"
+import {Icon} from "semantic-ui-react"
 
 export default class Dash extends Component {
+
+
+  sharedGrudge = (grudge) => {
+    if (grudge.shared !== false) {
+      return <Icon name="users"></Icon>
+    }
+  }
+
   render() {
+
+
     return (
+      <div className="grudges">
+      {
+        this.props.grudges.filter(grudge => (!grudge.isResolved)).map(grudge => <GrudgeCard key={grudge.id} sharedGrudge={this.sharedGrudge} grudge={grudge} images={this.props.images}/>
 
-
-  <Card>
-    <Image src='https://usatftw.files.wordpress.com/2016/08/ryan-lochte-perfect-hair.jpg?w=1200' wrapped ui={false} />
-    <Card.Content>
-      <Card.Header>Matthew</Card.Header>
-      <Card.Meta>
-        <span className='date'>Joined in 2015</span>
-      </Card.Meta>
-      <Card.Description>
-        Matthew is a musician living in Nashville.
-      </Card.Description>
-    </Card.Content>
-    <Card.Content extra>
-      <a>
-        <Icon name='user' />
-        22 Friends
-      </a>
-    </Card.Content>
-  </Card>
-
-
+        )
+      }
+      </div>
     )
   }
 }
+

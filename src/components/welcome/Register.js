@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import {Modal, Header, Image, Button} from "semantic-ui-react"
 import "./register.css"
 
 export default class Register extends Component {

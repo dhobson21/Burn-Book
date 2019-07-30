@@ -7,7 +7,31 @@
       "incident": "My Enemy stepped on my foot on the third day of 5th grade and i'll NEVER forget this.",
       "date": "09/10/1998",
       "insult": "",
-      "isResolved": false
+      "pettyLevel": 1,
+      "isResolved": false,
+      "shared": 2
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "enemyName": "Mike Jones",
+      "incident": "He stole my seat and made me move to the back of the class",
+      "date": "09/10/1998",
+      "insult": "",
+      "pettyLevel": 2,
+      "isResolved": false,
+      "shared": false
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "enemyName": "Dave Smith",
+      "incident": "He stole my seat and made me move to the back of the class",
+      "date": "09/10/1998",
+      "insult": "",
+      "pettyLevel": 1,
+      "isResolved": false,
+      "shared": false
     }
   ],
 

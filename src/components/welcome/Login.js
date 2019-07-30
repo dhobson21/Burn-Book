@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Button, Container, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
-import book from "./burnbook.jpg"
 import "./login.css"
 export default class Login extends Component {
 
