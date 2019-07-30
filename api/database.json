@@ -1,0 +1,42 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "newUser",
+      "email": "newUser@newUser.com",
+      "password": "password123",
+      "firstname": "New",
+      "lastname": "User"
+    },
+    {
+      "firstname": "Dustin",
+      "lastname": "Hobson",
+      "username": "dhob21",
+      "password": "password123",
+      "email": "dhobson21@gmail.com",
+      "id": 2
+    }
+  ],
+  "images": [
+    {
+      "id": 1,
+      "url": "https://usatftw.files.wordpress.com/2016/08/ryan-lochte-perfect-hair.jpg?w=1200"
+    },
+    {
+      "id": 2,
+      "url": "https://www.cheatsheet.com/wp-content/uploads/2017/07/GQ-Cadillac-Lacoste-And-Patron-Tequila-Celebrate-Coolest-Athletes.jpg?x10349"
+    },
+    {
+      "id": 3,
+      "url": ""
+    },
+    {
+      "id": 4,
+      "url": ""
+    },
+    {
+      "id": 5,
+      "url": ""
+    }
+  ]
+}
