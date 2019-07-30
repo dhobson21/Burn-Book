@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { Route, Redirect } from "react-router-dom"
 import { withRouter } from 'react-router'
+import Dash from "./dash/Dash"
+import Login from "./welcome/Login"
 import Register from "./welcome/Register"
 
 
 
-import Login from "./welcome/Login"
 
 class ApplicationViews extends Component {
 
@@ -23,7 +24,7 @@ isAuthenticated = () => {
         <Route
           exact path="/"
           render={props => {
-            if(this.isAuthenticated()) return <div>Dashboard</div>
+            if(this.isAuthenticated()) return <Dash {...props} />
             else return <Redirect to="/login" />
           }}
 
@@ -40,6 +41,12 @@ isAuthenticated = () => {
             return <Register setUser={this.props.setUser} {...props} />
           }}
         />
+        {/* <Route
+          exact path="/"
+          render={props => {
+            return <Dash setUser={this.props.setUser} {...props} />
+          }}
+        /> */}
       </React.Fragment>
 
     )
