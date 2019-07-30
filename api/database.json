@@ -1,22 +1,41 @@
 {
-  "users": [
+  "grudges":[
     {
       "id": 1,
-      "username": "newUser",
-      "email": "newUser@newUser.com",
-      "password": "password123",
-      "firstname": "New",
-      "lastname": "User"
+      "userId": 1,
+      "enemyName": "My Enemy",
+      "incident": "My Enemy stepped on my foot on the third day of 5th grade and i'll NEVER forget this.",
+      "date": "09/10/1998",
+      "insult": "",
+      "pettyLevel": 1,
+      "isResolved": false,
+      "shared": 2
     },
     {
-      "firstname": "Dustin",
-      "lastname": "Hobson",
-      "username": "dhob21",
-      "password": "password123",
-      "email": "dhobson21@gmail.com",
-      "id": 2
+      "id": 2,
+      "userId": 1,
+      "enemyName": "Mike Jones",
+      "incident": "He stole my seat and made me move to the back of the class",
+      "date": "09/10/1998",
+      "insult": "",
+      "pettyLevel": 2,
+      "isResolved": false,
+      "shared": false
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "enemyName": "Dave Smith",
+      "incident": "He stole my seat and made me move to the back of the class",
+      "date": "09/10/1998",
+      "insult": "",
+      "pettyLevel": 1,
+      "isResolved": false,
+      "shared": false
     }
   ],
+
+
   "images": [
     {
       "id": 1,
@@ -37,6 +56,24 @@
     {
       "id": 5,
       "url": ""
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "newUser",
+      "email": "newUser@newUser.com",
+      "password": "password123",
+      "firstname": "New",
+      "lastname": "User"
+    },
+    {
+      "firstname": "Dustin",
+      "lastname": "Hobson",
+      "username": "dhob21",
+      "password": "password123",
+      "email": "dhobson21@gmail.com",
+      "id": 2
     }
   ]
 }

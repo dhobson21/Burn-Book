@@ -25,3 +25,5 @@ yarn-error.log*
 #DB
 /api/database.json
 
+src={this.props.images.filter(image => image.id ===grudge.pettyLevel).map(image => image.url)}
+
