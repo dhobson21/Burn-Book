@@ -20,6 +20,39 @@
       "insult": "",
       "pettyLevel": 2,
       "isResolved": false,
+      "shared": 1
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "enemyName": "Dave Smith",
+      "incident": "He stole my seat and made me move to the back of the class",
+      "date": "09/10/1998",
+      "insult": "",
+      "pettyLevel": 1,
+      "isResolved": false,
+      "shared": false
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "enemyName": "Dave Smith",
+      "incident": "He stole my seat and made me move to the back of the class",
+      "date": "09/10/1998",
+      "insult": "",
+      "pettyLevel": 3,
+      "isResolved": false,
+      "shared": 2
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "enemyName": "Dave Smith",
+      "incident": "He stole my seat and made me move to the back of the class",
+      "date": "09/10/1998",
+      "insult": "",
+      "pettyLevel": 1,
+      "isResolved": false,
       "shared": false
     },
     {
@@ -47,7 +80,7 @@
     },
     {
       "id": 3,
-      "url": ""
+      "url": "https://static.independent.co.uk/s3fs-public/thumbnails/image/2017/02/16/14/martin-shkreli.jpg"
     },
     {
       "id": 4,
