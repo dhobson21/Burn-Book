@@ -59,6 +59,24 @@ isAuthenticated = () => {
             return <Register setUser={this.props.setUser} {...props} />
           }}
         />
+        <Route
+          exact path="/add"
+          render={props => {
+            return <div>Add Grudge Form</div>
+          }}
+        />
+        <Route
+          exact path="/past"
+          render={props => {
+            return <div>Past Grudges</div>
+          }}
+        />
+        <Route
+          exact path="/users"
+          render={props => {
+            return <div>User Grudges</div>
+          }}
+        />
         {/* <Route
           exact path="/"
           render={props => {
