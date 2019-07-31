@@ -5,6 +5,7 @@ import Dash from "./dash/Dash"
 import Login from "./welcome/Login"
 import Register from "./welcome/Register"
 import APIManager from '../modules/APIManager';
+import AddGrudgeForm from './grudge/AddGrudgeForm';
 
 
 
@@ -36,6 +37,19 @@ isAuthenticated = () => {
 
 
 
+addItem = (name, item) => {
+  let newObj = {}
+  APIManager.post(name, item)
+    .then(() =>
+      APIManager.getAll(name)
+    )
+    .then(items => {
+      newObj[name] = items
+      this.setState(newObj)
+    })
+    .then(() => name ==="grudges" ? this.props.history.push("/") : this.props.history.push(`/${name}`)
+    )
+}
   render() {
     return (
       <React.Fragment>
@@ -62,7 +76,8 @@ isAuthenticated = () => {
         <Route
           exact path="/add"
           render={props => {
-            return <div>Add Grudge Form</div>
+            if(this.isAuthenticated()) return <AddGrudgeForm addItem={this.addItem} {...props}/>
+            else return <Redirect to="/login" />
           }}
         />
         <Route
