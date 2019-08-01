@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import {
-  Checkbox,
+  // Checkbox,
   Container,
+  Confirm,
   Button,
   Header,
   Image,
@@ -10,10 +11,46 @@ import {
   Segment
 } from "semantic-ui-react";
 import "./grudgeDetail.css";
+// import APIManager from "../../modules/APIManager"
 // import EditGrudgeModal from "./EditGrudgeModal"
 
 export default class GrudgeDetailsModal extends Component {
+  state = { open: false }
+
+  show = () => this.setState({ open: true })
+  handleConfirm = () => {
+  this.setState({ open: false })
+  this.props.deleteItem("grudges", this.props.grudge.id)
+  }
+
+  handleCancel = () => this.setState({ result: 'cancelled', open: false })
+
+
+  // componentDidMount() {
+  //   APIManager.get("grudges", this.props.grudge.id)
+  //   .then(grudge => {
+  //     this.setState({
+  //       id:grudge.id,
+  //       date: grudge.date,
+  //       enemyName: grudge.enemyName,
+  //       email: grudge.email,
+  //       incident: grudge.incident,
+  //       insult: grudge.insult,
+  //       pettyLevel: grudge.pettyLevel,
+  //       shared: grudge.shared,
+  //       userId: +sessionStorage.getItem("activeUser")
+  //     });
+  //   });
+
+    // deleteGrudge = (id) {
+
+    // }
+
+  // }
+
   render() {
+    const { open } = this.state
+
     return (
       <Modal trigger={<Button primary>Details</Button>}>
         <Grid columns={3} divided padded textAlign="center">
@@ -37,7 +74,20 @@ export default class GrudgeDetailsModal extends Component {
                     }}
                   >Edit Grudge
               </Button>
-              <Checkbox label={{ children: "Resolve Grudge" }} />
+              <div>
+                <Button onClick={this.show}>Delete Grudge</Button>
+                <Confirm
+                  open={open}
+                  onCancel={this.handleCancel}
+                  onConfirm={this.handleConfirm}
+                  content="Are you sure you want to delete an Unresolved grudge?"
+
+                  />
+              </div>
+              {/* <Checkbox label={{ children: "Resolve Grudge" }}
+                        onClick= {this.resolveGrudge}
+                        id="isResolved"
+                        /> */}
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
