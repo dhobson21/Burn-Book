@@ -1,18 +1,6 @@
 {
   "grudges": [
     {
-      "id": 1,
-      "date": "2020-11-09",
-      "enemyName": "Buster",
-      "email": "Buster@gmail.co",
-      "incident": "This dude ate all my food and it was pretty rude",
-      "insult": "Fancy Words Here",
-      "isResolved": false,
-      "pettyLevel": 1,
-      "shared": 2,
-      "userId": 1
-    },
-    {
       "id": 2,
       "userId": 1,
       "enemyName": "Mike Jones",

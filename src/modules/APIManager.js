@@ -34,6 +34,17 @@ export default Object.create(null, {
       }).then(data => data.json());
     }
   },
+  patch: {
+    value (name, updatedPost, patchResource) {
+      return fetch(`${remoteURL}/${name}/${updatedPost.id}/${patchResource}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(updatedPost)
+      }).then(data => data.json());
+    }
+  },
   delete: {
     value (name, id) {
       return fetch(`${remoteURL}/${name}/${id}`, {

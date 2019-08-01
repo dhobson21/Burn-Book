@@ -67,7 +67,26 @@ updateItem = (name, editedObject) => {
     })
     .then(()=> {
       console.log("propsupdate", this.props.history)
-      this.props.history.goBack()
+      this.props.history.push("/")
+
+    })
+
+}
+updateResolve = (name, editedObject) => {
+  let newObj = {}
+  return APIManager.patch(name, editedObject, "isResolved")
+    .then(() =>
+      APIManager.getAll(
+        `${name}?user_id=${+sessionStorage.getItem("activeUser")}`
+      )
+    )
+    .then(item => {
+      newObj[name] = item
+      this.setState(newObj)
+    })
+    .then(()=> {
+      console.log("propsupdate", this.props.history)
+      this.props.history.goBack("/")
 
     })
 
@@ -86,7 +105,7 @@ deleteItem = (name, id) => {
       newObj[name] = group
       this.setState(newObj)
       console.log(name, newObj, this.state)
-      this.props.history.push(`/${name}`)
+      this.props.history.push("/")
     })
 }
   render() {
@@ -95,7 +114,7 @@ deleteItem = (name, id) => {
         <Route
           exact path="/"
           render={props => {
-            if(this.isAuthenticated()) return <Dash images={this.state.images} grudges={this.state.grudges} {...props} />
+            if(this.isAuthenticated()) return <Dash updateResolve= {this.updateResolve} updateItem={this.updateItem} deleteItem={this.deleteItem} images={this.state.images} grudges={this.state.grudges} {...props} />
             else return <Redirect to="/login" />
           }}
 
