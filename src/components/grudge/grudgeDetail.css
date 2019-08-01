@@ -1,0 +1,8 @@
+em {
+  vertical-align: middle;
+}
+
+.insult {
+  display: flex;
+  justify-content: space-between;
+}

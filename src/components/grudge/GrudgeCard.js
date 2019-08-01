@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { Card, Image, Button, Header, Dimmer} from 'semantic-ui-react'
+import { Card, Image, Header, Dimmer} from 'semantic-ui-react'
 import "./grudgeCard.css"
+import GrudgeDetailsModal from "./GrudgeDetailsModal"
 
 
 export default class GrudgeCard extends Component {
@@ -10,6 +11,7 @@ export default class GrudgeCard extends Component {
   handleShow = () => this.setState({ active: true })
   handleHide = () => this.setState({ active: false })
 
+
   render() {
     const { active } = this.state
     const content =  (
@@ -17,8 +19,7 @@ export default class GrudgeCard extends Component {
         <Header as='h2' inverted>
           {this.props.grudge.enemyName}
         </Header>
-
-        <Button primary>Details</Button>
+        <GrudgeDetailsModal grudge={this.props.grudge} images={this.props.images} {...this.props} />
 
       </div>
     )

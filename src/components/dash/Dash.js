@@ -20,7 +20,7 @@ export default class Dash extends Component {
         <Header size="huge" textAlign="center">My Grudges</Header>
         <div className="grudges">
         {
-          this.props.grudges.filter(grudge => (!grudge.isResolved)).map(grudge => <GrudgeCard key={grudge.id} sharedGrudge={this.sharedGrudge} grudge={grudge} images={this.props.images}/>
+          this.props.grudges.filter(grudge => (!grudge.isResolved)).map(grudge => <GrudgeCard key={grudge.id} sharedGrudge={this.sharedGrudge} grudge={grudge} images={this.props.images} {...this.props}/>
 
           )
         }
