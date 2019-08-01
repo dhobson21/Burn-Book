@@ -6,6 +6,7 @@ import Login from "./welcome/Login"
 import Register from "./welcome/Register"
 import APIManager from '../modules/APIManager';
 import AddGrudgeForm from './grudge/AddGrudgeForm';
+import EditGrudgeForm from './grudge/EditGrudgeForm';
 
 
 
@@ -36,6 +37,7 @@ isAuthenticated = () => {
 }
 
 
+//function to add item to DB specifying name of resource {name} and object to add {item}
 
 addItem = (name, item) => {
   let newObj = {}
@@ -49,6 +51,43 @@ addItem = (name, item) => {
     })
     .then(() => name ==="grudges" ? this.props.history.push("/") : this.props.history.push(`/${name}`)
     )
+}
+//function to put (edit) object and save to DB
+updateItem = (name, editedObject) => {
+  let newObj = {}
+  return APIManager.put(name, editedObject)
+    .then(() =>
+      APIManager.getAll(
+        `${name}?user_id=${+sessionStorage.getItem("activeUser")}`
+      )
+    )
+    .then(item => {
+      newObj[name] = item
+      this.setState(newObj)
+    })
+    .then(()=> {
+      console.log("propsupdate", this.props.history)
+      this.props.history.push("/")
+
+    })
+
+}
+
+deleteItem = (name, id) => {
+  console.log("inside delete item")
+  let newObj = {}
+  return fetch(`http://localhost:5002/${name}/${id}`, {
+    method: "DELETE"
+  })
+    .then(e => e.json())
+    .then(() => APIManager.getAll(`${name}?user_id=${+sessionStorage.getItem("activeUser")}`
+    ))
+    .then(group => {
+      newObj[name] = group
+      this.setState(newObj)
+      console.log(name, newObj, this.state)
+      this.props.history.push(`/${name}`)
+    })
 }
   render() {
     return (
@@ -80,6 +119,19 @@ addItem = (name, item) => {
             else return <Redirect to="/login" />
           }}
         />
+        <Route
+          exact path="/edit/:grudgeId(\d+)"
+          render={props => {
+            let grudge = this.state.grudges.find(grudge =>
+            grudge.id === parseInt(props.match.params.grudgeId))
+                    if (!grudge) {
+                        grudge = {id:404, EnemyName:"404", incident: "Enemy not found"}}
+            if(this.isAuthenticated()) {
+              return <EditGrudgeForm grudge={grudge} {...props} updateItem={this.updateItem}/>
+            } else  {
+                return <Redirect to="/login" />
+            }
+          }}/>
         <Route
           exact path="/past"
           render={props => {
