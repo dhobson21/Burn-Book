@@ -67,7 +67,7 @@ updateItem = (name, editedObject) => {
     })
     .then(()=> {
       console.log("propsupdate", this.props.history)
-      this.props.history.push("/")
+      this.props.history.goBack()
 
     })
 

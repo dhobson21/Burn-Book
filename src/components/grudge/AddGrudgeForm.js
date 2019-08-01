@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import {Form, Segment, Button} from "semantic-ui-react"
 
+
+//refactor to pull options from DB
 const options = [
   { key: 1, text: "1--I'm not petty, you're petty", value: 1 },
   { key: 2, text: 2, value: 2 },
@@ -130,9 +132,6 @@ export default class AddGrudgeForm extends Component {
             placeholder="Be Honest"
             id="pettyLevel"
             name="pettyLevel"
-
-
-
             />
         <Form.Checkbox label='I agree to the Terms and Conditions' />
         <Form.Button
