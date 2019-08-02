@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
-import {Form, Segment, Button} from "semantic-ui-react"
-import APIManager from "../../modules/APIManager"
+import React, { Component } from "react";
+import { Form, Segment, Button, Modal, Icon } from "semantic-ui-react";
+import APIManager from "../../modules/APIManager";
+import GrudgeResolveModal from "./GrudgeResolveModal";
 
 const options = [
   { key: 1, text: "1--I'm not petty, you're petty", value: 1 },
@@ -12,8 +13,8 @@ const options = [
   { key: 7, text: 7, value: 7 },
   { key: 8, text: 8, value: 8 },
   { key: 9, text: 9, value: 9 },
-  { key: 10, text: "10--Very petty, what of it?", value: 10 },
-]
+  { key: 10, text: "10--Very petty, what of it?", value: 10 }
+];
 
 export default class EditGrudgeForm extends Component {
   state = {
@@ -27,122 +28,176 @@ export default class EditGrudgeForm extends Component {
     pettyLevel: "",
     shared: "",
     userId: ""
-  }
+  };
 
-  handleFieldChange = (event) => {
+  handleFieldChange = event => {
     const stateToChange = {};
-
-    stateToChange[event.target.id] = event.target.value
+    stateToChange[event.target.id] = event.target.value;
     this.setState(stateToChange);
   };
 
-  handleSelectChange = (event, {value}) => {
-    const pettyLevel = {}
-    pettyLevel["pettyLevel"] = {value}.value
-    this.setState(pettyLevel)
-  }
+  handleSelectChange = (event, { value }) => {
+    const pettyLevel = {};
+    pettyLevel["pettyLevel"] = { value }.value;
+    this.setState(pettyLevel);
+  };
+  handleCheckChange = (event, { checked }) => {
+    const checkTrue = {};
+    checkTrue["isResolved"] = { checked }.checked;
+    console.log(checkTrue.isResolved);
+    this.setState(checkTrue);
+    this.notOpen.open = checkTrue.isResolved;
+    this.checked.checked = checkTrue.isResolved;
+  };
 
-
-
-  checkFields= (event) => {
-    console.log(this.state)
+  checkFields = event => {
+    console.log(this.state);
     if (
       this.state.enemyName === "" ||
       this.state.date === "" ||
-      this.state.email === "" ||
+      // this.state.email === "" ||
       // this.state.insult === "" ||
       this.state.incident === "" ||
       this.state.pettyLevel === ""
-      ) { window.alert("All fields must be filled out");
+    ) {
+      window.alert("All fields must be filled out");
     } else {
-      event.preventDefault()
-    this.props.updateItem("grudges", this.state);
+      event.preventDefault();
+      this.props.updateItem("grudges", this.state);
+    }
+  };
 
-  }
-}
+  checked = { checked: false };
+  notOpen = { open: false };
+  closeConfigShow = () => {
+    this.notOpen = {
+      open: true
+    };
+  };
 
-//grab individual grudge for value fields of edited input fields
-componentDidMount() {
-  APIManager.get("grudges", this.props.match.params.grudgeId)
-  .then(grudge => {
-    this.setState({
-      id: +this.props.match.params.grudgeId,
-      date: grudge.date,
-      enemyName: grudge.enemyName,
-      email: grudge.email,
-      incident: grudge.incident,
-      insult: grudge.insult,
-      isResolved: grudge.isResolved,
-      pettyLevel: grudge.pettyLevel,
-      shared: grudge.shared,
-      userId: +sessionStorage.getItem("activeUser")
+  close = () => {
+    this.notOpen = { open: false };
+    this.checked = { checked: false };
+    const checkFalse = {};
+    checkFalse["isResolved"] = false;
+    this.setState(checkFalse);
+  };
+
+  //grab individual grudge for value fields of edited input fields
+  componentDidMount() {
+    APIManager.get("grudges", this.props.match.params.grudgeId).then(grudge => {
+      this.setState({
+        id: +this.props.match.params.grudgeId,
+        date: grudge.date,
+        enemyName: grudge.enemyName,
+        email: grudge.email,
+        incident: grudge.incident,
+        insult: grudge.insult,
+        isResolved: grudge.isResolved,
+        pettyLevel: grudge.pettyLevel,
+        shared: grudge.shared,
+        userId: +sessionStorage.getItem("activeUser")
+      });
     });
-  });
-}
+  }
   render() {
-
-    console.log("editFormProps", this.props)
-    console.log("state", this.state)
+    console.log("props", this.props)
+    console.log(this.state);
+    const { open } = this.notOpen;
+    const { checked } = this.checked;
+    console.log("open", { open });
     return (
       <div>
-      <Form >
-        <Form.Group widths='equal'>
-          <Form.Input
-            fluid label='Enemy Name'
-            id="enemyName"
-            onChange={this.handleFieldChange}
-            name="enemyName"
-            value={this.state.enemyName}
+        <Form>
+          <Form.Group widths="equal">
+            <Form.Input
+              fluid
+              label="Enemy Name"
+              id="enemyName"
+              onChange={this.handleFieldChange}
+              name="enemyName"
+              value={this.state.enemyName}
             />
-          <Form.Input
-            fluid label= 'Date of Incident'
-            type= "date"
-            onChange={this.handleFieldChange}
-            id="date"
-            name= "date"
-            value={this.state.date}
+            <Form.Input
+              fluid
+              label="Date of Incident"
+              type="date"
+              onChange={this.handleFieldChange}
+              id="date"
+              name="date"
+              value={this.state.date}
             />
-        </Form.Group>
-        <Form.Group widths='equal'>
-          <Form.Input
-            fluid label="Enemy's Email for...purposes"
-            onChange={this.handleFieldChange}
-            id="email"
-            name="email"
-            value={this.state.email}
-            />
-          <Form.Group>
-          <Segment
-            id="insult"
-            name="insult"
-            value={this.state.insult}
-          ></Segment>
-            <Button  attached='bottom' size="mini">Make New Insult</Button>
           </Form.Group>
-        </Form.Group>
+          <Form.Group widths="equal">
+            <Form.Input
+              fluid
+              label="Enemy's Email for...purposes"
+              onChange={this.handleFieldChange}
+              id="email"
+              name="email"
+              value={this.state.email}
+            />
+            <Form.Group>
+              <Segment id="insult" name="insult" value={this.state.insult} />
+              <Button attached="bottom" size="mini">
+                Make New Insult
+              </Button>
+            </Form.Group>
+          </Form.Group>
           <Form.TextArea
-            label='What this Blockhead did'
+            label="What this Blockhead did"
             value={this.state.incident}
-
             onChange={this.handleFieldChange}
             id="incident"
             name="incident"
-             />
+          />
           <Form.Select
             label="How Petty Am I Being?"
-            options= {options}
-            onChange= {this.handleSelectChange}
+            options={options}
+            onChange={this.handleSelectChange}
             id="pettyLevel"
             name="pettyLevel"
             value={this.state.pettyLevel}
-            />
-        <Form.Checkbox label='I agree to the Terms and Conditions' />
-        <Form.Button
-          size="mini"
-          onClick= {this.checkFields}
-          >Save</Form.Button>
-      </Form>
+          />
+          {/* <GrudgeResolveCheckbox  /> */}
+
+          <Modal
+            open={open}
+            onClose={this.close}
+            size="mini"
+            trigger={
+              <Form.Checkbox
+                label={{ children: "Resolve Grudge" }}
+                id="isResolved"
+                onClick={this.handleCheckChange}
+                checked={checked}
+              />
+            }
+          >
+            <Modal.Header>Resolve Grudge</Modal.Header>
+            <Modal.Content>
+              <p>Are you sure you're ready to be the bigger person?</p>
+            </Modal.Content>
+
+            <Form.Button
+              floated="left"
+              onClick={() => {
+                console.log(this.notOpen);
+                this.close();
+              }}
+              negative
+            >
+              <Icon name="left chevron" /> Cancel
+            </Form.Button>
+            <Modal.Actions>
+              <GrudgeResolveModal {...this.state} {...this.props}/>
+            </Modal.Actions>
+          </Modal>
+          <Form.Button size="mini" onClick={this.checkFields}>
+            Save
+          </Form.Button>
+        </Form>
       </div>
-    )
+    );
   }
 }

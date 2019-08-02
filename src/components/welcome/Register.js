@@ -28,6 +28,7 @@ handleChange = event => {
     window.alert("All fields must be filled out")
   }
   else {
+    event.preventDefault()
     //check if username and email are unique
     fetch(`http://localhost:5002/users`)
       .then(res => res.json())
