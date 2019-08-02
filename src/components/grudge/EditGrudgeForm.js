@@ -27,7 +27,8 @@ export default class EditGrudgeForm extends Component {
     isResolved: "",
     pettyLevel: "",
     shared: "",
-    userId: ""
+    userId: "",
+    boo: false
   };
 
   handleFieldChange = event => {
@@ -44,14 +45,15 @@ export default class EditGrudgeForm extends Component {
   handleCheckChange = (event, { checked }) => {
     const checkTrue = {};
     checkTrue["isResolved"] = { checked }.checked;
-    console.log(checkTrue.isResolved);
     this.setState(checkTrue);
     this.notOpen.open = checkTrue.isResolved;
     this.checked.checked = checkTrue.isResolved;
   };
 
+
   checkFields = event => {
-    console.log(this.state);
+
+
     if (
       this.state.enemyName === "" ||
       this.state.date === "" ||
@@ -64,10 +66,11 @@ export default class EditGrudgeForm extends Component {
     } else {
       event.preventDefault();
       this.props.updateItem("grudges", this.state);
+
     }
   };
 
-  checked = { checked: false };
+  checked = { checked: false }
   notOpen = { open: false };
   closeConfigShow = () => {
     this.notOpen = {
@@ -82,6 +85,14 @@ export default class EditGrudgeForm extends Component {
     checkFalse["isResolved"] = false;
     this.setState(checkFalse);
   };
+
+  changeState = () => {
+
+    this.setState(prevState => ({
+      boo: !prevState.boo
+    }))
+    console.log(this.state)
+  }
 
   //grab individual grudge for value fields of edited input fields
   componentDidMount() {
@@ -101,11 +112,10 @@ export default class EditGrudgeForm extends Component {
     });
   }
   render() {
-    console.log("props", this.props)
-    console.log(this.state);
+    console.log(this.props);
     const { open } = this.notOpen;
     const { checked } = this.checked;
-    console.log("open", { open });
+
     return (
       <div>
         <Form>
@@ -139,7 +149,9 @@ export default class EditGrudgeForm extends Component {
             />
             <Form.Group>
               <Segment id="insult" name="insult" value={this.state.insult} />
-              <Button attached="bottom" size="mini">
+              <Button
+                      attached="bottom"
+                      size="mini">
                 Make New Insult
               </Button>
             </Form.Group>
@@ -171,6 +183,7 @@ export default class EditGrudgeForm extends Component {
                 id="isResolved"
                 onClick={this.handleCheckChange}
                 checked={checked}
+
               />
             }
           >
@@ -182,7 +195,6 @@ export default class EditGrudgeForm extends Component {
             <Form.Button
               floated="left"
               onClick={() => {
-                console.log(this.notOpen);
                 this.close();
               }}
               negative
@@ -190,7 +202,7 @@ export default class EditGrudgeForm extends Component {
               <Icon name="left chevron" /> Cancel
             </Form.Button>
             <Modal.Actions>
-              <GrudgeResolveModal {...this.state} {...this.props}/>
+              <GrudgeResolveModal  changeState={this.changeState}{...this.state} {...this.props}/>
             </Modal.Actions>
           </Modal>
           <Form.Button size="mini" onClick={this.checkFields}>

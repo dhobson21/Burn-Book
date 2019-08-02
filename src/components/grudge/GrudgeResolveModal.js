@@ -3,10 +3,15 @@ import { Button, Modal, Icon } from "semantic-ui-react";
 import ResolvedGrudgeForm from "./ResolvedGrudgeForm";
 
 export default class GrudgeResolveModal extends Component {
-  state = { open: false }
+  state = {
+    open: false,
+
+   }
 
   open = () => this.setState({ open: true })
   close = () => this.setState({ open: false })
+
+
 
   render() {
     console.log(this.props)
@@ -26,7 +31,7 @@ export default class GrudgeResolveModal extends Component {
       >
         <Modal.Header>Resolve This Grudge</Modal.Header>
         <Modal.Content>
-          <ResolvedGrudgeForm {...this.props} />
+          <ResolvedGrudgeForm {...this.props}  />
         </Modal.Content>
 
       </Modal>

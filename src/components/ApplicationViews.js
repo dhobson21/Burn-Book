@@ -8,7 +8,7 @@ import APIManager from '../modules/APIManager';
 import AddGrudgeForm from './grudge/AddGrudgeForm';
 import EditGrudgeForm from './grudge/EditGrudgeForm';
 import PastGrudges from "./grudge/PastGrudges"
-
+import ExploreGrudges from "./users/ExploreGrudge"
 
 
 
@@ -18,7 +18,7 @@ class ApplicationViews extends Component {
     grudges: [],
     images:[],
     users:[],
-    resolvedGrudges:[]
+    resolvedGrudges:[],
   }
 
 
@@ -34,7 +34,7 @@ APIManager.getAll(`grudges?userId=${+sessionStorage.getItem("activeUser")}`)
   .then(() => APIManager.getAll("resolvedGrudges"))
   .then(allResolvedGrudges => (newState.resolvedGrudges = allResolvedGrudges))
   .then(() =>this.setState(newState))
-  .then(() => console.log(this.state))
+  .then(() => console.log("CMState", this.state))
 }
 
 //check session storage for value, return true or false
@@ -56,7 +56,7 @@ addItem = (name, item) => {
       newObj[name] = items
       this.setState(newObj)
     })
-    .then(() => name === "resolvedGrudges" ? this.props.history.push("/past") : this.props.history.push("/"))
+    .then(() => (this.props.history.push("/")))
 
 
 }
@@ -74,7 +74,7 @@ updateItem = (name, editedObject) => {
       this.setState(newObj)
     })
     .then(()=> {
-      console.log("propsupdate", this.props.history)
+
       this.props.history.push("/")
 
     })
@@ -82,7 +82,7 @@ updateItem = (name, editedObject) => {
 }
 
 deleteItem = (name, id) => {
-  console.log("inside delete item")
+
   let newObj = {}
   return fetch(`http://localhost:5002/${name}/${id}`, {
     method: "DELETE"
@@ -150,11 +150,13 @@ deleteItem = (name, id) => {
           }
           }}/>
         <Route
-          exact path="/users"
+          exact path="/explore"
           render={props => {
-            return <div>User Grudges</div>
-          }}
-        />
+            if(this.isAuthenticated()) return <ExploreGrudges />
+            else  {
+              return <Redirect to="/login" />
+            }
+          }}/>
         {/* <Route
           exact path="/"
           render={props => {

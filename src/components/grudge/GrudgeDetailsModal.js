@@ -28,6 +28,7 @@ export default class GrudgeDetailsModal extends Component {
   handleCancel = () => this.setState({ result: "cancelled", open: false });
 
   render() {
+    console.log("Is this grudge resolved", this.props.grudge.isResolved)
     const { open } = this.state;
 
     return (
