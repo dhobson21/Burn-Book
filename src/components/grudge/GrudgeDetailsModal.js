@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import {
-  // Checkbox,
   Container,
   Confirm,
   Button,
@@ -15,41 +14,21 @@ import "./grudgeDetail.css";
 // import EditGrudgeModal from "./EditGrudgeModal"
 
 export default class GrudgeDetailsModal extends Component {
-  state = { open: false }
+  state = { open: false };
 
-  show = () => this.setState({ open: true })
+//functions to show Confirm box upon clicking button to delete grudge
+  show = () => this.setState({ open: true });
+
+  //checks with user before deleting grudge from DB
   handleConfirm = () => {
-  this.setState({ open: false })
-  this.props.deleteItem("grudges", this.props.grudge.id)
-  }
-
-  handleCancel = () => this.setState({ result: 'cancelled', open: false })
-
-
-  // componentDidMount() {
-  //   APIManager.get("grudges", this.props.grudge.id)
-  //   .then(grudge => {
-  //     this.setState({
-  //       id:grudge.id,
-  //       date: grudge.date,
-  //       enemyName: grudge.enemyName,
-  //       email: grudge.email,
-  //       incident: grudge.incident,
-  //       insult: grudge.insult,
-  //       pettyLevel: grudge.pettyLevel,
-  //       shared: grudge.shared,
-  //       userId: +sessionStorage.getItem("activeUser")
-  //     });
-  //   });
-
-    // deleteGrudge = (id) {
-
-    // }
-
-  // }
+    this.setState({ open: false });
+    this.props.deleteItem("grudges", this.props.grudge.id);
+  };
+//if user decides to cancel delete on confirm, confirm closed and user brought back to details Modal
+  handleCancel = () => this.setState({ result: "cancelled", open: false });
 
   render() {
-    const { open } = this.state
+    const { open } = this.state;
 
     return (
       <Modal trigger={<Button primary>Details</Button>}>
@@ -62,17 +41,16 @@ export default class GrudgeDetailsModal extends Component {
               </Modal.Content>
             </Grid.Column>
             <Grid.Column>
-              <Header as="h2">
-                {this.props.grudge.enemyName}
-              </Header>
+              <Header as="h2">{this.props.grudge.enemyName}</Header>
             </Grid.Column>
             <Grid.Column>
               <Button
-                 onClick={() => {
-                    console.log(this.props)
-                   this.props.history.push(`/edit/${this.props.grudge.id}`)
-                    }}
-                  >Edit Grudge
+                onClick={() => {
+                  console.log(this.props);
+                  this.props.history.push(`/edit/${this.props.grudge.id}`);
+                }}
+              >
+                Edit Grudge
               </Button>
               <div>
                 <Button onClick={this.show}>Delete Grudge</Button>
@@ -81,13 +59,8 @@ export default class GrudgeDetailsModal extends Component {
                   onCancel={this.handleCancel}
                   onConfirm={this.handleConfirm}
                   content="Are you sure you want to delete an Unresolved grudge?"
-
-                  />
+                />
               </div>
-              {/* <Checkbox label={{ children: "Resolve Grudge" }}
-                        onClick= {this.resolveGrudge}
-                        id="isResolved"
-                        /> */}
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
@@ -111,9 +84,9 @@ export default class GrudgeDetailsModal extends Component {
             </Grid.Column>
             <Grid.Column>
               <Header as="h4">Classy Insult for a rotten Person:</Header>
-              <Container fluid >
+              <Container fluid>
                 <em>"{this.props.grudge.insult}"</em>
-                <Button  size="tiny" floated="right">
+                <Button size="tiny" floated="right">
                   Escalate Things
                 </Button>
               </Container>

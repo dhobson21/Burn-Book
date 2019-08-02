@@ -7,6 +7,7 @@ import Register from "./welcome/Register"
 import APIManager from '../modules/APIManager';
 import AddGrudgeForm from './grudge/AddGrudgeForm';
 import EditGrudgeForm from './grudge/EditGrudgeForm';
+import PastGrudges from "./grudge/PastGrudges"
 
 
 
@@ -15,17 +16,23 @@ class ApplicationViews extends Component {
 
   state = {
     grudges: [],
-    images:[]
+    images:[],
+    users:[],
+    resolvedGrudges:[]
   }
 
 
 //loading user data to update state object
 componentDidMount(){
   const newState = {}
-APIManager.getAll("grudges")
+APIManager.getAll(`grudges?userId=${+sessionStorage.getItem("activeUser")}`)
   .then(allGrudges => (newState.grudges = allGrudges))
   .then(() => APIManager.getAll("images"))
   .then(allImages => (newState.images = allImages))
+  .then(() => APIManager.getAll("users"))
+  .then(allUsers => (newState.users = allUsers))
+  .then(() => APIManager.getAll("resolvedGrudges"))
+  .then(allResolvedGrudges => (newState.resolvedGrudges = allResolvedGrudges))
   .then(() =>this.setState(newState))
   .then(() => console.log(this.state))
 }
@@ -43,14 +50,15 @@ addItem = (name, item) => {
   let newObj = {}
   APIManager.post(name, item)
     .then(() =>
-      APIManager.getAll(name)
+      APIManager.getAll(`${name}?userId=${+sessionStorage.getItem("activeUser")}`)
     )
     .then(items => {
       newObj[name] = items
       this.setState(newObj)
     })
-    .then(() => name ==="grudges" ? this.props.history.push("/") : this.props.history.push(`/${name}`)
-    )
+    .then(() => name === "resolvedGrudges" ? this.props.history.push("/past") : this.props.history.push("/"))
+
+
 }
 //function to put (edit) object and save to DB
 updateItem = (name, editedObject) => {
@@ -58,7 +66,7 @@ updateItem = (name, editedObject) => {
   return APIManager.put(name, editedObject)
     .then(() =>
       APIManager.getAll(
-        `${name}?user_id=${+sessionStorage.getItem("activeUser")}`
+        `${name}?userId=${+sessionStorage.getItem("activeUser")}`
       )
     )
     .then(item => {
@@ -68,25 +76,6 @@ updateItem = (name, editedObject) => {
     .then(()=> {
       console.log("propsupdate", this.props.history)
       this.props.history.push("/")
-
-    })
-
-}
-updateResolve = (name, editedObject) => {
-  let newObj = {}
-  return APIManager.patch(name, editedObject, "isResolved")
-    .then(() =>
-      APIManager.getAll(
-        `${name}?user_id=${+sessionStorage.getItem("activeUser")}`
-      )
-    )
-    .then(item => {
-      newObj[name] = item
-      this.setState(newObj)
-    })
-    .then(()=> {
-      console.log("propsupdate", this.props.history)
-      this.props.history.goBack("/")
 
     })
 
@@ -99,7 +88,7 @@ deleteItem = (name, id) => {
     method: "DELETE"
   })
     .then(e => e.json())
-    .then(() => APIManager.getAll(`${name}?user_id=${+sessionStorage.getItem("activeUser")}`
+    .then(() => APIManager.getAll(`${name}?userId=${+sessionStorage.getItem("activeUser")}`
     ))
     .then(group => {
       newObj[name] = group
@@ -108,6 +97,7 @@ deleteItem = (name, id) => {
       this.props.history.push("/")
     })
 }
+
   render() {
     return (
       <React.Fragment>
@@ -146,7 +136,7 @@ deleteItem = (name, id) => {
                     if (!grudge) {
                         grudge = {id:404, EnemyName:"404", incident: "Enemy not found"}}
             if(this.isAuthenticated()) {
-              return <EditGrudgeForm grudge={grudge} {...props} updateItem={this.updateItem}/>
+              return <EditGrudgeForm grudge={grudge} {...props} updateItem={this.updateItem} addItem={this.addItem}/>
             } else  {
                 return <Redirect to="/login" />
             }
@@ -154,9 +144,11 @@ deleteItem = (name, id) => {
         <Route
           exact path="/past"
           render={props => {
-            return <div>Past Grudges</div>
-          }}
-        />
+            if(this.isAuthenticated()) return <PastGrudges grudges={this.state.grudges} images={this.state.images} resolvedGrudges={this.resolvedGrudges}{...props} />
+            else  {
+              return <Redirect to="/login" />
+          }
+          }}/>
         <Route
           exact path="/users"
           render={props => {

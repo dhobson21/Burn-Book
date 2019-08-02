@@ -1,57 +1,64 @@
-import React, { Component } from 'react'
-import { Card, Image, Header, Dimmer} from 'semantic-ui-react'
-import "./grudgeCard.css"
-import GrudgeDetailsModal from "./GrudgeDetailsModal"
-
+import React, { Component } from "react";
+import { Card, Icon, Image, Header, Dimmer } from "semantic-ui-react";
+import "./grudgeCard.css";
+import GrudgeDetailsModal from "./GrudgeDetailsModal";
 
 export default class GrudgeCard extends Component {
-  state = {}
+  state = {};
 
+  handleShow = () => this.setState({ active: true });
+  handleHide = () => this.setState({ active: false });
 
-  handleShow = () => this.setState({ active: true })
-  handleHide = () => this.setState({ active: false })
-
+  sharedGrudge = (grudge) => {
+    if (grudge.shared !== false) {
+      return <Icon name="users"></Icon>
+    }
+  }
 
   render() {
-    const { active } = this.state
-    const content =  (
+    const { active } = this.state;
+    const content = (
       <div>
-        <Header as='h2' inverted>
+        <Header as="h2" inverted>
           {this.props.grudge.enemyName}
         </Header>
-        <GrudgeDetailsModal grudge={this.props.grudge} images={this.props.images} {...this.props} />
-
+        <GrudgeDetailsModal
+          grudge={this.props.grudge}
+          images={this.props.images}
+          {...this.props}
+        />
       </div>
-    )
+    );
     return (
       <Card key={this.props.grudge.id}>
-      <Card.Content>
-        <Card.Header >
-          <div className="card-header">
-            {this.props.grudge.enemyName}
-            <div className="icon">{this.props.sharedGrudge(this.props.grudge)}</div>
-          </div>
-        </Card.Header>
-        <Card.Meta>
-          {this.props.grudge.insult}
-        </Card.Meta>
-      </Card.Content>
-        <Dimmer.Dimmable key={`image-${this.props.grudge.id}`}
-          as= {Image}
+        <Card.Content>
+          <Card.Header>
+            <div className="card-header">
+              {this.props.grudge.enemyName}
+              <div className="icon">
+                {this.sharedGrudge(this.props.grudge)}
+              </div>
+            </div>
+          </Card.Header>
+          <Card.Meta>{this.props.grudge.insult}</Card.Meta>
+        </Card.Content>
+        <Dimmer.Dimmable
+          key={`image-${this.props.grudge.id}`}
+          as={Image}
           dimmed={active}
           dimmer={{ active, content }}
           onMouseEnter={this.handleShow}
           onMouseLeave={this.handleHide}
-          size='medium'
-          src={this.props.images.filter(image => image.id ===this.props.grudge.pettyLevel).map(image => image.url)}
+          size="medium"
+          src={this.props.images
+            .filter(image => image.id === this.props.grudge.pettyLevel)
+            .map(image => image.url)}
         />
-        <Card.Description>
-          {this.props.grudge.incident}
-        </Card.Description>
-      <Card.Content extra className="card-footer">
-        <p>{this.props.grudge.date}</p>
-      </Card.Content>
-    </Card>
-    )
+        <Card.Description>{this.props.grudge.incident}</Card.Description>
+        <Card.Content extra className="card-footer">
+          <p>{this.props.grudge.date}</p>
+        </Card.Content>
+      </Card>
+    );
   }
 }

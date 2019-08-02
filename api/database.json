@@ -1,112 +1,184 @@
 {
   "grudges": [
     {
-      "id": 2,
-      "userId": 1,
-      "enemyName": "Mike Jones",
-      "incident": "He stole my seat and made me move to the back of the class",
+      "enemyName": "Mike Jonesboygold",
       "date": "09/10/1998",
       "email": "test@test.com",
       "insult": "",
+      "incident": "He stole my seat and made me move to the back of the class",
       "pettyLevel": 2,
+      "userId": 1,
       "isResolved": false,
-      "shared": 1
+      "shared": 1,
+      "id": 2
     },
     {
-      "id": 4,
-      "userId": 1,
-      "enemyName": "Dave Smith",
-      "incident": "He stole my seat and made me move to the back of the class",
-      "date": "09/10/1998",
-      "email": "test@test.com",
+      "enemyName": "Dave ddddd",
+      "date": "2019-12-31",
+      "email": "tessss",
       "insult": "",
-      "pettyLevel": 1,
-      "isResolved": false,
-      "shared": false
-    },
-    {
-      "id": 5,
-      "userId": 1,
-      "enemyName": "Dave Smith",
-      "email": "test@test.com",
-      "incident": "He stole my seat and made me move to the back of the class",
-      "date": "09/10/1998",
-      "insult": "",
+      "incident": "He stole my seat and made me move to the back of the class ffff",
       "pettyLevel": 3,
-      "isResolved": false,
-      "shared": 2
-    },
-    {
-      "id": 6,
       "userId": 1,
-      "enemyName": "Dave Smith",
-      "email": "test@test.com",
-      "incident": "He stole my seat and made me move to the back of the class",
-      "date": "09/10/1998",
-      "insult": "",
-      "pettyLevel": 1,
-      "isResolved": false,
-      "shared": false
+      "isResolved": true,
+      "shared": false,
+      "id": 4
     },
     {
-      "id": 7,
+      "enemyName": "Dave Sdave",
+      "date": "2019-12-31",
+      "email": "test@test.com",
+      "insult": "",
+      "incident": "He stole my seat and made me move to the back of the class",
+      "pettyLevel": 3,
       "userId": 1,
-      "enemyName": "Dave Smith",
-      "email": "test@test.com",
-      "incident": "He stole my seat and made me move to the back of the class",
-      "date": "09/10/1998",
-      "insult": "",
-      "pettyLevel": 1,
-      "isResolved": false,
-      "shared": false
+      "isResolved": true,
+      "shared": 2,
+      "id": 5
     },
     {
-      "enemyName": "test",
+      "enemyName": "joyce",
+      "date": "09/10/1998",
+      "email": "test@test.com",
+      "insult": "",
+      "incident": "He stole my seat and made me move to the back of the class",
+      "pettyLevel": 1,
+      "userId": 1,
+      "isResolved": true,
+      "shared": false,
+      "id": 6
+    },
+    {
+      "enemyName": "Murph",
+      "date": "09/10/1998",
+      "email": "test@test.com",
+      "insult": "",
+      "incident": "He stole my seat and made me move to the back of the class",
+      "pettyLevel": 1,
+      "userId": 1,
+      "isResolved": true,
+      "shared": false,
+      "id": 7
+    },
+    {
+      "enemyName": "testies",
       "date": "2019-12-31",
       "email": "test@test.com",
       "insult": "",
       "incident": "test",
       "pettyLevel": 3,
       "userId": 1,
-      "isResolved": false,
+      "isResolved": true,
       "shared": false,
       "id": 8
     },
     {
-      "enemyName": "Curt Cato",
+      "enemyName": "Curt Catooooooo",
       "date": "2019-07-31",
       "email": "Curt@gmail.com",
       "insult": "",
       "incident": "Curt spells his name with a C which is literally the dumbest thing a person can do",
       "pettyLevel": 3,
       "userId": 1,
-      "isResolved": false,
+      "isResolved": true,
       "shared": false,
       "id": 9
     },
     {
-      "enemyName": "test",
+      "id": 10,
       "date": "2019-09-30",
+      "enemyName": "billy",
       "email": "test",
-      "insult": "",
       "incident": "test",
+      "insult": "",
+      "isResolved": true,
       "pettyLevel": 3,
-      "userId": 1,
+      "shared": false,
+      "userId": 1
+    },
+    {
+      "enemyName": "Joe Kennerly",
+      "date": "2019-12-31",
+      "email": "idiot@gmail.com",
+      "insult": "",
+      "incident": "Looked at me funny.",
+      "pettyLevel": 4,
+      "userId": 2,
       "isResolved": false,
       "shared": false,
-      "id": 10
+      "id": 12
+    },
+    {
+      "id": 13,
+      "date": "2019-08-01",
+      "enemyName": "guy that just walked by just now",
+      "email": "randomGuy@walkBy.com",
+      "incident": "He had too much confidence as he strolled past. Really infuriated me.",
+      "insult": "",
+      "isResolved": false,
+      "pettyLevel": 2,
+      "shared": false,
+      "userId": 2
+    },
+    {
+      "enemyName": "Curt Cato",
+      "date": "2019-08-01",
+      "email": "idiot@stuff.com",
+      "insult": "",
+      "incident": "He's talking too much",
+      "pettyLevel": 2,
+      "userId": 2,
+      "isResolved": false,
+      "shared": false,
+      "id": 14
+    },
+    {
+      "enemyName": "test",
+      "date": "2019-12-31",
+      "email": "d",
+      "insult": "",
+      "incident": "d",
+      "pettyLevel": 2,
+      "userId": 2,
+      "isResolved": false,
+      "shared": false,
+      "id": 15
     },
     {
       "enemyName": "Krystal",
-      "date": "2019-07-31",
-      "email": "test",
+      "date": "2019-08-01",
+      "email": "Krystal_Sabrina@yahoo.com",
       "insult": "",
-      "incident": "test",
-      "pettyLevel": 3,
-      "userId": 1,
+      "incident": "She's too happy. Also she has a yahoo email account. Gross",
+      "pettyLevel": 4,
+      "userId": 2,
       "isResolved": false,
       "shared": false,
-      "id": 11
+      "id": 16
+    },
+    {
+      "enemyName": "joeMikeBill",
+      "date": "2019-12-31",
+      "email": "ok",
+      "insult": "",
+      "incident": "yes",
+      "pettyLevel": 2,
+      "userId": 1,
+      "isResolved": true,
+      "shared": false,
+      "id": 17
+    },
+    {
+      "enemyName": "newnewnew",
+      "date": "2019-12-31",
+      "email": "f",
+      "insult": "",
+      "incident": "d",
+      "pettyLevel": 2,
+      "userId": 1,
+      "isResolved": true,
+      "shared": false,
+      "id": 18
     }
   ],
   "images": [
@@ -131,6 +203,26 @@
       "url": ""
     }
   ],
+  "resolvedGrudges": [
+    {
+      "resolveReason": "I am a nice person",
+      "compliment": "He has nice eyes",
+      "grudgeId": 4,
+      "id": 1
+    },
+    {
+      "resolveReason": "ok",
+      "compliment": "ok",
+      "grudgeId": 5,
+      "id": 3
+    },
+    {
+      "resolveReason": "s",
+      "compliment": "d",
+      "grudgeId": 4,
+      "id": 4
+    }
+  ],
   "users": [
     {
       "id": 1,
@@ -147,6 +239,22 @@
       "password": "password123",
       "email": "dhobson21@gmail.com",
       "id": 2
+    },
+    {
+      "firstname": "Dustin",
+      "lastname": "H",
+      "username": "dhob",
+      "password": "new",
+      "email": "rock",
+      "id": 3
+    },
+    {
+      "firstname": "Steph",
+      "lastname": "Rondo",
+      "username": "srondo14",
+      "password": "hilton2007",
+      "email": "stephanierondo@gmail.com",
+      "id": 4
     }
   ]
 }
