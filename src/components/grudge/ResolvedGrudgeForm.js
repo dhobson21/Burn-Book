@@ -17,41 +17,41 @@ export default class ResolvedGrudgeForm extends Component {
 
   };
 
-  // checkFields= (event) => {
-  //   if (
-  //     this.state.resolveReason === "" ||
-  //     this.state.compliment === ""
-  //     ) { window.alert("All fields must be filled out");
-  //   } else {
-  //     event.preventDefault()
+  checkFields= (event) => {
+    if (
+      this.state.resolveReason === "" ||
+      this.state.compliment === ""
+      ) { window.alert("All fields must be filled out");
+    } else {
+      event.preventDefault()
 
-  //   this.resolveGrudge()
-  //   .then(() => {
-  //      this.props.addItem("resolvedGrudges", this.state)
+    this.resolveGrudge()
+    // .then(() => {
+    //    this.props.addItem("resolvedGrudges", this.state)
 
 
-  //   );
+
 
   }
-// }
+}
 
-// resolveGrudge = () => {
-//   const grudgeResolvedObj = {
-//     enemyName: this.props.enemyName,
-//     date: this.props.date ,
-//     email: this.props.email ,
-//     insult: this.props.insult ,
-//     incident: this.props.incident,
-//     pettyLevel: this.props.pettyLevel,
-//     userId: +sessionStorage.getItem("activeUser"),
-//     isResolved: this.props.isResolved,
-//     shared: this.props.shared,
-//     id: this.props.id
-//   }
-//   // return APIManager.put("grudges", grudgeResolvedObj)
-//   // .then(() => APIManager.getAll("grudges"))// call function you make in app views that grabs grudges and updates state grudges
+resolveGrudge = () => {
+  const grudgeResolvedObj = {
+    enemyName: this.props.enemyName,
+    date: this.props.date ,
+    email: this.props.email ,
+    insult: this.props.insult ,
+    incident: this.props.incident,
+    pettyLevel: this.props.pettyLevel,
+    userId: +sessionStorage.getItem("activeUser"),
+    isResolved: this.props.isResolved,
+    shared: this.props.shared,
+    id: this.props.id
+  }
+  // return APIManager.put("grudges", grudgeResolvedObj)
+  // .then(() => APIManager.getAll("grudges"))// call function you make in app views that grabs grudges and updates state grudges
 
-// }
+}
   render() {
     console.log(this.state)
     console.log(this.props)
@@ -77,4 +77,4 @@ export default class ResolvedGrudgeForm extends Component {
   </Form>
     )
   }
-// }
+}

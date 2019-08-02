@@ -1,41 +1,42 @@
 import React, { Component } from 'react'
 import {  Menu, Segment } from 'semantic-ui-react'
-import { NavLink } from "react-router-dom"
-import {withRouter} from "react-router"
+import { NavLink, Redirect } from "react-router-dom"
+import {withRouter } from "react-router"
 
 class NavBar extends Component {
-  state = { activeItem: '' }
+  state = { activeItem: 'my grudges' }
 
   handleItemClick = (e, { name }) => {
     console.log(e.target.id)
     this.setState({ activeItem: name })
+    this.props.history.push(`/${e.target.id}`)
 
   }
 
   //clear session storage on log out to take away nav bar
   logout = () => {
     sessionStorage.clear()
+   window.location.reload()
+
 }
 
 
   render() {
     const { activeItem } = this.state
-    console.log(activeItem)
-    console.log(this.props.history)
 
     return (
       <div>
         <Menu pointing secondary>
           <Menu.Item
             name='my grudges'
-            active={this.state.activeItem === 'my grudges'}
+            active={activeItem === 'my grudges'}
             onClick={this.handleItemClick}
-            id="/"
+
           />
           <Menu.Item
             name='add grudge'
             id="add"
-            active={this.state.activeItem === 'add grudge'}
+            active={activeItem === 'add grudge'}
             onClick={this.handleItemClick}
 
 
@@ -43,22 +44,22 @@ class NavBar extends Component {
           <Menu.Item
             name='past grudges'
             id="past"
-            active={this.state.activeItem === 'past grudges'}
+            active={activeItem === 'past grudges'}
             onClick={this.handleItemClick}
 
           />
           <Menu.Item
             name='explore grudges'
             id="explore"
-            active={this.state.activeItem === 'explore grudges'}
+            active={activeItem === 'explore grudges'}
             onClick={this.handleItemClick}
 
           />
           <Menu.Menu position='right'>
             <Menu.Item
               name='logout'
-              id="logout"
-              active={this.state.activeItem === 'logout'}
+              id="login"
+              active={activeItem === 'logout'}
               onClick={this.logout}
 
             />
