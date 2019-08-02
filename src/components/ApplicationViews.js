@@ -80,7 +80,17 @@ updateItem = (name, editedObject) => {
     })
 
 }
-
+getAndUpdateState = (name) => {
+      APIManager.getAll(
+        `${name}?userId=${+sessionStorage.getItem("activeUser")}`
+      )
+    .then(grudges => {
+      const stateToChange = {}
+      stateToChange["grudges"] = grudges
+      console.log("sToT", stateToChange)
+      this.setState(stateToChange)
+    })
+}
 deleteItem = (name, id) => {
 
   let newObj = {}
@@ -136,7 +146,7 @@ deleteItem = (name, id) => {
                     if (!grudge) {
                         grudge = {id:404, EnemyName:"404", incident: "Enemy not found"}}
             if(this.isAuthenticated()) {
-              return <EditGrudgeForm grudge={grudge} {...props} updateItem={this.updateItem} addItem={this.addItem}/>
+              return <EditGrudgeForm getAndUpdateState={this.getAndUpdateState} grudge={grudge} {...props} updateItem={this.updateItem} addItem={this.addItem}/>
             } else  {
                 return <Redirect to="/login" />
             }

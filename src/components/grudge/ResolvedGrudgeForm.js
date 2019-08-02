@@ -26,8 +26,11 @@ export default class ResolvedGrudgeForm extends Component {
       event.preventDefault()
 
     this.resolveGrudge()
-    // .then(() => {
-    //    this.props.addItem("resolvedGrudges", this.state)
+    .then(() => {
+       this.props.addItem("resolvedGrudges", this.state)})
+    .then(() => this.props.getAndUpdateState("grudges"))
+
+
 
 
 
@@ -48,8 +51,8 @@ resolveGrudge = () => {
     shared: this.props.shared,
     id: this.props.id
   }
-  // return APIManager.put("grudges", grudgeResolvedObj)
-  // .then(() => APIManager.getAll("grudges"))// call function you make in app views that grabs grudges and updates state grudges
+  return APIManager.put("grudges", grudgeResolvedObj)
+
 
 }
   render() {
