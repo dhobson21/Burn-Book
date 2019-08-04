@@ -9,7 +9,7 @@
       "pettyLevel": 2,
       "userId": 1,
       "isResolved": true,
-      "shared": 1,
+      "shared": false,
       "id": 2
     },
     {
@@ -220,6 +220,23 @@
       "resolveReason": "cool",
       "compliment": "cool",
       "grudgeId": 5,
+      "id": 3
+    }
+  ],
+  "sharedGrudges": [
+    {
+      "id": 1,
+      "userId": 2,
+      "grudgeId": 4
+    },
+    {
+      "grudgeId": 12,
+      "userId": 1,
+      "id": 2
+    },
+    {
+      "grudgeId": 13,
+      "userId": 1,
       "id": 3
     }
   ],

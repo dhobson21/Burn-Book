@@ -11,28 +11,37 @@ import PastGrudges from "./grudge/PastGrudges"
 import ExploreGrudges from "./users/ExploreGrudge"
 
 
+const activeUser = +sessionStorage.getItem("activeUser")
 
 class ApplicationViews extends Component {
 
   state = {
     grudges: [],
     images:[],
-    users:[],
+    otherUsers:[],
     resolvedGrudges:[],
+    expandGrudges: []
   }
-
 
 //loading user data to update state object
 componentDidMount(){
   const newState = {}
+  const notYou= []
 APIManager.getAll(`grudges?userId=${+sessionStorage.getItem("activeUser")}`)
   .then(allGrudges => (newState.grudges = allGrudges))
   .then(() => APIManager.getAll("images"))
   .then(allImages => (newState.images = allImages))
-  .then(() => APIManager.getAll("users"))
-  .then(allUsers => (newState.users = allUsers))
+  .then(() => APIManager.get("users", "?_embed=grudges"))
+  .then(allUsers => allUsers.forEach(user => {
+     if (user.id !== +sessionStorage.getItem("activeUser")) {
+        notYou.push(user)
+      } else {}
+     (newState.otherUsers = notYou)
+    }))
   .then(() => APIManager.getAll("resolvedGrudges"))
   .then(allResolvedGrudges => (newState.resolvedGrudges = allResolvedGrudges))
+  .then(() => APIManager.get("grudges", "?_expand=user&_embed=resolvedGrudges&_embed=sharedGrudges"))
+  .then(allExpanded => (newState.expandGrudges= allExpanded))
   .then(() =>this.setState(newState))
   .then(() => console.log("CMState", this.state))
 }
@@ -40,7 +49,7 @@ APIManager.getAll(`grudges?userId=${+sessionStorage.getItem("activeUser")}`)
 //check session storage for value, return true or false
 //use to redirect unauthenticated users to the welcome page
 isAuthenticated = () => {
-  return sessionStorage.getItem("activeUser") !== null
+  return +sessionStorage.getItem("activeUser") !== null
 }
 
 
@@ -56,7 +65,8 @@ addItem = (name, item) => {
       newObj[name] = items
       this.setState(newObj)
     })
-    .then(() => (this.props.history.push("/")))
+    .then(() => name === "sharedGrudges" ? (this.props.history.push("/explore")) :
+(this.props.history.push("/")))
 
 
 }
@@ -108,14 +118,32 @@ deleteItem = (name, id) => {
     })
 }
 
+getDashGrudges = (grudgeArr) => {
+  const dashGrudges = []
+  grudgeArr.forEach(grudge => {
+    if( (grudge.userId === +sessionStorage.getItem("activeUser")) || (grudge.sharedGrudges.userId ===+sessionStorage.getItem("activeUser"))) {
+      dashGrudges.push(grudge)}
+
+  })
+  return dashGrudges
+}
+
   render() {
     return (
       <React.Fragment>
         <Route
           exact path="/"
           render={props => {
-            if(this.isAuthenticated()) return <Dash updateResolve= {this.updateResolve} updateItem={this.updateItem} deleteItem={this.deleteItem} images={this.state.images} grudges={this.state.grudges} {...props} />
-            else return <Redirect to="/login" />
+            if(this.isAuthenticated()) {return (
+              <Dash
+                expandGrudges={this.getDashGrudges(this.state.expandGrudges)}
+                updateResolve= {this.updateResolve}
+                updateItem={this.updateItem}
+                deleteItem={this.deleteItem}
+                images={this.state.images}
+                grudges={this.state.grudges} {...props} />
+            )}
+             else {return <Redirect to="/login" />}
           }}
 
         />
@@ -141,7 +169,7 @@ deleteItem = (name, id) => {
         <Route
           exact path="/edit/:grudgeId(\d+)"
           render={props => {
-            let grudge = this.state.grudges.find(grudge =>
+            let grudge = this.state.expandedGrudges.find(grudge =>
             grudge.id === parseInt(props.match.params.grudgeId))
                     if (!grudge) {
                         grudge = {id:404, EnemyName:"404", incident: "Enemy not found"}}
@@ -154,7 +182,7 @@ deleteItem = (name, id) => {
         <Route
           exact path="/past"
           render={props => {
-            if(this.isAuthenticated()) return <PastGrudges grudges={this.state.grudges} images={this.state.images} resolvedGrudges={this.resolvedGrudges}{...props} />
+            if(this.isAuthenticated()) return <PastGrudges grudges={this.state.expandGrudges.filter(grudge=> grudge.userId===+sessionStorage.getItem("activeUser"))} images={this.state.images} {...props} />
             else  {
               return <Redirect to="/login" />
           }
@@ -162,7 +190,15 @@ deleteItem = (name, id) => {
         <Route
           exact path="/explore"
           render={props => {
-            if(this.isAuthenticated()) return <ExploreGrudges />
+            if(this.isAuthenticated()) return (
+
+            <ExploreGrudges
+              users={this.state.otherUsers}
+              grudges={this.state.expandGrudges.forEach(g => (g.userId !== +sessionStorage.getItem("activeUser")) )}
+
+
+               images={this.state.images} updateItem= {this.updateItem} addItem={this.addItem} {...props} getAndUpdateState={this.getAndUpdateState} />
+            )
             else  {
               return <Redirect to="/login" />
             }

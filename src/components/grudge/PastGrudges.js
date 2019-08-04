@@ -12,7 +12,7 @@ export default class PastGrudges extends Component {
       <Header size="huge" textAlign="center">My Past Grudges</Header>
       <div className="grudges">
       {
-        this.props.grudges.filter(grudge => (grudge.isResolved !==false)).map(grudge => <GrudgeCard key={grudge.id}  grudge={grudge} images={this.props.images} {...this.props} />
+        this.props.grudges.filter(grudge => (grudge.isResolved === true)).map(grudge => <GrudgeCard key={grudge.id}  grudge={grudge} images={this.props.images} {...this.props} />
 
         )
       }

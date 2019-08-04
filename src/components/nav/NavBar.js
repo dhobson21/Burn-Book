@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import {  Menu, Segment } from 'semantic-ui-react'
-import { NavLink, Redirect } from "react-router-dom"
 import {withRouter } from "react-router"
 
 class NavBar extends Component {
