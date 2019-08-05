@@ -23,7 +23,8 @@ class ConfirmGrudgeJoin extends Component {
   handleCancel = () => this.setState({ open: false })
 
   render() {
-    console.log(this.props)
+    console.log("Cofirm Grudge Join state", this.state)
+    console.log("Confirm Grudge Join props",this.props)
     return (
       <div>
         <Button onClick={this.show}>Join</Button>

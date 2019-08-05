@@ -27,7 +27,8 @@ export default class GrudgeDetailsModal extends Component {
   handleCancel = () => this.setState({ result: "cancelled", open: false });
 
   render() {
-    console.log("Is this grudge resolved", this.props);
+    console.log("GrudgeDetails props", this.props);
+    console.log("GrudgeDetails state", this.state);
     const { open } = this.state;
     if (
       this.props.grudge.isResolved === false &&
@@ -49,7 +50,7 @@ export default class GrudgeDetailsModal extends Component {
               <Grid.Column>
                 <Button
                   onClick={() => {
-                    console.log(this.props);
+
                     this.props.history.push(`/edit/${this.props.grudge.id}`);
                   }}
                 >
@@ -134,7 +135,6 @@ export default class GrudgeDetailsModal extends Component {
               <Grid.Column>
                 <Button
                   onClick={() => {
-                    console.log(this.props);
                     this.props.history.push(`/edit/${this.props.grudge.id}`);
                   }}
                 >

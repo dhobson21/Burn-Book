@@ -18,13 +18,13 @@ export default class GrudgeCard extends Component {
 
   grudgeDate = () => {
     let dateArr = this.props.grudge.date.split("-");
-    console.log(dateArr);
     const date = `${dateArr[1]}/${dateArr[2]}/${dateArr[0]}`;
     return date;
   };
 
   render() {
-    console.log("gcard", this.props);
+    console.log("grudgecard props", this.props);
+    console.log("grudgecard state", this.state);
     const { active } = this.state;
     const content = (
       <div>
@@ -34,17 +34,17 @@ export default class GrudgeCard extends Component {
         <GrudgeDetailsModal {...this.props} />
       </div>
     );
-    //if grudge belongs to logged in user and is not resolved (active grudges), render this:
+    //if grudge belongs to logged in user and is not resolved, OR has a shared grduge userID of logged in user (active grudges), render this:
     if (
-      this.props.grudge.userId === +sessionStorage.getItem("activeUser") &&
-      (!this.props.grudge.isResolved)
+      (this.props.grudge.userId === +sessionStorage.getItem("activeUser") &&
+      (!this.props.grudge.isResolved)) || this.props.grudge.sharedGrudges.userId === +sessionStorage.getItem("activeUser")
     ) {
       return (
         <Card key={this.props.grudge.id}>
           <Card.Content>
             <Card.Header>
               <div className="card-header">
-                {this.props.grudge.enemyName} MY ACTIVE GRUDGES
+                {this.props.grudge.enemyName} ACTIVE GRUDGES
                 <div className="icon">
                   {this.sharedGrudge(this.props.grudge)}
                 </div>

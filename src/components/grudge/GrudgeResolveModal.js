@@ -14,7 +14,8 @@ export default class GrudgeResolveModal extends Component {
 
 
   render() {
-    console.log(this.props)
+    console.log("Resolve Grudge Modal props", this.props)
+    console.log("Resolve Grudge Modal state", this.state)
     const { open } = this.state
     return (
       <Modal

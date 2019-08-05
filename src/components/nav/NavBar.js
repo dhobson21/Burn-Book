@@ -6,7 +6,6 @@ class NavBar extends Component {
   state = { activeItem: 'my grudges' }
 
   handleItemClick = (e, { name }) => {
-    console.log(e.target.id)
     this.setState({ activeItem: name })
     this.props.history.push(`/${e.target.id}`)
 

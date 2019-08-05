@@ -226,18 +226,8 @@
   "sharedGrudges": [
     {
       "id": 1,
-      "userId": 2,
-      "grudgeId": 4
-    },
-    {
-      "grudgeId": 12,
       "userId": 1,
-      "id": 2
-    },
-    {
-      "grudgeId": 13,
-      "userId": 1,
-      "id": 3
+      "grudgeId": 15
     }
   ],
   "users": [
@@ -258,7 +248,7 @@
       "id": 2
     },
     {
-      "firstname": "Dustin",
+      "firstname": "D",
       "lastname": "H",
       "username": "dhob",
       "password": "new",

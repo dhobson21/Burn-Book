@@ -22,7 +22,6 @@ export default class Login extends Component {
         //check for matching
         if (user.length === 0) window.alert("no user found!")
         else if (user[0].password === this.state.password) {
-          console.log(user[0])
           //set sessionStorage
           sessionStorage.setItem("activeUser", user[0].id)
           this.props.setUser(user[0].id)
@@ -30,7 +29,7 @@ export default class Login extends Component {
           this.props.history.push("/")
         }
         else window.alert("That password is incorrect")
-      console.log(user)
+
     })
     //post
     //fetch

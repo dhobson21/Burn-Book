@@ -56,8 +56,8 @@ resolveGrudge = () => {
 
 }
   render() {
-    console.log(this.state)
-    console.log(this.props)
+    console.log("Resolved Grudge Form state", this.state)
+    console.log("Resolved Grudge Form props", this.props)
     return (
     <Form>
        <Form.Group widths='equal'>

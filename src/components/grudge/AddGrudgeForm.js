@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import {Form, Segment, Button} from "semantic-ui-react"
+import {Form, Segment} from "semantic-ui-react"
+import CurseGenerator from "./../curseGenerator/CurseGenerator"
 
 
 //refactor to pull options from DB
@@ -55,7 +56,6 @@ export default class AddGrudgeForm extends Component {
 
 
   checkFields= (event) => {
-    console.log(this.state)
     if (
       this.state.enemyName === "" ||
       this.state.date === "" ||
@@ -114,11 +114,11 @@ export default class AddGrudgeForm extends Component {
             id="insult"
             name="insult"
           ></Segment>
-            <Button  attached='bottom' size="mini">Make Insult</Button>
+            <CurseGenerator />
           </Form.Group>
         </Form.Group>
           <Form.TextArea
-            label='What this Blockhead did'
+            label='What Happened:'
             options={options}
             placeholder='An indefensible act'
             onChange={this.handleFieldChange}

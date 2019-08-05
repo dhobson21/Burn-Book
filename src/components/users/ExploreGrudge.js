@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import {Header, Confirm} from "semantic-ui-react"
+import {Header} from "semantic-ui-react"
 import { CarouselProvider, Slider, ButtonBack, ButtonNext, Slide} from "pure-react-carousel";
 
 import "./exploreGrudges.css"
 import CustomCardSlide from "./CustomCardSlide"
-import CustomDotGroup from "./CustomDotGroup"
 import GrudgeCard from "../grudge/GrudgeCard"
 import 'pure-react-carousel/dist/react-carousel.es.css';
 
@@ -21,7 +20,8 @@ export default class ExploreGrudges extends Component {
 
 
   render() {
-    console.log(this.props.grudges)
+    console.log("Explore Grudges state", this.state)
+    console.log("Explore Grudges props ", this.props)
     return (
       <React.Fragment>
         <Header size="huge" textAlign="center">Other Petty People</Header>

@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import { Form, Segment, Button, Modal, Icon } from "semantic-ui-react";
+import { Form, Segment, Modal, Icon } from "semantic-ui-react";
 import APIManager from "../../modules/APIManager";
 import GrudgeResolveModal from "./GrudgeResolveModal";
+import CurseGenerator from "./../curseGenerator/CurseGenerator"
+
 
 const options = [
   { key: 1, text: "1--I'm not petty, you're petty", value: 1 },
@@ -91,7 +93,7 @@ export default class EditGrudgeForm extends Component {
     this.setState(prevState => ({
       boo: !prevState.boo
     }))
-    console.log(this.state)
+
   }
 
   //grab individual grudge for value fields of edited input fields
@@ -112,7 +114,8 @@ export default class EditGrudgeForm extends Component {
     });
   }
   render() {
-    console.log(this.props);
+    console.log("Edit Grudge Form props", this.props);
+    console.log("Edit Grudge Form state", this.state);
     const { open } = this.notOpen;
     const { checked } = this.checked;
 
@@ -149,11 +152,7 @@ export default class EditGrudgeForm extends Component {
             />
             <Form.Group>
               <Segment id="insult" name="insult" value={this.state.insult} />
-              <Button
-                      attached="bottom"
-                      size="mini">
-                Make New Insult
-              </Button>
+              <CurseGenerator />
             </Form.Group>
           </Form.Group>
           <Form.TextArea
