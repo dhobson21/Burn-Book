@@ -31,7 +31,7 @@ export default class GrudgeCard extends Component {
         <Header as="h2" inverted>
           {this.props.grudge.enemyName}
         </Header>
-        <GrudgeDetailsModal {...this.props} />
+        <GrudgeDetailsModal grudgeDate={this.grudgeDate} {...this.props} />
       </div>
     );
     //if grudge belongs to logged in user and is not resolved, OR has a shared grduge userID of logged in user (active grudges), render this:
@@ -78,17 +78,17 @@ export default class GrudgeCard extends Component {
       return (
         <Card key={this.props.grudge.id}>
           <Card.Content>
-            <Card.Header>
+            <Card.Header >
               <div className="card-header">
-                {this.props.grudge.enemyName} MY PAST GRUDGES
+                {this.props.grudge.enemyName}
                 <div className="icon">
                   {this.sharedGrudge(this.props.grudge)}
                 </div>
               </div>
             </Card.Header>
-            <Card.Meta>{this.props.grudge.insult}</Card.Meta>
+            <Card.Meta>{this.props.grudge.resolvedGrudges[0].compliment}</Card.Meta>
           </Card.Content>
-          <Dimmer.Dimmable
+          <Dimmer.Dimmable circular
             key={`image-${this.props.grudge.id}`}
             as={Image}
             dimmed={active}
@@ -100,9 +100,9 @@ export default class GrudgeCard extends Component {
               .filter(image => image.id === this.props.grudge.pettyLevel)
               .map(image => image.url)}
           />
-          <Card.Description>{this.props.grudge.incident}</Card.Description>
+
           <Card.Content extra className="card-footer">
-            {this.grudgeDate()}
+            GRUDGE RESOLVED
           </Card.Content>
         </Card>
       );

@@ -4,6 +4,9 @@ import {Header} from "semantic-ui-react"
 
 export default class PastGrudges extends Component {
 
+
+
+
   render() {
     console.log("past Grudge state", this.state)
     console.log("past Grudge props", this.props)
