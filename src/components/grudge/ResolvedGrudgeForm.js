@@ -6,7 +6,7 @@ export default class ResolvedGrudgeForm extends Component {
   state = {
     resolveReason: "",
     compliment: "",
-    grudgeId: ""
+    grudgeId: +this.props.grudge.id
 
   }
 
@@ -24,11 +24,16 @@ export default class ResolvedGrudgeForm extends Component {
       ) { window.alert("All fields must be filled out");
     } else {
       event.preventDefault()
+
     this.resolveGrudge()
     .then(() => {
-      this.state.grudgeId = +this.props.grudge.id
-      this.props.addItem("resolvedGrudges", this.state)
-    });
+       this.props.addItem("resolvedGrudges", this.state)})
+    .then(() => this.props.getAndUpdateState("grudges"))
+
+
+
+
+
 
   }
 }
@@ -48,10 +53,11 @@ resolveGrudge = () => {
   }
   return APIManager.put("grudges", grudgeResolvedObj)
 
+
 }
   render() {
-    console.log(this.state)
-    console.log(this.props)
+    console.log("Resolved Grudge Form state", this.state)
+    console.log("Resolved Grudge Form props", this.props)
     return (
     <Form>
        <Form.Group widths='equal'>

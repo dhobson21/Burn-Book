@@ -17,7 +17,6 @@ handleFieldChange = event => {
 }
 
 handleChange = event => {
-  console.log(event)
   if (
     this.state.firstname === "" ||
     this.state.lastname === "" ||
@@ -33,14 +32,13 @@ handleChange = event => {
     fetch(`http://localhost:5002/users`)
       .then(res => res.json())
       .then(allUsers => {
-        console.log(allUsers)
         let filteredUsers = allUsers.filter(filterUsers => {
           return (
             filterUsers.username === this.state.username ||
             filterUsers.email === this.state.email
           )
         })
-        console.log(filteredUsers)
+
         if (filteredUsers.length !== 0) window.alert("user already exists")
           else {
             //build an object of input values
@@ -63,7 +61,6 @@ handleChange = event => {
 
                   //routing to dashboard
                   this.props.history.push("/")
-                  console.log(user)
                 })
             })
           }

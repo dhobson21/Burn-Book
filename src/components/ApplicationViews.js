@@ -8,33 +8,45 @@ import APIManager from '../modules/APIManager';
 import AddGrudgeForm from './grudge/AddGrudgeForm';
 import EditGrudgeForm from './grudge/EditGrudgeForm';
 import PastGrudges from "./grudge/PastGrudges"
+import ExploreGrudges from "./users/ExploreGrudge"
 
 
-
+const activeUser = +sessionStorage.getItem("activeUser")
 
 class ApplicationViews extends Component {
 
   state = {
     grudges: [],
     images:[],
-    users:[],
-    resolvedGrudges:[]
+    otherUsers:[],
+    resolvedGrudges:[],
+    expandGrudges: [],
+    userSharedGrudges: []
   }
-
 
 //loading user data to update state object
 componentDidMount(){
   const newState = {}
-APIManager.getAll(`grudges?userId=${+sessionStorage.getItem("activeUser")}`)
+  const notYou= []
+APIManager.getAll(`grudges?userId=${activeUser}`)
   .then(allGrudges => (newState.grudges = allGrudges))
   .then(() => APIManager.getAll("images"))
   .then(allImages => (newState.images = allImages))
-  .then(() => APIManager.getAll("users"))
-  .then(allUsers => (newState.users = allUsers))
+  .then(() => APIManager.get("users", "?_embed=grudges"))
+  .then(allUsers => allUsers.forEach(user => {
+     if (user.id !== +sessionStorage.getItem("activeUser")) {
+        notYou.push(user)
+      } else {}
+     (newState.otherUsers = notYou)
+    }))
   .then(() => APIManager.getAll("resolvedGrudges"))
   .then(allResolvedGrudges => (newState.resolvedGrudges = allResolvedGrudges))
+  .then(() => APIManager.get("grudges", "?_expand=user&_embed=resolvedGrudges&_embed=sharedGrudges"))
+  .then(allExpanded => (newState.expandGrudges= allExpanded))
+  .then(() => APIManager.get("sharedGrudges", "?_expand=grudge&_expand=user"))
+  .then(allSharedGrudges => (newState.userSharedGrudges= allSharedGrudges))
   .then(() =>this.setState(newState))
-  .then(() => console.log(this.state))
+  .then(() => console.log("MountedState", this.state))
 }
 
 //check session storage for value, return true or false
@@ -50,13 +62,14 @@ addItem = (name, item) => {
   let newObj = {}
   APIManager.post(name, item)
     .then(() =>
-      APIManager.getAll(`${name}?userId=${+sessionStorage.getItem("activeUser")}`)
+      APIManager.getAll(`${name}?userId=${activeUser}`)
     )
     .then(items => {
       newObj[name] = items
       this.setState(newObj)
     })
-    .then(() => name === "resolvedGrudges" ? this.props.history.push("/past") : this.props.history.push("/"))
+    .then(() => name === "sharedGrudges" ? (this.props.history.push("/explore")) :
+(this.props.history.push("/")))
 
 
 }
@@ -66,7 +79,7 @@ updateItem = (name, editedObject) => {
   return APIManager.put(name, editedObject)
     .then(() =>
       APIManager.getAll(
-        `${name}?userId=${+sessionStorage.getItem("activeUser")}`
+        `${name}?userId=${activeUser})}`
       )
     )
     .then(item => {
@@ -74,29 +87,39 @@ updateItem = (name, editedObject) => {
       this.setState(newObj)
     })
     .then(()=> {
-      console.log("propsupdate", this.props.history)
+
       this.props.history.push("/")
 
     })
 
 }
-
+getAndUpdateState = (name) => {
+      APIManager.getAll(
+        `${name}?userId=${activeUser}`
+      )
+    .then(grudges => {
+      const stateToChange = {}
+      stateToChange["grudges"] = grudges
+      this.setState(stateToChange)
+    })
+}
 deleteItem = (name, id) => {
-  console.log("inside delete item")
+
   let newObj = {}
   return fetch(`http://localhost:5002/${name}/${id}`, {
     method: "DELETE"
   })
     .then(e => e.json())
-    .then(() => APIManager.getAll(`${name}?userId=${+sessionStorage.getItem("activeUser")}`
+    .then(() => APIManager.getAll(`${name}?userId=${activeUser}`
     ))
     .then(group => {
       newObj[name] = group
       this.setState(newObj)
-      console.log(name, newObj, this.state)
       this.props.history.push("/")
     })
 }
+
+
 
   render() {
     return (
@@ -104,8 +127,10 @@ deleteItem = (name, id) => {
         <Route
           exact path="/"
           render={props => {
-            if(this.isAuthenticated()) return <Dash updateResolve= {this.updateResolve} updateItem={this.updateItem} deleteItem={this.deleteItem} images={this.state.images} grudges={this.state.grudges} {...props} />
-            else return <Redirect to="/login" />
+            if(this.isAuthenticated()) return (
+              <Dash sharedGrudges= {this.state.userSharedGrudges} expandGrudges={this.state.expandGrudges.filter(grudge => !grudge.isResolved)} updateResolve= {this.updateResolve} updateItem={this.updateItem} deleteItem={this.deleteItem} images={this.state.images} grudges={this.state.grudges} {...props} />
+            )
+             else return <Redirect to="/login" />
           }}
 
         />
@@ -131,12 +156,12 @@ deleteItem = (name, id) => {
         <Route
           exact path="/edit/:grudgeId(\d+)"
           render={props => {
-            let grudge = this.state.grudges.find(grudge =>
+            let grudge = this.state.expandGrudges.find(grudge =>
             grudge.id === parseInt(props.match.params.grudgeId))
                     if (!grudge) {
                         grudge = {id:404, EnemyName:"404", incident: "Enemy not found"}}
             if(this.isAuthenticated()) {
-              return <EditGrudgeForm grudge={grudge} {...props} updateItem={this.updateItem} addItem={this.addItem}/>
+              return <EditGrudgeForm getAndUpdateState={this.getAndUpdateState} grudge={grudge} {...props} updateItem={this.updateItem} addItem={this.addItem}/>
             } else  {
                 return <Redirect to="/login" />
             }
@@ -144,17 +169,27 @@ deleteItem = (name, id) => {
         <Route
           exact path="/past"
           render={props => {
-            if(this.isAuthenticated()) return <PastGrudges grudges={this.state.grudges} images={this.state.images} resolvedGrudges={this.resolvedGrudges}{...props} />
+            if(this.isAuthenticated()) return <PastGrudges grudges={this.state.expandGrudges.filter(grudge=> grudge.userId===activeUser)} images={this.state.images} {...props} />
             else  {
               return <Redirect to="/login" />
           }
           }}/>
         <Route
-          exact path="/users"
+          exact path="/explore"
           render={props => {
-            return <div>User Grudges</div>
-          }}
-        />
+            if(this.isAuthenticated()) return (
+
+            <ExploreGrudges
+              users={this.state.otherUsers}
+              grudges={this.state.expandGrudges.forEach(g => (g.userId !== activeUser) )}
+
+
+               images={this.state.images} updateItem= {this.updateItem} addItem={this.addItem} {...props} getAndUpdateState={this.getAndUpdateState} />
+            )
+            else  {
+              return <Redirect to="/login" />
+            }
+          }}/>
         {/* <Route
           exact path="/"
           render={props => {

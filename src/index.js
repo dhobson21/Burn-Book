@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from "react-router-dom"
-
+import "pure-react-carousel/dist/react-carousel.es.css"
 import BurnBook from './components/BurnBook';
 import * as serviceWorker from './serviceWorker';
 import 'semantic-ui-css/semantic.min.css'

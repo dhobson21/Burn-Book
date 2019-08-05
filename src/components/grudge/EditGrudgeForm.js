@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import { Form, Segment, Button, Modal, Icon } from "semantic-ui-react";
+import { Form, Segment, Modal, Icon } from "semantic-ui-react";
 import APIManager from "../../modules/APIManager";
 import GrudgeResolveModal from "./GrudgeResolveModal";
+import CurseGenerator from "./../curseGenerator/CurseGenerator"
+
 
 const options = [
   { key: 1, text: "1--I'm not petty, you're petty", value: 1 },
@@ -27,7 +29,8 @@ export default class EditGrudgeForm extends Component {
     isResolved: "",
     pettyLevel: "",
     shared: "",
-    userId: ""
+    userId: "",
+    boo: false
   };
 
   handleFieldChange = event => {
@@ -44,14 +47,15 @@ export default class EditGrudgeForm extends Component {
   handleCheckChange = (event, { checked }) => {
     const checkTrue = {};
     checkTrue["isResolved"] = { checked }.checked;
-    console.log(checkTrue.isResolved);
     this.setState(checkTrue);
     this.notOpen.open = checkTrue.isResolved;
     this.checked.checked = checkTrue.isResolved;
   };
 
+
   checkFields = event => {
-    console.log(this.state);
+
+
     if (
       this.state.enemyName === "" ||
       this.state.date === "" ||
@@ -64,10 +68,11 @@ export default class EditGrudgeForm extends Component {
     } else {
       event.preventDefault();
       this.props.updateItem("grudges", this.state);
+
     }
   };
 
-  checked = { checked: false };
+  checked = { checked: false }
   notOpen = { open: false };
   closeConfigShow = () => {
     this.notOpen = {
@@ -82,6 +87,14 @@ export default class EditGrudgeForm extends Component {
     checkFalse["isResolved"] = false;
     this.setState(checkFalse);
   };
+
+  changeState = () => {
+
+    this.setState(prevState => ({
+      boo: !prevState.boo
+    }))
+
+  }
 
   //grab individual grudge for value fields of edited input fields
   componentDidMount() {
@@ -101,11 +114,11 @@ export default class EditGrudgeForm extends Component {
     });
   }
   render() {
-    console.log("props", this.props)
-    console.log(this.state);
+    console.log("Edit Grudge Form props", this.props);
+    console.log("Edit Grudge Form state", this.state);
     const { open } = this.notOpen;
     const { checked } = this.checked;
-    console.log("open", { open });
+
     return (
       <div>
         <Form>
@@ -139,9 +152,7 @@ export default class EditGrudgeForm extends Component {
             />
             <Form.Group>
               <Segment id="insult" name="insult" value={this.state.insult} />
-              <Button attached="bottom" size="mini">
-                Make New Insult
-              </Button>
+              <CurseGenerator />
             </Form.Group>
           </Form.Group>
           <Form.TextArea
@@ -171,6 +182,7 @@ export default class EditGrudgeForm extends Component {
                 id="isResolved"
                 onClick={this.handleCheckChange}
                 checked={checked}
+
               />
             }
           >
@@ -182,7 +194,6 @@ export default class EditGrudgeForm extends Component {
             <Form.Button
               floated="left"
               onClick={() => {
-                console.log(this.notOpen);
                 this.close();
               }}
               negative
@@ -190,7 +201,7 @@ export default class EditGrudgeForm extends Component {
               <Icon name="left chevron" /> Cancel
             </Form.Button>
             <Modal.Actions>
-              <GrudgeResolveModal {...this.state} {...this.props}/>
+              <GrudgeResolveModal  changeState={this.changeState}{...this.state} {...this.props}/>
             </Modal.Actions>
           </Modal>
           <Form.Button size="mini" onClick={this.checkFields}>

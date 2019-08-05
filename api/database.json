@@ -1,19 +1,19 @@
 {
   "grudges": [
     {
-      "enemyName": "Mike Jonesboygold",
-      "date": "09/10/1998",
-      "email": "test@test.com",
+      "enemyName": "Dustin",
+      "date": "2019-12-31",
+      "email": "This is now resolved",
       "insult": "",
-      "incident": "He stole my seat and made me move to the back of the class",
+      "incident": "So resolved",
       "pettyLevel": 2,
       "userId": 1,
-      "isResolved": false,
-      "shared": 1,
+      "isResolved": true,
+      "shared": false,
       "id": 2
     },
     {
-      "enemyName": "Dave ddddd",
+      "enemyName": "that guy",
       "date": "2019-12-31",
       "email": "tessss",
       "insult": "",
@@ -25,7 +25,7 @@
       "id": 4
     },
     {
-      "enemyName": "Dave Sdave",
+      "enemyName": "Curt",
       "date": "2019-12-31",
       "email": "test@test.com",
       "insult": "",
@@ -37,38 +37,38 @@
       "id": 5
     },
     {
-      "enemyName": "joyce",
-      "date": "09/10/1998",
+      "id": 6,
+      "date": "2019-12-31",
+      "enemyName": "Dustin",
       "email": "test@test.com",
-      "insult": "",
       "incident": "He stole my seat and made me move to the back of the class",
+      "insult": "",
+      "isResolved": false,
       "pettyLevel": 1,
-      "userId": 1,
-      "isResolved": true,
       "shared": false,
-      "id": 6
+      "userId": 1
     },
     {
-      "enemyName": "Murph",
-      "date": "09/10/1998",
+      "enemyName": "Curt",
+      "date": "2019-12-31",
       "email": "test@test.com",
       "insult": "",
       "incident": "He stole my seat and made me move to the back of the class",
       "pettyLevel": 1,
       "userId": 1,
-      "isResolved": true,
+      "isResolved": false,
       "shared": false,
       "id": 7
     },
     {
-      "enemyName": "testies",
+      "enemyName": "guy",
       "date": "2019-12-31",
       "email": "test@test.com",
       "insult": "",
       "incident": "test",
       "pettyLevel": 3,
       "userId": 1,
-      "isResolved": true,
+      "isResolved": false,
       "shared": false,
       "id": 8
     },
@@ -80,7 +80,7 @@
       "incident": "Curt spells his name with a C which is literally the dumbest thing a person can do",
       "pettyLevel": 3,
       "userId": 1,
-      "isResolved": true,
+      "isResolved": false,
       "shared": false,
       "id": 9
     },
@@ -205,22 +205,29 @@
   ],
   "resolvedGrudges": [
     {
-      "resolveReason": "I am a nice person",
-      "compliment": "He has nice eyes",
-      "grudgeId": 4,
+      "resolveReason": "stuff",
+      "compliment": "for hu",
+      "grudgeId": 6,
       "id": 1
     },
     {
-      "resolveReason": "ok",
-      "compliment": "ok",
-      "grudgeId": 5,
-      "id": 3
+      "resolveReason": "cool",
+      "compliment": "cool",
+      "grudgeId": 4,
+      "id": 2
     },
     {
-      "resolveReason": "s",
-      "compliment": "d",
-      "grudgeId": 4,
-      "id": 4
+      "resolveReason": "cool",
+      "compliment": "cool",
+      "grudgeId": 5,
+      "id": 3
+    }
+  ],
+  "sharedGrudges": [
+    {
+      "id": 1,
+      "userId": 1,
+      "grudgeId": 15
     }
   ],
   "users": [
@@ -241,7 +248,7 @@
       "id": 2
     },
     {
-      "firstname": "Dustin",
+      "firstname": "D",
       "lastname": "H",
       "username": "dhob",
       "password": "new",

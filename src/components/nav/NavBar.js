@@ -1,24 +1,27 @@
 import React, { Component } from 'react'
 import {  Menu, Segment } from 'semantic-ui-react'
-import { NavLink } from "react-router-dom"
+import {withRouter } from "react-router"
 
-export default class NavBar extends Component {
+class NavBar extends Component {
   state = { activeItem: 'my grudges' }
 
   handleItemClick = (e, { name }) => {
     this.setState({ activeItem: name })
+    this.props.history.push(`/${e.target.id}`)
 
   }
 
   //clear session storage on log out to take away nav bar
   logout = () => {
     sessionStorage.clear()
+   window.location.reload()
+
 }
 
 
   render() {
     const { activeItem } = this.state
-    console.log(activeItem)
+
     return (
       <div>
         <Menu pointing secondary>
@@ -26,38 +29,37 @@ export default class NavBar extends Component {
             name='my grudges'
             active={activeItem === 'my grudges'}
             onClick={this.handleItemClick}
-            as={NavLink}
-            to="/"
+
           />
           <Menu.Item
             name='add grudge'
+            id="add"
             active={activeItem === 'add grudge'}
             onClick={this.handleItemClick}
-            as={NavLink}
-            to="/add"
+
 
           />
           <Menu.Item
             name='past grudges'
+            id="past"
             active={activeItem === 'past grudges'}
             onClick={this.handleItemClick}
-            as={NavLink}
-            to="/past"
+
           />
           <Menu.Item
             name='explore grudges'
+            id="explore"
             active={activeItem === 'explore grudges'}
             onClick={this.handleItemClick}
-            as={NavLink}
-            to="/users"
+
           />
           <Menu.Menu position='right'>
             <Menu.Item
               name='logout'
+              id="login"
               active={activeItem === 'logout'}
               onClick={this.logout}
-              as={NavLink}
-            to="/login"
+
             />
           </Menu.Menu>
         </Menu>
@@ -69,3 +71,5 @@ export default class NavBar extends Component {
     )
   }
 }
+
+export default withRouter(NavBar)
