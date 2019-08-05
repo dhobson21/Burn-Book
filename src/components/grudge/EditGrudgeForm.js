@@ -67,7 +67,8 @@ export default class EditGrudgeForm extends Component {
       window.alert("All fields must be filled out");
     } else {
       event.preventDefault();
-      this.props.updateItem("grudges", this.state);
+      this.props.updateItem("grudges", this.state)
+      .then(() => this.props.getAndUpdateState())
 
     }
   };

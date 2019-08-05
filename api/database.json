@@ -8,16 +8,16 @@
       "incident": "So resolved",
       "pettyLevel": 2,
       "userId": 1,
-      "isResolved": true,
+      "isResolved": false,
       "shared": false,
       "id": 2
     },
     {
-      "enemyName": "that guy",
+      "enemyName": "Mike",
       "date": "2019-12-31",
-      "email": "tessss",
+      "email": "Mike@gmail.com",
       "insult": "",
-      "incident": "He stole my seat and made me move to the back of the class ffff",
+      "incident": "He stole my seat and made me move to the back of the class ",
       "pettyLevel": 3,
       "userId": 1,
       "isResolved": true,
@@ -25,7 +25,7 @@
       "id": 4
     },
     {
-      "enemyName": "Curt",
+      "enemyName": "Curtis",
       "date": "2019-12-31",
       "email": "test@test.com",
       "insult": "",
@@ -37,16 +37,16 @@
       "id": 5
     },
     {
-      "id": 6,
+      "enemyName": "This is steve",
       "date": "2019-12-31",
-      "enemyName": "Dustin",
       "email": "test@test.com",
-      "incident": "He stole my seat and made me move to the back of the class",
       "insult": "",
-      "isResolved": false,
+      "incident": "He stole my seat and made me move to the back of the class",
       "pettyLevel": 1,
+      "userId": 1,
+      "isResolved": false,
       "shared": false,
-      "userId": 1
+      "id": 6
     },
     {
       "enemyName": "Curt",
@@ -73,7 +73,7 @@
       "id": 8
     },
     {
-      "enemyName": "Curt Catooooooo",
+      "enemyName": "Just Curt",
       "date": "2019-07-31",
       "email": "Curt@gmail.com",
       "insult": "",
@@ -85,16 +85,16 @@
       "id": 9
     },
     {
-      "id": 10,
-      "date": "2019-09-30",
       "enemyName": "billy",
+      "date": "2019-09-30",
       "email": "test",
-      "incident": "test",
       "insult": "",
-      "isResolved": true,
+      "incident": "test",
       "pettyLevel": 3,
+      "userId": 1,
+      "isResolved": false,
       "shared": false,
-      "userId": 1
+      "id": 10
     },
     {
       "enemyName": "Joe Kennerly",
@@ -164,7 +164,7 @@
       "incident": "yes",
       "pettyLevel": 2,
       "userId": 1,
-      "isResolved": true,
+      "isResolved": false,
       "shared": false,
       "id": 17
     },
@@ -176,7 +176,7 @@
       "incident": "d",
       "pettyLevel": 2,
       "userId": 1,
-      "isResolved": true,
+      "isResolved": false,
       "shared": false,
       "id": 18
     }
@@ -205,22 +205,18 @@
   ],
   "resolvedGrudges": [
     {
-      "resolveReason": "stuff",
-      "compliment": "for hu",
-      "grudgeId": 6,
+      "resolveReason": "I realized I was being TOO petty",
+      "compliment": "Mike has a big heart.",
+      "grudgeId": 4,
+      "date": "05/08/2019",
       "id": 1
     },
     {
-      "resolveReason": "cool",
-      "compliment": "cool",
-      "grudgeId": 4,
-      "id": 2
-    },
-    {
-      "resolveReason": "cool",
-      "compliment": "cool",
+      "resolveReason": "I was wrong",
+      "compliment": "He is smart",
       "grudgeId": 5,
-      "id": 3
+      "date": "05/08/2019",
+      "id": 2
     }
   ],
   "sharedGrudges": [

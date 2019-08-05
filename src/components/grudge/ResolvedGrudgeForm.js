@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import {Form} from "semantic-ui-react"
 import APIManager from '../../modules/APIManager';
+import moment from "moment"
 
 export default class ResolvedGrudgeForm extends Component {
   state = {
     resolveReason: "",
     compliment: "",
-    grudgeId: +this.props.grudge.id
+    grudgeId: +this.props.grudge.id,
+    date: moment().format("DD/MM/YYYY")
+
 
   }
 
@@ -70,7 +73,9 @@ resolveGrudge = () => {
       <Form.TextArea
         id='compliment'
         label= "How about a compliment for your former enemy?"
+        placeholder={`Phrase in 3rd person...ex: ${this.props.grudge.enemyName} has kind eyes and a big heart`}
         onChange={this.handleFieldChange}
+
       />
     </Form.Group>
 

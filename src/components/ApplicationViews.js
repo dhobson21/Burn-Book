@@ -93,13 +93,11 @@ updateItem = (name, editedObject) => {
     })
 
 }
-getAndUpdateState = (name) => {
-      APIManager.getAll(
-        `${name}?userId=${activeUser}`
-      )
+getAndUpdateState = () => {
+      APIManager.get("grudges", "?_expand=user&_embed=resolvedGrudges&_embed=sharedGrudges")
     .then(grudges => {
       const stateToChange = {}
-      stateToChange["grudges"] = grudges
+      stateToChange["expandGrudges"] = grudges
       this.setState(stateToChange)
     })
 }
@@ -181,7 +179,7 @@ deleteItem = (name, id) => {
 
             <ExploreGrudges
               users={this.state.otherUsers}
-              grudges={this.state.expandGrudges.forEach(g => (g.userId !== activeUser) )}
+              grudges={this.state.expandGrudges.filter(g => (g.userId !== activeUser) )}
 
 
                images={this.state.images} updateItem= {this.updateItem} addItem={this.addItem} {...props} getAndUpdateState={this.getAndUpdateState} />
