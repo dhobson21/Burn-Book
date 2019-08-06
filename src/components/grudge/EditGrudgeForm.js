@@ -54,8 +54,19 @@ export default class EditGrudgeForm extends Component {
 
 
   checkFields = event => {
+    let editedObj = {
+      id: this.state.id ,
+      date: this.state.date ,
+      enemyName: this.state.enemyName ,
+      email: this.state.email ,
+      incident: this.state.incident ,
+      insult: this.state.insult ,
+      isResolved: this.state.isResolved ,
+      pettyLevel: this.state.pettyLevel ,
+      shared: this.state.shared ,
+      userId: this.state.userId ,
 
-
+    }
     if (
       this.state.enemyName === "" ||
       this.state.date === "" ||
@@ -67,7 +78,7 @@ export default class EditGrudgeForm extends Component {
       window.alert("All fields must be filled out");
     } else {
       event.preventDefault();
-      this.props.updateItem("grudges", this.state)
+      this.props.updateItem(editedObj)
       .then(() => this.props.getAndUpdateState())
 
     }
