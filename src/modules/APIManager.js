@@ -34,8 +34,8 @@ export default Object.create(null, {
     }
   },
   patch: {
-    value (name, updatedPost, patchResource) {
-      return fetch(`${remoteURL}/${name}/${updatedPost.id}/${patchResource}`, {
+    value (name, id, updatedPost) {
+      return fetch(`${remoteURL}/${name}/${id}/`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json"

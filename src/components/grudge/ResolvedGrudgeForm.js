@@ -29,9 +29,10 @@ export default class ResolvedGrudgeForm extends Component {
       event.preventDefault()
 
     this.resolveGrudge()
-    .then(() => {
-       this.props.addItem("resolvedGrudges", this.state)})
-    .then(() => this.props.getAndUpdateState("grudges"))
+    .then(() => this.props.getAndUpdateState())
+    .then(() => this.props.addItem("resolvedGrudges", this.state))
+    .then(() => this.props.getAndUpdateState())
+    .then(() => this.props.history.push("/"))
 
 
 

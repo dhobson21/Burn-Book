@@ -18,7 +18,7 @@ render() {
         <Header size="huge" textAlign="center">My Active Grudges</Header>
         <div className="grudges">
         {
-           this.props.expandGrudges.filter(grudge => grudge.userId === +sessionStorage.getItem("activeUser")).map(grudge => <GrudgeCard key={grudge.id}  grudge={grudge} images={this.props.images} {...this.props}/>)
+           this.props.expandGrudges.filter(grudge => grudge.isResolved).map(grudge => <GrudgeCard key={grudge.id}  grudge={grudge} images={this.props.images} {...this.props}/>)
 
         }
 

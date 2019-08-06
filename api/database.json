@@ -1,7 +1,7 @@
 {
   "grudges": [
     {
-      "enemyName": "Dustin",
+      "enemyName": "Dustin Hobson",
       "date": "2019-12-31",
       "email": "This is now resolved",
       "insult": "",
@@ -9,11 +9,11 @@
       "pettyLevel": 2,
       "userId": 1,
       "isResolved": false,
-      "shared": false,
+      "shared": true,
       "id": 2
     },
     {
-      "enemyName": "Mike",
+      "enemyName": "Krystal Gates",
       "date": "2019-12-31",
       "email": "Mike@gmail.com",
       "insult": "",
@@ -25,7 +25,7 @@
       "id": 4
     },
     {
-      "enemyName": "Curtis",
+      "enemyName": "Curtis Kato",
       "date": "2019-12-31",
       "email": "test@test.com",
       "insult": "",
@@ -33,23 +33,23 @@
       "pettyLevel": 3,
       "userId": 1,
       "isResolved": true,
-      "shared": 2,
+      "shared": false,
       "id": 5
     },
     {
-      "enemyName": "This is steve",
+      "enemyName": "Joe Shepard",
       "date": "2019-12-31",
       "email": "test@test.com",
       "insult": "",
       "incident": "He stole my seat and made me move to the back of the class",
       "pettyLevel": 1,
       "userId": 1,
-      "isResolved": false,
+      "isResolved": true,
       "shared": false,
       "id": 6
     },
     {
-      "enemyName": "Curt",
+      "enemyName": "Ben Parks",
       "date": "2019-12-31",
       "email": "test@test.com",
       "insult": "",
@@ -61,7 +61,7 @@
       "id": 7
     },
     {
-      "enemyName": "guy",
+      "enemyName": "Blake Davis manman",
       "date": "2019-12-31",
       "email": "test@test.com",
       "insult": "",
@@ -73,7 +73,7 @@
       "id": 8
     },
     {
-      "enemyName": "Just Curt",
+      "enemyName": "Mike Jones",
       "date": "2019-07-31",
       "email": "Curt@gmail.com",
       "insult": "",
@@ -85,18 +85,20 @@
       "id": 9
     },
     {
-      "enemyName": "billy",
+      "id": 10,
       "date": "2019-09-30",
+      "enemyName": "Danny Barker",
       "email": "test",
-      "insult": "",
       "incident": "test",
-      "pettyLevel": 3,
-      "userId": 1,
+      "insult": "",
       "isResolved": false,
+      "pettyLevel": 3,
       "shared": false,
-      "id": 10
+      "userId": 1,
+      "boo": false
     },
     {
+      "shared": false,
       "enemyName": "Joe Kennerly",
       "date": "2019-12-31",
       "email": "idiot@gmail.com",
@@ -105,13 +107,12 @@
       "pettyLevel": 4,
       "userId": 2,
       "isResolved": false,
-      "shared": false,
       "id": 12
     },
     {
       "id": 13,
       "date": "2019-08-01",
-      "enemyName": "guy that just walked by just now",
+      "enemyName": "Adam Knowles",
       "email": "randomGuy@walkBy.com",
       "incident": "He had too much confidence as he strolled past. Really infuriated me.",
       "insult": "",
@@ -121,7 +122,7 @@
       "userId": 2
     },
     {
-      "enemyName": "Curt Cato",
+      "enemyName": "Alex Rumsey",
       "date": "2019-08-01",
       "email": "idiot@stuff.com",
       "insult": "",
@@ -133,7 +134,7 @@
       "id": 14
     },
     {
-      "enemyName": "test",
+      "enemyName": "Scott Silver",
       "date": "2019-12-31",
       "email": "d",
       "insult": "",
@@ -141,11 +142,11 @@
       "pettyLevel": 2,
       "userId": 2,
       "isResolved": false,
-      "shared": false,
+      "shared": true,
       "id": 15
     },
     {
-      "enemyName": "Krystal",
+      "enemyName": "Madi Peper",
       "date": "2019-08-01",
       "email": "Krystal_Sabrina@yahoo.com",
       "insult": "",
@@ -153,32 +154,8 @@
       "pettyLevel": 4,
       "userId": 2,
       "isResolved": false,
-      "shared": false,
+      "shared": true,
       "id": 16
-    },
-    {
-      "enemyName": "joeMikeBill",
-      "date": "2019-12-31",
-      "email": "ok",
-      "insult": "",
-      "incident": "yes",
-      "pettyLevel": 2,
-      "userId": 1,
-      "isResolved": false,
-      "shared": false,
-      "id": 17
-    },
-    {
-      "enemyName": "newnewnew",
-      "date": "2019-12-31",
-      "email": "f",
-      "insult": "",
-      "incident": "d",
-      "pettyLevel": 2,
-      "userId": 1,
-      "isResolved": false,
-      "shared": false,
-      "id": 18
     }
   ],
   "images": [
@@ -205,18 +182,25 @@
   ],
   "resolvedGrudges": [
     {
-      "resolveReason": "I realized I was being TOO petty",
-      "compliment": "Mike has a big heart.",
-      "grudgeId": 4,
+      "resolveReason": "I was grumpy",
+      "compliment": "He is nice",
+      "grudgeId": 5,
       "date": "05/08/2019",
       "id": 1
     },
     {
-      "resolveReason": "I was wrong",
-      "compliment": "He is smart",
-      "grudgeId": 5,
+      "resolveReason": "stuff",
+      "compliment": "other stuff",
+      "grudgeId": 4,
       "date": "05/08/2019",
-      "id": 2
+      "id": 3
+    },
+    {
+      "resolveReason": "wrong",
+      "compliment": "I was",
+      "grudgeId": 6,
+      "date": "05/08/2019",
+      "id": 4
     }
   ],
   "sharedGrudges": [
@@ -224,6 +208,16 @@
       "id": 1,
       "userId": 1,
       "grudgeId": 15
+    },
+    {
+      "grudgeId": 16,
+      "userId": 1,
+      "id": 2
+    },
+    {
+      "grudgeId": 2,
+      "userId": 2,
+      "id": 3
     }
   ],
   "users": [
