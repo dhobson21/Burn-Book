@@ -80,6 +80,7 @@ export default class EditGrudgeForm extends Component {
       event.preventDefault();
       this.props.updateItem(editedObj)
       .then(() => this.props.getAndUpdateState())
+      .then(() => this.props.history.push("/"))
 
     }
   };

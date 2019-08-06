@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import {Button} from "semantic-ui-react"
+import {Button, Form} from "semantic-ui-react"
+import "./curseGenerator.css"
 
 
 
@@ -11,7 +12,7 @@ import {Button} from "semantic-ui-react"
       return word
     }
 
-  curse = () => {
+  curse = (words1, words2, words3) => {
     const adjective1 = ["artless", "bawdy", "beslubbering",
   "bootless", "brazen", "churlish", "cockered", "clouted", "craven",
   "currish", "dankish", "dissembling", "distempered", "droning", "errant",
@@ -62,25 +63,24 @@ const adjective2 = ["base-court", "bat-fowling", "beef-witted",
     const adj1 = this.randomWord(adjective1)
     const adj2 = this.randomWord(adjective2)
     const n = this.randomWord(noun)
-    newState["curse"] =`${adj1}, ${adj2} ${n}!`;
+    newState["curse"] =`${adj1} ${adj2} ${n}!`;
     this.setState(newState)
   }
 
   render() {
     return (
       <React.Fragment>
+      <Form.Input
+        fluid label= 'Insult thy enemy'
+            id="insult"
+            name= "insult"
+            value= {`Thou ${this.state.curse}`} />
 
-      <div>
-        <Button
+
+        <Button size="mini"
                 onClick={this.curse}>Generate Insult</Button>
-      <Button>
-        Save Insult
 
-      </Button>
-      </div>
-      <div>
-      {this.state.curse}
-      </div>
+
       </React.Fragment>
     )
   }

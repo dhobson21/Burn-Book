@@ -109,12 +109,9 @@ export default class AddGrudgeForm extends Component {
             id="email"
             name="email"
             />
-          <Form.Group>
-          <Segment
-            id="insult"
-            name="insult"
-          ></Segment>
             <CurseGenerator />
+          <Form.Group>
+
           </Form.Group>
         </Form.Group>
           <Form.TextArea
@@ -133,7 +130,7 @@ export default class AddGrudgeForm extends Component {
             id="pettyLevel"
             name="pettyLevel"
             />
-        <Form.Checkbox label='I agree to the Terms and Conditions' />
+
         <Form.Button
           size="mini"
           onClick= {this.checkFields}

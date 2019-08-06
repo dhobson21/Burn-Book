@@ -43,7 +43,7 @@ export default class GrudgeCard extends Component {
           <Card.Content>
             <Card.Header>
               <div className="card-header">
-                {this.props.grudge.enemyName} ACTIVE GRUDGES
+                {this.props.grudge.enemyName}
                 <div className="icon">
                   {this.sharedGrudge(this.props.grudge)}
                 </div>

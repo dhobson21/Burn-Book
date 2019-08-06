@@ -23,6 +23,7 @@ class ApplicationViews extends Component {
     resolvedGrudges:[],
     sharedGrudges: [],
     grudges:[]
+    insult: ""
   }
  notSharedNotOwned = []
 //loading user data to update state object
@@ -89,7 +90,6 @@ addSharedGrudge = ( item) => {
       newSharedObj["sharedGrudges"] = items
       this.setState(newSharedObj)
     })
-    .then(() => this.props.history("/explore"))
 
 
 
@@ -117,10 +117,10 @@ updateItem = (name, editedObject) => {
 updateGrudge = (editedObject) => {
   let newObj = {}
   console.log("editedObj", editedObject)
-  APIManager.put("grudges", editedObject)
+  return APIManager.put("grudges", editedObject)
     .then(() =>APIManager.get("grudges", "?_expand=user&_embed=resolvedGrudges&_embed=sharedGrudges"))
       .then(item => {
-        newObj["grudges"] = item
+        newObj["expandGrudges"] = item
         this.setState(newObj)
       })
 
@@ -196,7 +196,7 @@ getDashGrudges = (grudges) => {
           exact path="/"
           render={props => {
             if(this.isAuthenticated()) return (
-              <Dash sharedGrudges= {this.state.sharedGrudges} expandGrudges={this.state.expandGrudges}
+              <Dash sharedGrudges= {this.state.sharedGrudges} expandGrudges={this.state.expandGrudges.filter(grudge => grudge.userId===activeUser)}
               updateResolve= {this.updateResolve} updateItem={this.updateGrudge} deleteGrudge={this.deleteGrudge} images={this.state.images} {...props} />
             )
              else return <Redirect to="/login" />
