@@ -23,8 +23,8 @@ export default class GrudgeCard extends Component {
   };
 
   render() {
-    console.log("grudgecard props", this.props);
-    console.log("grudgecard state", this.state);
+    // console.log("grudgecard props", this.props);
+    // console.log("grudgecard state", this.state);
     const { active } = this.state;
     const content = (
       <div>
@@ -43,7 +43,7 @@ export default class GrudgeCard extends Component {
           <Card.Content>
             <Card.Header>
               <div className="card-header">
-                {this.props.grudge.enemyName}
+                {this.props.grudge.enemyName}    {this.props.grudge.userId}---TAKE THIS OUT
                 <div className="icon">
                   {this.sharedGrudge(this.props.grudge)}
                 </div>
@@ -79,7 +79,7 @@ export default class GrudgeCard extends Component {
           <Card.Content>
             <Card.Header >
               <div className="card-header">
-                {this.props.grudge.enemyName}
+                {this.props.grudge.enemyName} {this.props.grudge.userId}---TAKE THIS OUT
                 <div className="icon">
                   {this.sharedGrudge(this.props.grudge)}
                 </div>
@@ -108,13 +108,13 @@ export default class GrudgeCard extends Component {
 
     }
     //if grudge does not belong to logged in user and user is not the joined ID in shared grudge (does not share with primary grudge holder), render this: FOR EXPLORE GRUDGES
-    else if ((!this.props.grudge.shared) || (this.props.grudge.shared && this.props.grudge.sharedGrudges.forEach(g => { if(g.userId !==activeUser) {return true} else {return false}
-    }))) {
+    else if ((!this.props.grudge.shared) ||  this.props.grudge.sharedGrudges.forEach(g => { if(g.userId !==activeUser) {return true} else {return false}
+    })) {
       return (
         <Card key={this.props.grudge.id}>
           <Card.Content textAlign="center">
             <Card.Header textAlign="center">
-             {this.props.grudge.enemyName}
+             {this.props.grudge.enemyName} {this.props.grudge.userId}---TAKE THIS OUT
             </Card.Header>
 
             Grudging since: {this.grudgeDate()}

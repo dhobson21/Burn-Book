@@ -14,6 +14,7 @@ import ExploreGrudges from "./users/ExploreGrudge"
 
 const activeUser = +sessionStorage.getItem("activeUser")
 
+
 class ApplicationViews extends Component {
 
   state = {
@@ -97,7 +98,9 @@ addSharedGrudge = ( item) => {
 
 }
 
+insult = ""
 
+clearInsult = (insult) =>  insult = ""
 
 curse = (words1, words2, words3) => {
   const newState = {}
@@ -107,7 +110,8 @@ curse = (words1, words2, words3) => {
   newState["insult"] =`${adj1} ${adj2} ${n}!`;
   this.setState(newState)
   console.log("appstate", this.state)
-
+   this.insult = newState.insult
+  console.log("this.insult", this.insult)
 }
 
 
@@ -191,7 +195,7 @@ deleteGrudge = ( id) => {
     .then(group => {
       newObj["expandGrudges"] = group
       this.setState(newObj)
-      this.props.history.push("/")
+      this.props.history.push("/past")
     })
 }
 
@@ -208,8 +212,10 @@ deleteGrudge = ( id) => {
           exact path="/"
           render={props => {
             if(this.isAuthenticated()) return (
-              <Dash sharedGrudges= {this.state.sharedGrudges} expandGrudges={this.state.expandGrudges.filter(grudge => grudge.userId===activeUser)}
-              updateResolve= {this.updateResolve} updateItem={this.updateGrudge} deleteGrudge={this.deleteGrudge} images={this.state.images} {...props} />
+              <Dash sharedGrudges= {this.state.sharedGrudges} insult={this.insult} clearInsult={this.clearInsult} expandGrudges={this.state.expandGrudges.filter(grudge => grudge.userId===activeUser)}
+              updateResolve= {this.updateResolve} updateItem={this.updateGrudge}
+              //  deleteGrudge={this.deleteGrudge}
+               images={this.state.images} {...props} />
             )
              else return <Redirect to="/login" />
           }}
@@ -230,7 +236,7 @@ deleteGrudge = ( id) => {
         <Route
           exact path="/add"
           render={props => {
-            if(this.isAuthenticated()) return <AddGrudgeForm  curse={this.curse}   insult={this.state.insult} addItem={this.addItem}  getAndUpdateState={this.getAndUpdateState} {...props}/>
+            if(this.isAuthenticated()) return <AddGrudgeForm  curse={this.curse} clearInsult={this.clearInsult}   insult={this.state.insult} addItem={this.addItem}  getAndUpdateState={this.getAndUpdateState} {...props}/>
             else return <Redirect to="/login" />
           }}
         />
@@ -242,7 +248,7 @@ deleteGrudge = ( id) => {
                     if (!grudge) {
                         grudge = {id:404, EnemyName:"404", incident: "Enemy not found"}}
             if(this.isAuthenticated()) {
-              return <EditGrudgeForm  curse={this.curse}   insult={grudge.insult} getAndUpdateState={this.getAndUpdateState} grudge={grudge} {...props} updateItem={this.updateGrudge} addItem={this.addItem}/>
+              return <EditGrudgeForm  curse={this.curse}   insult={this.state.insult} getAndUpdateState={this.getAndUpdateState} grudge={grudge} {...props} updateItem={this.updateGrudge} addItem={this.addItem}/>
             } else  {
                 return <Redirect to="/login" />
             }
@@ -250,7 +256,7 @@ deleteGrudge = ( id) => {
         <Route
           exact path="/past"
           render={props => {
-            if(this.isAuthenticated()) return <PastGrudges grudges={this.state.expandGrudges.filter(grudge => grudge.isResolved===true)} images={this.state.images} {...props} />
+            if(this.isAuthenticated()) return <PastGrudges expandGrudges={this.state.expandGrudges.filter(grudge => grudge.isResolved===true)} images={this.state.images} {...props} deleteGrudge={this.deleteGrudge} />
             else  {
               return <Redirect to="/login" />
           }

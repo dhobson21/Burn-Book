@@ -74,9 +74,7 @@ import "./curseGenerator.css"
     };
 
    saveInsult = (insult) => {
-    const newState = {}
-    newState["insult"]= insult
-    newState["disabled"]= (!this.state.disabled)
+    this.setState({disabled: !this.state.disabled})
     this.props.changeInsultState(insult)
 
   }
@@ -90,14 +88,18 @@ import "./curseGenerator.css"
             id="insult"
             onChange= {this.handleFieldChange}
             name= "insult"
-            value= {this.props.insult} />
+            value= {this.props.insult}
+            placeholder={this.props.grudge ? this.props.grudge.insult : this.state.insult}
+
+
+            />
 
 
       <div>
 
 
         <Button disabled={this.state.disabled} size="mini"   onClick={() => this.props.curse(this.adjective1, this.adjective2, this.noun)}>Generate Insult></Button>
-        <Checkbox  label= "Save Insult" size="mini" onClick={() => this.props.saveInsult(this.props.insult)} />
+        <Checkbox  label= "Save Insult" size="mini" onClick={() => this.saveInsult(this.props.insult)} />
       </div>
 
 

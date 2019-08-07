@@ -7,8 +7,7 @@ import {
   Image,
   Modal,
   Grid,
-  Segment,
-  Form,TransiotionablePortal
+  Form
 } from "semantic-ui-react";
 import "./grudgeDetail.css";
 import ConfirmGrudgeJoin from "./../users/ConfirmGrudgeJoin"
@@ -30,8 +29,8 @@ export default class GrudgeDetailsModal extends Component {
   handleCancel = () => this.setState({ result: "cancelled", open: false });
 
   render() {
-    console.log("GrudgeDetails props", this.props);
-    console.log("GrudgeDetails state", this.state);
+    // console.log("GrudgeDetails props", this.props);
+    // console.log("GrudgeDetails state", this.state);
     const { open } = this.state;
     //If grudge belongs to active user, is not resolved (active grudges), and is not shared render this: DONE
     if (
@@ -55,7 +54,7 @@ export default class GrudgeDetailsModal extends Component {
               <Grid.Column>
                 <Button
                   onClick={() => {
-
+                    this.props.clearInsult(this.props.insult)
                     this.props.history.push(`/edit/${this.props.grudge.id}`);
                   }}
                 >

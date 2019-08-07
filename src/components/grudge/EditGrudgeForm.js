@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, Segment, Modal, Icon } from "semantic-ui-react";
+import { Form, Modal, Icon } from "semantic-ui-react";
 import APIManager from "../../modules/APIManager";
 import GrudgeResolveModal from "./GrudgeResolveModal";
 import CurseGenerator from "./../curseGenerator/CurseGenerator"

@@ -14,17 +14,26 @@ export default class ExploreGrudges extends Component {
         grudgeId: "",
         userId: activeUser,
         open: false,
-        expandGrudges: []
+        expandGrudges: this.filterSharedGrudges()
 
-    }
+      }
 
+
+filterSharedGrudges(){
+  const newState ={}
+  newState["expandGrudges"]= this.props.expandGrudges.forEach(grudge => {
+    if (grudge.shared) {return grudge}
+  }
+  )
+  console.log("newState", newState)
+
+}
 
   show = () => this.setState({ open: true })
   handleConfirm = () => this.setState({ open: false })
   handleCancel = () => this.setState({ open: false })
      notShared = []
   render() {
-
     console.log("Explore Grudges state", this.state)
     console.log("Explore Grudges props ", this.props)
     return (

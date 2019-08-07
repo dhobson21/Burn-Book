@@ -1,36 +1,36 @@
 import React, { Component } from "react";
-import { Button, Modal, Icon , TransitionablePortal} from "semantic-ui-react";
+import { Button, Modal, Icon} from "semantic-ui-react";
 import ResolvedGrudgeForm from "./ResolvedGrudgeForm";
 
 
-const transitions = [
-  'browse',
-  'browse right',
-  'drop',
-  'fade',
-  'fade up',
-  'fade down',
-  'fade left',
-  'fade right',
-  'fly up',
-  'fly down',
-  'fly left',
-  'fly right',
-  'horizontal flip',
-  'vertical flip',
-  'scale',
-  'slide up',
-  'slide down',
-  'slide left',
-  'slide right',
-  'swing up',
-  'swing down',
-  'swing left',
-  'swing right',
-  'zoom',
-]
+// const transitions = [
+//   'browse',
+//   'browse right',
+//   'drop',
+//   'fade',
+//   'fade up',
+//   'fade down',
+//   'fade left',
+//   'fade right',
+//   'fly up',
+//   'fly down',
+//   'fly left',
+//   'fly right',
+//   'horizontal flip',
+//   'vertical flip',
+//   'scale',
+//   'slide up',
+//   'slide down',
+//   'slide left',
+//   'slide right',
+//   'swing up',
+//   'swing down',
+//   'swing left',
+//   'swing right',
+//   'zoom',
+// ]
 export default class GrudgeResolveModal extends Component {
-  state = { animation: transitions[23], duration: 500, open: false }
+  state = { open: false }
 
   open = () => this.setState({ open: true })
   close = () => this.setState({ open: false })
@@ -39,7 +39,8 @@ export default class GrudgeResolveModal extends Component {
   handleClick = () => this.setState(prevState => ({ open: !prevState.open }))
 
   render() {
-    const { animation, duration, open } = this.state
+    // const { animation, duration, open } = this.state
+    const open = this.state
     console.log("Resolve Grudge Modal props", this.props)
     console.log("Resolve Grudge Modal state", this.state)
     return (
