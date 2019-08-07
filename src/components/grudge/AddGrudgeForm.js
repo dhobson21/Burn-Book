@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Form, Segment} from "semantic-ui-react"
+import {Form} from "semantic-ui-react"
 import CurseGenerator from "./../curseGenerator/CurseGenerator"
 
 
@@ -21,7 +21,7 @@ export default class AddGrudgeForm extends Component {
   state = { enemyName: '',
             date: '',
             email: '',
-            insult: '',
+            insult: "",
             incident: '',
             pettyLevel: '',
             userId: +sessionStorage.getItem("activeUser"),
@@ -29,6 +29,15 @@ export default class AddGrudgeForm extends Component {
             shared: false
           }
 
+
+
+          changeInsultState = (foo) => {
+            const newObj = {}
+            newObj["insult"] = foo
+            this.setState(newObj)
+            console.log("stateee", this.state)
+            console.log("prop", this.props)
+          }
 
   clearFields = () =>
   {
@@ -54,7 +63,6 @@ export default class AddGrudgeForm extends Component {
   }
 
 
-
   checkFields= (event) => {
     if (
       this.state.enemyName === "" ||
@@ -66,8 +74,11 @@ export default class AddGrudgeForm extends Component {
       ) { window.alert("All fields must be filled out");
     } else {
       event.preventDefault()
+      console.log("addformstate", this.state)
+      this.clearFields()
     this.props.addItem("grudges", this.state);
-    this.clearFields()
+
+
   }
 }
 
@@ -75,14 +86,9 @@ export default class AddGrudgeForm extends Component {
 
 
 
-  // handleSubmit = () => {
-  //   const { enemyName, date, email, incident, pettyLevel } = this.state
-
-  //   this.setState({  enemyName, date,  email,  incident,  pettyLevel, userId: +sessionStorage.getItem("activeUser"), isResolved: false, shared: false
-  //    })
-  // }
 
   render() {
+    console.log("Add", this.props)
     // const { enemyName, date, email, insult, incident, pettyLevel } = this.state
     return (
       <Form>
@@ -109,7 +115,7 @@ export default class AddGrudgeForm extends Component {
             id="email"
             name="email"
             />
-            <CurseGenerator />
+            <CurseGenerator  changeInsultState={this.changeInsultState} {...this.props} />
           <Form.Group>
 
           </Form.Group>

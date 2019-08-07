@@ -22,7 +22,7 @@ class ApplicationViews extends Component {
     otherUsers:[],
     resolvedGrudges:[],
     sharedGrudges: [],
-    grudges:[]
+    grudges:[],
     insult: ""
   }
  notSharedNotOwned = []
@@ -76,8 +76,10 @@ addItem = (name, item) => {
       newObj[name] = items
       this.setState(newObj)
     })
-    .then(() => name === "sharedGrudges" ? (this.props.history.push("/explore")) :
-(this.props.history.push("/")))
+    .then(() => this.getAndUpdateState())
+      .then(() =>
+      name === "sharedGrudges" ? (this.props.history.push("/explore")) : (this.props.history.push("/")))
+
   }
 
 addSharedGrudge = ( item) => {
@@ -93,6 +95,25 @@ addSharedGrudge = ( item) => {
 
 
 
+}
+
+
+
+curse = (words1, words2, words3) => {
+  const newState = {}
+  const adj1 = this.randomWord(words1)
+  const adj2 = this.randomWord(words2)
+  const n = this.randomWord(words3)
+  newState["insult"] =`${adj1} ${adj2} ${n}!`;
+  this.setState(newState)
+  console.log("appstate", this.state)
+
+}
+
+
+randomWord = (arr) => {
+  const word = arr[Math.round(Math.random(1) * arr.length-1)]
+  return word
 }
 //function to put (edit) object and save to DB
 updateItem = (name, editedObject) => {
@@ -174,22 +195,13 @@ deleteGrudge = ( id) => {
     })
 }
 
-getDashGrudges = (grudges) => {
-  let dashGrudges = []
-  grudges.forEach(grudge => {
-    if((grudge.userId===activeUser)  || (grudge.sharedGrudges.forEach(share=> {
-      if(share.userId===activeUser) {return grudge} })))  {dashGrudges.push(grudge)}
-
-    }
-    )
-    console.log("dg", dashGrudges)
-  }
 
 
+//curse Generator func to make generated insult a state on APP views to pass down to addGrudgeForm
 
 
   render() {
-    this.getDashGrudges(this.state.expandGrudges)
+
     return (
       <React.Fragment>
         <Route
@@ -218,7 +230,7 @@ getDashGrudges = (grudges) => {
         <Route
           exact path="/add"
           render={props => {
-            if(this.isAuthenticated()) return <AddGrudgeForm addItem={this.addItem} {...props}/>
+            if(this.isAuthenticated()) return <AddGrudgeForm  curse={this.curse}   insult={this.state.insult} addItem={this.addItem}  getAndUpdateState={this.getAndUpdateState} {...props}/>
             else return <Redirect to="/login" />
           }}
         />
@@ -230,7 +242,7 @@ getDashGrudges = (grudges) => {
                     if (!grudge) {
                         grudge = {id:404, EnemyName:"404", incident: "Enemy not found"}}
             if(this.isAuthenticated()) {
-              return <EditGrudgeForm getAndUpdateState={this.getAndUpdateState} grudge={grudge} {...props} updateItem={this.updateGrudge} addItem={this.addItem}/>
+              return <EditGrudgeForm  curse={this.curse}   insult={grudge.insult} getAndUpdateState={this.getAndUpdateState} grudge={grudge} {...props} updateItem={this.updateGrudge} addItem={this.addItem}/>
             } else  {
                 return <Redirect to="/login" />
             }
@@ -250,11 +262,12 @@ getDashGrudges = (grudges) => {
 
             <ExploreGrudges
               users={this.state.otherUsers}
-              expandGrudges={this.state.expandGrudges.filter(grudge => grudge.userId!==activeUser)}
+              expandGrudges={this.state.expandGrudges.filter(grudge => grudge.userId!==activeUser).filter(grudge=> !grudge.isResolved)}
               images={this.state.images}
               updateGrudge= {this.updateGrudge}
               addSharedGrudge={this.addSharedGrudge }
               getAndUpdateState={this.getAndUpdateState}
+              sharedGrudges= {this.state.sharedGrudges}
               {...props} />
             )
             else  {

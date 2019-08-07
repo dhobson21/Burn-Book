@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Form} from "semantic-ui-react"
+import {Form, Header} from "semantic-ui-react"
 import APIManager from '../../modules/APIManager';
 import moment from "moment"
 
@@ -63,6 +63,7 @@ resolveGrudge = () => {
     console.log("Resolved Grudge Form props", this.props)
     return (
     <Form>
+      <Header textAlign="center"  as="h3">Resolve Grudge</Header>
        <Form.Group widths='equal'>
       <Form.TextArea
         id= "resolveReason"

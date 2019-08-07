@@ -8,7 +8,7 @@ import {
   Modal,
   Grid,
   Segment,
-  Form
+  Form,TransiotionablePortal
 } from "semantic-ui-react";
 import "./grudgeDetail.css";
 import ConfirmGrudgeJoin from "./../users/ConfirmGrudgeJoin"
@@ -101,20 +101,6 @@ export default class GrudgeDetailsModal extends Component {
                     Escalate Things
                   </Button>
                 </Container>
-                <Segment clearing>
-                  <Grid columns={2}>
-                    <Grid.Column>
-                      <Container fluid>
-                        <p>This is the generated insult</p>
-                      </Container>
-                    </Grid.Column>
-                    <Grid.Column>
-                      <Button floated="right" size="mini">
-                        Get New Insult
-                      </Button>
-                    </Grid.Column>
-                  </Grid>
-                </Segment>
               </Grid.Column>
             </Grid.Row>
           </Grid>
@@ -205,8 +191,10 @@ export default class GrudgeDetailsModal extends Component {
         </Grid>
       </Modal>
     );
-  } else if (!this.props.grudge.isResolved &&
-    this.props.grudge.sharedGrudges.forEach(grudge => grudge.userId === activeUser) && this.props.grudge.shared)
+  } else if (!this.props.grudge.isResolved && ( (!this.props.grudge.shared) || (this.props.grudge.shared && this.props.grudge.sharedGrudges.forEach(grudge => grudge.userId !==activeUser))))
+
+  //took this out, need to still filter by if user is shared on grudge already
+  //&& this.props.grudge.sharedGrudges.forEach(grudge => grudge.userId === activeUser)
     {
       return (
         <Modal  size='fullscreen' trigger={<Button primary>Details</Button>}>
@@ -310,16 +298,26 @@ export default class GrudgeDetailsModal extends Component {
               </Grid.Column>
               <Grid.Column>
               <Header as="h4">My level of pettiness in this grudge:  <b>{this.props.grudge.pettyLevel}</b></Header>
+              <div>
+                  <Button onClick={this.show}>Delete Grudge</Button>
+                  <Confirm
+                    open={open}
+                    onCancel={this.handleCancel}
+                    onConfirm={this.handleConfirm}
+                    content={!this.props.grudge.isResolved ? "Are you sure you want to delete an Unresolved grudge?" : "Think of something funny here"}
+                  />
+                </div>
               </Grid.Column>
 
             </Grid.Row>
             <Grid.Row>
               <Grid.Column verticalAlign="middle">
-                <Modal.Content>
-                  <Header as="h4">What was the misunderstanding ? </Header>
-                  {this.props.grudge.incident}
-                  <Header as="h4">What made you resolve this grudge? </Header>
-                  {this.props.grudge.resolvedGrudges[0].resolveReason}
+                <Modal.Content >
+                  <Header  textAlign='left' as="h4">What was the misunderstanding ? </Header>
+                  <Container  fluid text={true} textAlign='center'>{this.props.grudge.incident}</Container>
+                  <Header  textAlign='left' as="h4">What made you resolve this grudge? </Header>
+                  <Container fluid text={true} textAlign='center'>{this.props.grudge.resolvedGrudges[0].resolveReason}</Container>
+
                 </Modal.Content>
               </Grid.Column>
               <Grid.Column>

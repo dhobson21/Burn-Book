@@ -33,6 +33,16 @@ export default class EditGrudgeForm extends Component {
     boo: false
   };
 
+
+  changeInsultState = (foo) => {
+    const newObj = {}
+    newObj["insult"] = foo
+    this.setState(newObj)
+    console.log("stateee", this.state)
+    console.log("prop", this.props)
+  }
+
+
   handleFieldChange = event => {
     const stateToChange = {};
     stateToChange[event.target.id] = event.target.value;
@@ -163,11 +173,11 @@ export default class EditGrudgeForm extends Component {
               name="email"
               value={this.state.email}
             />
-            <Form.Group>
-              <Segment id="insult" name="insult" value={this.state.insult} />
-              <CurseGenerator />
-            </Form.Group>
+              <CurseGenerator changeInsultState={this.changeInsultState} {...this.props} />
           </Form.Group>
+
+
+
           <Form.TextArea
             label="What this Blockhead did"
             value={this.state.incident}

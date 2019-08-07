@@ -105,8 +105,11 @@ export default class GrudgeCard extends Component {
           </Card.Content>
         </Card>
       );
-      //if grudge does not belong to logged in user and user is not the joined ID in shared grudge (does not share with primary grudge holder), render this: FOR EXPLORE GRUDGES
-    } else {
+
+    }
+    //if grudge does not belong to logged in user and user is not the joined ID in shared grudge (does not share with primary grudge holder), render this: FOR EXPLORE GRUDGES
+    else if ((!this.props.grudge.shared) || (this.props.grudge.shared && this.props.grudge.sharedGrudges.forEach(g => { if(g.userId !==activeUser) {return true} else {return false}
+    }))) {
       return (
         <Card key={this.props.grudge.id}>
           <Card.Content textAlign="center">
@@ -134,6 +137,6 @@ export default class GrudgeCard extends Component {
       );
       //OR NOTHING
     }
-
+    else{return null}
   }
 }
