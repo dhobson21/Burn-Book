@@ -29,7 +29,7 @@ class ConfirmGrudgeJoin extends Component {
     this.props.addSharedGrudge(newState)
     this.updateGrudgeShare(trueShared )
     .then(() => this.props.getAndUpdateState())
-    .then(() =>   window.location.reload())
+    .then(() => this.props.history.push("/explore"))
 
 
 
@@ -53,7 +53,7 @@ class ConfirmGrudgeJoin extends Component {
 
   handleConfirm = (grudge) => {
     console.log("handleConfirmGrudge", grudge)
-    // this.setState({ open: false })
+    this.setState({ open: false })
     this.createSharedGrudge (grudge)
   }
 

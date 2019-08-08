@@ -1,31 +1,69 @@
 import React, { Component } from 'react'
-import {Header} from "semantic-ui-react"
+import {Header, Divider, Container} from "semantic-ui-react"
 import { CarouselProvider, Slider, ButtonBack, ButtonNext, Slide} from "pure-react-carousel";
 
 import "./exploreGrudges.css"
 import CustomCardSlide from "./CustomCardSlide"
 import GrudgeCard from "../grudge/GrudgeCard"
 import 'pure-react-carousel/dist/react-carousel.es.css';
-import APIManager from "./../../modules/APIManager"
 
 const activeUser = +sessionStorage.getItem("activeUser")
+
 export default class ExploreGrudges extends Component {
   state = {
         grudgeId: "",
-        userId: +sessionStorage.getItem("activeUser"),
+        userId: activeUser,
         open: false,
-        expandGrudges: []
+        expandGrudges: [],
+        users: []
+
 
       }
 
 
-    componentDidMount() {
-      const newState={}
-    APIManager.get("grudges", "?_expand=user&_embed=resolvedGrudges&_embed=sharedGrudges")
-      .then(allGrudges => {
-        newState.expandGrudges = allGrudges.filter(grudge => grudge.id!== activeUser).filter(g => !g.isResolved)
-        this.setState(newState)})
+
+componentDidMount(){
+
+  this.setState({users: this.props.users})
+  console.log("explore did mount")
+  let exploreGrudges= []
+ this.props.expandGrudges.forEach(grudge => !grudge.shared ? exploreGrudges.push(grudge) : {})
+
+ this.props.expandGrudges.filter(grudge => grudge.shared).forEach (oneGrudge => {
+  let notMe = true
+  oneGrudge.sharedGrudges.forEach(g => {
+    if(g.userId === activeUser) {
+      notMe=false
     }
+
+  })
+  if(notMe===true) {exploreGrudges.push(oneGrudge)}
+
+ })
+ console.log("expArr", exploreGrudges)
+this.setState({expandGrudges: exploreGrudges})
+console.log("exploreState", this.state)
+console.log("users", this.props.users)
+
+}
+
+findAvg = (user) => {
+  const levels = []
+  user.grudges.forEach( grudge => levels.push(grudge.pettyLevel)
+
+  )
+  console.log("levels". levels)
+}
+
+
+filterSharedGrudges(){
+  const newState ={}
+  this.props.expandGrudges.forEach(grudge => {
+    if (!grudge.shared || (grudge.sharedGrudges.for)) {return grudge}
+  }
+  )
+  console.log("newState", newState)
+}
 
 
   show = () => this.setState({ open: true })
@@ -33,16 +71,21 @@ export default class ExploreGrudges extends Component {
   handleCancel = () => this.setState({ open: false })
      notShared = []
   render() {
+
     console.log("Explore Grudges state", this.state)
     console.log("Explore Grudges props ", this.props)
     return (
       <React.Fragment>
         <Header size="huge" textAlign="center">Other Petty People</Header>
           {
-        this.props.users.map(user =>
+        this.state.users.map(user =>
           <div key={user.id} >
           <Header size="large" textAlign="center">{user.username}'s Grudges</Header>
           <div className="users">
+
+          <Container floater='right'>
+
+            </Container>
 
           <CarouselProvider
             naturalSlideWidth={1}
@@ -52,15 +95,10 @@ export default class ExploreGrudges extends Component {
                 >
           <Slider>
           {
-              this.props.expandGrudges.filter(grudge => {
-                if((grudge.shared && grudge.sharedGrudges[0].userId !==activeUser)  || !grudge.shared) {
-                return true
-                } else {return false}}).map(grudge=>
-              <Slide
-                index={user.grudges.indexOf(grudge)}
-                key={grudge.id} >
-                <GrudgeCard  grudge={grudge} images ={this.props.images} {...this.props}/>
-              </Slide>
+              this.state.expandGrudges.filter(grudge => grudge.userId ===user.id).map(grudge=>
+
+              <CustomCardSlide index={user.grudges.indexOf(grudge)} key={grudge.id}>  <GrudgeCard  grudge={grudge} images ={this.props.images} {...this.props}/></CustomCardSlide>
+
 
             )
           }
@@ -68,10 +106,11 @@ export default class ExploreGrudges extends Component {
     </Slider>
     <ButtonBack>Back</ButtonBack>
         <ButtonNext>Next</ButtonNext>
-        <CustomCardSlide index={0} />
+
   </CarouselProvider>
           </div>
 
+        <Divider />
         </div>
         )
       }

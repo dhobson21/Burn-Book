@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { Form, Segment, Modal, Icon } from "semantic-ui-react";
+import { Form, Modal, Icon } from "semantic-ui-react";
 import APIManager from "../../modules/APIManager";
 import GrudgeResolveModal from "./GrudgeResolveModal";
-import CurseGenerator from "./../curseGenerator/CurseGenerator"
+import CurseGeneratorEdit from "./../curseGenerator/CurseGeneratorEdit"
 
 
 const options = [
@@ -25,13 +25,23 @@ export default class EditGrudgeForm extends Component {
     enemyName: "",
     email: "",
     incident: "",
-    insult: "",
+    insult: this.props.genInsult,
     isResolved: "",
     pettyLevel: "",
     shared: "",
     userId: "",
     boo: false
   };
+
+
+  changeInsultState = (foo) => {
+    const newObj = {}
+    newObj["insult"] = foo
+    this.setState(newObj)
+    console.log("stateee edit", this.state)
+    console.log("prop", this.props)
+  }
+
 
   handleFieldChange = event => {
     const stateToChange = {};
@@ -80,6 +90,7 @@ export default class EditGrudgeForm extends Component {
       event.preventDefault();
       this.props.updateItem(editedObj)
       .then(() => this.props.getAndUpdateState())
+      .then(() => this.props.history.push("/"))
 
     }
   };
@@ -128,6 +139,7 @@ export default class EditGrudgeForm extends Component {
   render() {
     console.log("Edit Grudge Form props", this.props);
     console.log("Edit Grudge Form state", this.state);
+
     const { open } = this.notOpen;
     const { checked } = this.checked;
 
@@ -162,11 +174,11 @@ export default class EditGrudgeForm extends Component {
               name="email"
               value={this.state.email}
             />
-            <Form.Group>
-              <Segment id="insult" name="insult" value={this.state.insult} />
-              <CurseGenerator />
-            </Form.Group>
+              <CurseGeneratorEdit   editFormStateInsult={this.state.insult} changeInsultState={this.changeInsultState} {...this.props}  />
           </Form.Group>
+
+
+
           <Form.TextArea
             label="What this Blockhead did"
             value={this.state.incident}

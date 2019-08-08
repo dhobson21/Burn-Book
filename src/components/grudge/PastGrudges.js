@@ -25,7 +25,7 @@ APIManager.get("grudges", "?_expand=user&_embed=resolvedGrudges&_embed=sharedGru
       <Header size="huge" textAlign="center">My Past Grudges</Header>
       <div className="grudges">
       {
-        this.state.expandGrudges.filter(grudge => (grudge.userId === +sessionStorage.getItem("activeUser"))).map(grudge => <GrudgeCard key={grudge.id}  grudge={grudge} images={this.props.images} {...this.props} />
+        this.props.expandGrudges.filter(grudge => (grudge.userId === +sessionStorage.getItem("activeUser"))).map(grudge => <GrudgeCard deleteGrudge={this.props.deleteGrudge} key={grudge.id}  grudge={grudge} images={this.props.images} {...this.props} />
 
         )
       }

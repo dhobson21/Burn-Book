@@ -4,15 +4,15 @@ import "./curseGenerator.css"
 
 
 
-  export default class CurseGenerator extends Component {
+  export default class CurseGeneratorEdit extends Component {
 
 
 
     state = {
-              insult: this.props.insult,
+              insult: this.props.genInsult,
               disabled: false
 
-
+              // this.props.editFormStateInsult,
 
 
   }
@@ -67,7 +67,12 @@ import "./curseGenerator.css"
     "whey-face", "whipster", "wagtail", "younker"];
 
 
+  componentDidMount() {
+    this.props.changeInsultState(this.props.editFormStateInsult)
 
+
+
+  }
 
     handleFieldChange = (event) => {
       const stateToChange = {};
@@ -83,11 +88,9 @@ import "./curseGenerator.css"
     this.props.changeInsultState(insult)
 
   }
- curseAndHandle = () => {
-  this.props.makeCurse(this.adjective1, this.adjective2, this.noun)
-  this.handleFieldChange()
- }
+
   render() {
+
     console.log("state insult", this.props.curse)
     return (
       <React.Fragment>
@@ -96,7 +99,8 @@ import "./curseGenerator.css"
             id="insult"
             onChange= {this.handleFieldChange}
             name= "insult"
-            value= {this.props.insult}
+            defaultValue= {this.state.insult}
+            placeholder = {this.props.editFormStateInsult}
 
 
 
@@ -106,7 +110,7 @@ import "./curseGenerator.css"
       <div>
 
 
-        <Button disabled={this.state.disabled} size="mini" id={this.props.Geninsult}   onClick={() => this.props.curse(this.adjective1, this.adjective2, this.noun)}>Generate Insult></Button>
+        <Button disabled={this.state.disabled} size="mini"    onClick={() => this.props.makeCurse(this.adjective1, this.adjective2, this.noun)}>Generate Insult></Button>
         <Checkbox  label= "Save Insult" size="mini" onClick={() => this.saveInsult(this.props.insult)} />
       </div>
 
