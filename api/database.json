@@ -13,18 +13,6 @@
       "id": 2
     },
     {
-      "id": 6,
-      "date": "2019-12-31",
-      "enemyName": "Blake Davis manman",
-      "email": "test@test.com",
-      "incident": "test",
-      "insult": "",
-      "isResolved": false,
-      "pettyLevel": 6,
-      "shared": false,
-      "userId": 1
-    },
-    {
       "id": 7,
       "date": "2019-07-31",
       "enemyName": "Mike Jones",
@@ -32,7 +20,7 @@
       "incident": "Curt spells his name with a C which is literally the dumbest thing a person can do",
       "insult": "",
       "isResolved": false,
-      "pettyLevel": 6,
+      "pettyLevel": 9,
       "shared": false,
       "userId": 1
     },
@@ -74,42 +62,6 @@
       "id": 10
     },
     {
-      "shared": false,
-      "enemyName": "Alex Rumsey",
-      "date": "2019-08-01",
-      "email": "idiot@stuff.com",
-      "insult": "",
-      "incident": "He's talking too much",
-      "pettyLevel": 2,
-      "userId": 2,
-      "isResolved": false,
-      "id": 11
-    },
-    {
-      "shared": false,
-      "enemyName": "Scott Silver",
-      "date": "2019-12-31",
-      "email": "d",
-      "insult": "",
-      "incident": "d",
-      "pettyLevel": 2,
-      "userId": 2,
-      "isResolved": false,
-      "id": 12
-    },
-    {
-      "shared": false,
-      "enemyName": "Madi Peper",
-      "date": "2019-08-01",
-      "email": "Krystal_Sabrina@yahoo.com",
-      "insult": "",
-      "incident": "She's too happy. Also she has a yahoo email account. Gross",
-      "pettyLevel": 4,
-      "userId": 2,
-      "isResolved": false,
-      "id": 13
-    },
-    {
       "enemyName": "Joe",
       "date": "2019-12-31",
       "email": "Joe@joe.com",
@@ -146,16 +98,16 @@
       "id": 16
     },
     {
-      "enemyName": "ok",
+      "id": 17,
       "date": "2019-12-31",
+      "enemyName": "ok go",
       "email": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
-      "insult": "frothy beetle-headed flirt-gill!",
       "incident": "gggggggggggggggggggggggggggggggggggggggggg",
-      "pettyLevel": 6,
-      "userId": 1,
+      "insult": "dankish fen-sucked crutch!",
       "isResolved": false,
+      "pettyLevel": 6,
       "shared": false,
-      "id": 17
+      "userId": 1
     },
     {
       "enemyName": "test",
@@ -170,16 +122,28 @@
       "id": 18
     },
     {
-      "enemyName": "f",
+      "id": 19,
       "date": "2019-01-01",
+      "enemyName": "f",
       "email": "okay",
-      "insult": "prating bat-fowling mammet!",
       "incident": "cool",
-      "pettyLevel": 1,
+      "insult": "prating bat-fowling mammet!",
+      "isResolved": false,
+      "pettyLevel": 6,
+      "shared": false,
+      "userId": 1
+    },
+    {
+      "enemyName": "go",
+      "date": "2019-01-01",
+      "email": "oka",
+      "insult": "pernicious rude-growing mumble-news!",
+      "incident": "yea",
+      "pettyLevel": 7,
       "userId": 1,
       "isResolved": false,
       "shared": false,
-      "id": 19
+      "id": 20
     }
   ],
   "images": [
@@ -213,11 +177,11 @@
     },
     {
       "id": 8,
-      "url": "  "
+      "url": " https://www.telltalesonline.com/wp-content/uploads/2016/02/Kanye-West-and-Taylor-Swift-feud.jpg?w=1200-h=800"
     },
     {
       "id": 9,
-      "url": ""
+      "url": "https://starschanges.com/wp-content/uploads/2016/08/alex-jones-height-weight-age.jpg?w=1800-h=800"
     },
     {
       "id": 10,
@@ -225,13 +189,6 @@
     }
   ],
   "resolvedGrudges": [
-    {
-      "resolveReason": "wrong",
-      "compliment": "I was",
-      "grudgeId": 6,
-      "date": "05/08/2019",
-      "id": 4
-    },
     {
       "resolveReason": "Hes a nice bot",
       "compliment": "Great eyes",
@@ -251,7 +208,7 @@
     {
       "id": 1,
       "grudgeId": 10,
-      "userId": 2
+      "userId": 3
     },
     {
       "id": 2,

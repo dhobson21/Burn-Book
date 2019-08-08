@@ -7,7 +7,8 @@ import NavBar from "./nav/NavBar"
 
 class BurnBook extends Component {
   state = {
-    id: ""
+    id: "",
+    activeUser: ""
   }
   isAuthenticated = () => {
     return sessionStorage.getItem("activeUser") !== null
@@ -15,6 +16,7 @@ class BurnBook extends Component {
   setUser = activeUserId => {
     //return one user
     let newState = {}
+    console.log("setUserActiveUserId", activeUserId)
     newState.activeUser = activeUserId
     this.setState(newState)
   }
@@ -23,7 +25,7 @@ class BurnBook extends Component {
       //if there is an active user--render nav bar
       return (
         <React.Fragment>
-            <NavBar />
+            <NavBar {...this.props} />
           <ApplicationViews
             isAuthenticated={this.isAuthenticated}
             setUser={this.setUser} />

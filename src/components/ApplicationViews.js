@@ -29,6 +29,8 @@ class ApplicationViews extends Component {
  notSharedNotOwned = []
 //loading user data to update state object
 componentDidMount(){
+  console.log("appViews Component is Mounting")
+  console.log(sessionStorage.getItem("activeUser"))
   const newState = {}
   const notYou= []
   //get all Grudges expanded
@@ -211,8 +213,9 @@ deleteGrudge = ( id) => {
         <Route
           exact path="/"
           render={props => {
+            console.log(this.state.expandGrudges)
             if(this.isAuthenticated()) return (
-              <Dash sharedGrudges= {this.state.sharedGrudges} insult={this.insult} clearInsult={this.clearInsult} expandGrudges={this.state.expandGrudges.filter(grudge => grudge.userId===activeUser)}
+              <Dash sharedGrudges= {this.state.sharedGrudges} getAndUpdateState={this.getAndUpdateState}  clearInsult={this.clearInsult} expandGrudges={this.state.expandGrudges}
               updateResolve= {this.updateResolve} updateItem={this.updateGrudge}
               //  deleteGrudge={this.deleteGrudge}
                images={this.state.images} {...props} />
@@ -248,7 +251,7 @@ deleteGrudge = ( id) => {
                     if (!grudge) {
                         grudge = {id:404, EnemyName:"404", incident: "Enemy not found"}}
             if(this.isAuthenticated()) {
-              return <EditGrudgeForm  curse={this.curse}   insult={this.state.insult} getAndUpdateState={this.getAndUpdateState} grudge={grudge} {...props} updateItem={this.updateGrudge} addItem={this.addItem}/>
+              return <EditGrudgeForm  makeCurse={this.curse} insult={this.insult}  genInsult={this.state.insult} getAndUpdateState={this.getAndUpdateState} grudge={grudge} {...props} updateItem={this.updateGrudge} addItem={this.addItem}/>
             } else  {
                 return <Redirect to="/login" />
             }

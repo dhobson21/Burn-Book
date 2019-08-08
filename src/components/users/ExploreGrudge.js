@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Header, Divider} from "semantic-ui-react"
+import {Header, Divider, Container} from "semantic-ui-react"
 import { CarouselProvider, Slider, ButtonBack, ButtonNext, Slide} from "pure-react-carousel";
 
 import "./exploreGrudges.css"
@@ -14,36 +14,78 @@ export default class ExploreGrudges extends Component {
         grudgeId: "",
         userId: activeUser,
         open: false,
-        expandGrudges: this.filterSharedGrudges()
+        expandGrudges: [],
+        users: []
+
 
       }
 
 
+
+componentDidMount(){
+
+  this.setState({users: this.props.users})
+  console.log("explore did mount")
+  let exploreGrudges= []
+ this.props.expandGrudges.forEach(grudge => !grudge.shared ? exploreGrudges.push(grudge) : {})
+
+ this.props.expandGrudges.filter(grudge => grudge.shared).forEach (oneGrudge => {
+  let notMe = true
+  oneGrudge.sharedGrudges.forEach(g => {
+    if(g.userId === activeUser) {
+      notMe=false
+    }
+
+  })
+  if(notMe===true) {exploreGrudges.push(oneGrudge)}
+
+ })
+ console.log("expArr", exploreGrudges)
+this.setState({expandGrudges: exploreGrudges})
+console.log("exploreState", this.state)
+console.log("users", this.props.users)
+
+}
+
+findAvg = (user) => {
+  const levels = []
+  user.grudges.forEach( grudge => levels.push(grudge.pettyLevel)
+
+  )
+  console.log("levels". levels)
+}
+
+
 filterSharedGrudges(){
   const newState ={}
-  newState["expandGrudges"]= this.props.expandGrudges.forEach(grudge => {
-    if (grudge.shared) {return grudge}
+  this.props.expandGrudges.forEach(grudge => {
+    if (!grudge.shared || (grudge.sharedGrudges.for)) {return grudge}
   }
   )
   console.log("newState", newState)
-
 }
+
 
   show = () => this.setState({ open: true })
   handleConfirm = () => this.setState({ open: false })
   handleCancel = () => this.setState({ open: false })
      notShared = []
   render() {
+
     console.log("Explore Grudges state", this.state)
     console.log("Explore Grudges props ", this.props)
     return (
       <React.Fragment>
         <Header size="huge" textAlign="center">Other Petty People</Header>
           {
-        this.props.users.map(user =>
+        this.state.users.map(user =>
           <div key={user.id} >
           <Header size="large" textAlign="center">{user.username}'s Grudges</Header>
           <div className="users">
+
+          <Container floater='right'>
+
+            </Container>
 
           <CarouselProvider
             naturalSlideWidth={1}
@@ -53,12 +95,10 @@ filterSharedGrudges(){
                 >
           <Slider>
           {
-              this.props.expandGrudges.filter(grudge => grudge.userId ===user.id).map(grudge=>
-              <Slide
-                index={user.grudges.indexOf(grudge)}
-                key={grudge.id} >
-                <GrudgeCard  grudge={grudge} images ={this.props.images} {...this.props}/>
-              </Slide>
+              this.state.expandGrudges.filter(grudge => grudge.userId ===user.id).map(grudge=>
+
+              <CustomCardSlide index={user.grudges.indexOf(grudge)} key={grudge.id}>  <GrudgeCard  grudge={grudge} images ={this.props.images} {...this.props}/></CustomCardSlide>
+
 
             )
           }
@@ -66,7 +106,7 @@ filterSharedGrudges(){
     </Slider>
     <ButtonBack>Back</ButtonBack>
         <ButtonNext>Next</ButtonNext>
-        <CustomCardSlide index={0} />
+
   </CarouselProvider>
           </div>
 

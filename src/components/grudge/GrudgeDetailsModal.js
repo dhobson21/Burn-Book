@@ -49,7 +49,7 @@ export default class GrudgeDetailsModal extends Component {
                 </Modal.Content>
               </Grid.Column>
               <Grid.Column>
-                <Header as="h2">{this.props.grudge.enemyName}</Header>
+                <Header as="h2">{this.props.grudge.enemyName} MY ACTIVE GRUDGES-NOT SHARED</Header>
               </Grid.Column>
               <Grid.Column>
                 <Button
@@ -120,7 +120,7 @@ export default class GrudgeDetailsModal extends Component {
               </Modal.Content>
             </Grid.Column>
             <Grid.Column>
-              <Header as="h2">{this.props.grudge.enemyName}</Header>
+              <Header as="h2">{this.props.grudge.enemyName} ACTIVE GRUDGES I START AND SHARE</Header>
             </Grid.Column>
             <Grid.Column>
               Grudge shared with:
@@ -190,7 +190,7 @@ export default class GrudgeDetailsModal extends Component {
         </Grid>
       </Modal>
     );
-  } else if (!this.props.grudge.isResolved && ( (!this.props.grudge.shared) || (this.props.grudge.shared && this.props.grudge.sharedGrudges.forEach(grudge => grudge.userId !==activeUser))))
+  } else if (this.props.grudge.userId !== activeUser && !this.props.grudge.isResolved && ( (!this.props.grudge.shared) || (this.props.grudge.shared && this.props.grudge.sharedGrudges.forEach(grudge => grudge.userId !==activeUser))))
 
   //took this out, need to still filter by if user is shared on grudge already
   //&& this.props.grudge.sharedGrudges.forEach(grudge => grudge.userId === activeUser)
@@ -201,12 +201,12 @@ export default class GrudgeDetailsModal extends Component {
             <Grid.Row>
               <Grid.Column>
                 <Modal.Content>
-                  <Header as="h4">Grudging Since: SHARED</Header>
+                  <Header as="h4">Grudging Since:</Header>
                   {this.props.grudgeDate()}
                 </Modal.Content>
               </Grid.Column>
               <Grid.Column>
-                <Header as="h2">{this.props.grudge.enemyName}</Header>
+                <Header as="h2">{this.props.grudge.enemyName} EXPLORE GRUDGE NOT SHARED OR SHARED I DIDN'T JOIN</Header>
               </Grid.Column>
               <Grid.Column>
                 Grudge shared with:
@@ -361,7 +361,7 @@ export default class GrudgeDetailsModal extends Component {
                     </Modal.Content>
                   </Grid.Column>
                   <Grid.Column>
-                    <Header as="h2">{grudge.enemyName}</Header>
+                    <Header as="h2">{grudge.enemyName} ELSE RETURN </Header>
                   </Grid.Column>
                   <Grid.Column>
                     <Header as="h3">A grudge from {grudge.user.username}</Header>

@@ -22,9 +22,12 @@ export default class GrudgeCard extends Component {
     return date;
   };
 
+  componentDidMount = () => {
+    console.log("grudge card component did mount")
+  }
+
   render() {
-    // console.log("grudgecard props", this.props);
-    // console.log("grudgecard state", this.state);
+    console.log("grudge card render")
     const { active } = this.state;
     const content = (
       <div>
@@ -39,7 +42,7 @@ export default class GrudgeCard extends Component {
       !this.props.grudge.isResolved)
        {
       return (
-        <Card key={this.props.grudge.id}>
+        <Card  centered raised key={this.props.grudge.id}>
           <Card.Content>
             <Card.Header>
               <div className="card-header">
@@ -108,8 +111,14 @@ export default class GrudgeCard extends Component {
 
     }
     //if grudge does not belong to logged in user and user is not the joined ID in shared grudge (does not share with primary grudge holder), render this: FOR EXPLORE GRUDGES
-    else if ((!this.props.grudge.shared) ||  this.props.grudge.sharedGrudges.forEach(g => { if(g.userId !==activeUser) {return true} else {return false}
-    })) {
+    else if ((!this.props.grudge.shared) ||  this.props.grudge.sharedGrudges.forEach (grudge => {
+
+        if(grudge.userId !== activeUser) {
+          console.log("notMeNotShared", grudge)
+         return true
+        }
+      }))
+     {
       return (
         <Card key={this.props.grudge.id}>
           <Card.Content textAlign="center">

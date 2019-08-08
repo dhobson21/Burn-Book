@@ -23,7 +23,8 @@ export default class Login extends Component {
         if (user.length === 0) window.alert("no user found!")
         else if (user[0].password === this.state.password) {
           //set sessionStorage
-          sessionStorage.setItem("activeUser", user[0].id)
+          sessionStorage.setItem("activeUser", +user[0].id)
+          console.log(+sessionStorage.getItem("activeUser"))
           this.props.setUser(user[0].id)
           //routing to dashboard
           this.props.history.push("/")
@@ -31,6 +32,7 @@ export default class Login extends Component {
         else window.alert("That password is incorrect")
 
     })
+    .then(this.props.setUser(parseInt(sessionStorage.getItem("activeUser"))))
     //post
     //fetch
 }
