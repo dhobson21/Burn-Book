@@ -88,7 +88,6 @@ import "./curseGenerator.css"
   this.handleFieldChange()
  }
   render() {
-    console.log("state insult", this.props.curse)
     return (
       <React.Fragment>
       <Form.Input width={4}

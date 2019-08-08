@@ -29,8 +29,6 @@ class ApplicationViews extends Component {
  notSharedNotOwned = []
 //loading user data to update state object
 componentDidMount(){
-  console.log("appViews Component is Mounting")
-  console.log(sessionStorage.getItem("activeUser"))
   const newState = {}
   const notYou= []
   //get all Grudges expanded
@@ -57,7 +55,6 @@ APIManager.get("grudges", "?_expand=user&_embed=resolvedGrudges&_embed=sharedGru
   .then(() => APIManager.get("sharedGrudges", "?_expand=grudge&_expand=user"))
   .then(allSharedGrudges => (newState.sharedGrudges= allSharedGrudges))
   .then(() =>this.setState(newState))
-  .then(() => console.log("MountedState", this.state))
 }
 
 //check session storage for value, return true or false
@@ -100,7 +97,7 @@ addSharedGrudge = ( item) => {
 
 }
 
-insult = ""
+
 
 clearInsult = (insult) =>  insult = ""
 
@@ -111,9 +108,7 @@ curse = (words1, words2, words3) => {
   const n = this.randomWord(words3)
   newState["insult"] =`${adj1} ${adj2} ${n}!`;
   this.setState(newState)
-  console.log("appstate", this.state)
    this.insult = newState.insult
-  console.log("this.insult", this.insult)
 }
 
 
@@ -143,7 +138,6 @@ updateItem = (name, editedObject) => {
     }
 updateGrudge = (editedObject) => {
   let newObj = {}
-  console.log("editedObj", editedObject)
   return APIManager.put("grudges", editedObject)
     .then(() =>APIManager.get("grudges", "?_expand=user&_embed=resolvedGrudges&_embed=sharedGrudges"))
       .then(item => {
@@ -213,13 +207,14 @@ deleteGrudge = ( id) => {
         <Route
           exact path="/"
           render={props => {
-            console.log(this.state.expandGrudges)
-            if(this.isAuthenticated()) return (
-              <Dash sharedGrudges= {this.state.sharedGrudges} getAndUpdateState={this.getAndUpdateState}  clearInsult={this.clearInsult} expandGrudges={this.state.expandGrudges}
+            if(this.isAuthenticated()) {
+            return (
+
+              <Dash expandGrudges={this.state.expandGrudges} sharedGrudges= {this.state.sharedGrudges} getAndUpdateState={this.getAndUpdateState}  clearInsult={this.clearInsult}
               updateResolve= {this.updateResolve} updateItem={this.updateGrudge}
-              //  deleteGrudge={this.deleteGrudge}
                images={this.state.images} {...props} />
             )
+            }
              else return <Redirect to="/login" />
           }}
 
@@ -259,7 +254,11 @@ deleteGrudge = ( id) => {
         <Route
           exact path="/past"
           render={props => {
-            if(this.isAuthenticated()) return <PastGrudges expandGrudges={this.state.expandGrudges.filter(grudge => grudge.isResolved===true)} images={this.state.images} {...props} deleteGrudge={this.deleteGrudge} />
+            if(this.isAuthenticated()) {
+              console.log("past", activeUser)
+
+            return <PastGrudges expandGrudges={this.state.expandGrudges.filter(grudge => grudge.isResolved===true)} images={this.state.images} {...props} deleteGrudge={this.deleteGrudge} />
+            }
             else  {
               return <Redirect to="/login" />
           }

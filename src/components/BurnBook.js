@@ -16,7 +16,6 @@ class BurnBook extends Component {
   setUser = activeUserId => {
     //return one user
     let newState = {}
-    console.log("setUserActiveUserId", activeUserId)
     newState.activeUser = activeUserId
     this.setState(newState)
   }
@@ -27,6 +26,7 @@ class BurnBook extends Component {
         <React.Fragment>
             <NavBar {...this.props} />
           <ApplicationViews
+
             isAuthenticated={this.isAuthenticated}
             setUser={this.setUser} />
         </React.Fragment>

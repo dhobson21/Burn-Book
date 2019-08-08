@@ -38,8 +38,6 @@ export default class EditGrudgeForm extends Component {
     const newObj = {}
     newObj["insult"] = foo
     this.setState(newObj)
-    console.log("stateee edit", this.state)
-    console.log("prop", this.props)
   }
 
 
@@ -137,8 +135,6 @@ export default class EditGrudgeForm extends Component {
     });
   }
   render() {
-    console.log("Edit Grudge Form props", this.props);
-    console.log("Edit Grudge Form state", this.state);
 
     const { open } = this.notOpen;
     const { checked } = this.checked;
