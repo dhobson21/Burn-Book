@@ -1,149 +1,16 @@
 {
   "grudges": [
     {
-      "enemyName": "Krystal Gates",
-      "date": "2019-12-31",
-      "email": "Mike@gmail.com",
+      "enemyName": "Dustin H",
+      "date": "2019-08-07",
+      "email": "dhobson21@gmail.com",
       "insult": "",
-      "incident": "He stole my seat and made me move to the back of the class ",
-      "pettyLevel": 3,
-      "userId": 1,
-      "isResolved": true,
-      "shared": false,
-      "id": 2
-    },
-    {
-      "id": 7,
-      "date": "2019-07-31",
-      "enemyName": "Mike Jones",
-      "email": "Curt@gmail.com",
-      "incident": "Curt spells his name with a C which is literally the dumbest thing a person can do",
-      "insult": "",
-      "isResolved": false,
-      "pettyLevel": 9,
-      "shared": false,
-      "userId": 1
-    },
-    {
-      "id": 8,
-      "date": "2019-09-30",
-      "enemyName": "Danny Barker",
-      "email": "test",
-      "incident": "test",
-      "insult": "",
-      "isResolved": false,
-      "pettyLevel": 3,
-      "shared": false,
-      "userId": 1,
-      "boo": false
-    },
-    {
-      "shared": true,
-      "enemyName": "Joe Kennerly",
-      "date": "2019-12-31",
-      "email": "idiot@gmail.com",
-      "insult": "",
-      "incident": "Looked at me funny.",
-      "pettyLevel": 4,
-      "userId": 2,
-      "isResolved": false,
-      "id": 9
-    },
-    {
-      "shared": true,
-      "enemyName": "Adam Knowles",
-      "date": "2019-08-01",
-      "email": "randomGuy@walkBy.com",
-      "insult": "",
-      "incident": "He had too much confidence as he strolled past. Really infuriated me.",
-      "pettyLevel": 2,
-      "userId": 2,
-      "isResolved": false,
-      "id": 10
-    },
-    {
-      "enemyName": "Joe",
-      "date": "2019-12-31",
-      "email": "Joe@joe.com",
-      "insult": "",
-      "incident": "He made fun of me",
-      "pettyLevel": 5,
-      "userId": 1,
-      "isResolved": false,
-      "shared": false,
-      "id": 14
-    },
-    {
-      "shared": false,
-      "enemyName": "Curt Cato",
-      "date": "2019-08-01",
-      "email": "Krystal_Sabrina@yahoo.com",
-      "insult": "",
-      "incident": "She's too happy. Also she has a yahoo email account. Gross",
-      "pettyLevel": 4,
-      "userId": 3,
-      "isResolved": false,
-      "id": 15
-    },
-    {
-      "enemyName": "Krystal Gates",
-      "date": "2019-12-31",
-      "email": "Joe@joe.com",
-      "insult": "",
-      "incident": "He made fun of me",
-      "pettyLevel": 5,
+      "incident": "He spilled his drink like an absolute idiot ",
+      "pettyLevel": 6,
       "userId": 3,
       "isResolved": false,
       "shared": false,
-      "id": 16
-    },
-    {
-      "id": 17,
-      "date": "2019-12-31",
-      "enemyName": "ok go",
-      "email": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
-      "incident": "gggggggggggggggggggggggggggggggggggggggggg",
-      "insult": "dankish fen-sucked crutch!",
-      "isResolved": false,
-      "pettyLevel": 6,
-      "shared": false,
-      "userId": 1
-    },
-    {
-      "enemyName": "test",
-      "date": "2019-12-31",
-      "email": "f",
-      "insult": "yeasty motley-minded egg-shell!",
-      "incident": "bbbb",
-      "pettyLevel": 6,
-      "userId": 1,
-      "isResolved": false,
-      "shared": false,
-      "id": 18
-    },
-    {
-      "id": 19,
-      "date": "2019-01-01",
-      "enemyName": "f",
-      "email": "okay",
-      "incident": "cool",
-      "insult": "prating bat-fowling mammet!",
-      "isResolved": false,
-      "pettyLevel": 6,
-      "shared": false,
-      "userId": 1
-    },
-    {
-      "enemyName": "go",
-      "date": "2019-01-01",
-      "email": "oka",
-      "insult": "pernicious rude-growing mumble-news!",
-      "incident": "yea",
-      "pettyLevel": 7,
-      "userId": 1,
-      "isResolved": false,
-      "shared": false,
-      "id": 20
+      "id": 1
     }
   ],
   "images": [
@@ -219,34 +86,34 @@
   "users": [
     {
       "id": 1,
-      "username": "newUser",
-      "email": "newUser@newUser.com",
+      "username": "DustinH",
+      "email": "dhobson21@gmail.com",
       "password": "password123",
-      "firstname": "New",
-      "lastname": "User"
+      "firstname": "Dustin",
+      "lastname": "Hobson"
     },
     {
-      "firstname": "Dustin",
-      "lastname": "Hobson",
-      "username": "dhob21",
+      "firstname": "Curt ",
+      "lastname": "Cato",
+      "username": "Curt1225",
       "password": "password123",
-      "email": "dhobson21@gmail.com",
+      "email": "kurt@yahoo.com",
       "id": 2
     },
     {
-      "firstname": "D",
-      "lastname": "H",
-      "username": "dhob",
-      "password": "new",
-      "email": "rock",
+      "firstname": "Krystal",
+      "lastname": "Gates",
+      "username": "Kgatezzzzzz",
+      "password": "password123",
+      "email": "kg@gmail.com",
       "id": 3
     },
     {
-      "firstname": "Steph",
-      "lastname": "Rondo",
-      "username": "srondo14",
-      "password": "hilton2007",
-      "email": "stephanierondo@gmail.com",
+      "firstname": "Ben",
+      "lastname": "Parker",
+      "username": "Bparker1",
+      "password": "password123",
+      "email": "bdog@@gmail.com",
       "id": 4
     }
   ]
