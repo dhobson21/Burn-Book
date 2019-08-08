@@ -17,8 +17,6 @@ APIManager.get("grudges", "?_expand=user&_embed=resolvedGrudges&_embed=sharedGru
 }
 
   render() {
-    console.log("past Grudge state", this.state)
-    console.log("past Grudge props", this.props)
     return (
 
       <React.Fragment>

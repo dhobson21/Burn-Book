@@ -59,8 +59,6 @@ resolveGrudge = () => {
 
 }
   render() {
-    console.log("Resolved Grudge Form state", this.state)
-    console.log("Resolved Grudge Form props", this.props)
     return (
     <Form>
       <Header textAlign="center"  as="h3">Resolve Grudge</Header>

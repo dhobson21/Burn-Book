@@ -35,8 +35,6 @@ export default class AddGrudgeForm extends Component {
             const newObj = {}
             newObj["insult"] = foo
             this.setState(newObj)
-            console.log("stateee", this.state)
-            console.log("prop", this.props)
           }
 
   clearFields = () =>
@@ -74,7 +72,6 @@ export default class AddGrudgeForm extends Component {
       ) { window.alert("All fields must be filled out");
     } else {
       event.preventDefault()
-      console.log("addformstate", this.state)
       this.clearFields()
     this.props.addItem("grudges", this.state);
 
@@ -88,7 +85,6 @@ export default class AddGrudgeForm extends Component {
 
 
   render() {
-    console.log("Add", this.props)
     // const { enemyName, date, email, insult, incident, pettyLevel } = this.state
     return (
       <Form>

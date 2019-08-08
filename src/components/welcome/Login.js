@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Container, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import { Button, Container, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
 import "./login.css"
 export default class Login extends Component {
 
@@ -23,8 +23,8 @@ export default class Login extends Component {
         if (user.length === 0) window.alert("no user found!")
         else if (user[0].password === this.state.password) {
           //set sessionStorage
-          sessionStorage.setItem("activeUser", +user[0].id)
-          console.log(+sessionStorage.getItem("activeUser"))
+          sessionStorage.setItem("activeUser", user[0].id)
+
           this.props.setUser(user[0].id)
           //routing to dashboard
           this.props.history.push("/")
@@ -46,7 +46,7 @@ export default class Login extends Component {
           <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
           <Grid.Column style={{ maxWidth: 450 }}>
             <Header as='h2' color='red' textAlign='center'>
-              <Image src='/logo.png' /> Log-in to your account
+               Log-in to your account
             </Header>
             <Form size='large'>
               <Segment stacked>

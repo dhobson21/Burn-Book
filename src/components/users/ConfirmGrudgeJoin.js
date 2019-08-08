@@ -10,7 +10,6 @@ class ConfirmGrudgeJoin extends Component {
   }
 
   createSharedGrudge = (grudge) => {
-    console.log("createSharedGrudge", grudge)
    const newState = {}
    const trueShared = {shared: true,
     enemyName: grudge.enemyName,
@@ -52,7 +51,6 @@ class ConfirmGrudgeJoin extends Component {
   show = () => this.setState({ open: true })
 
   handleConfirm = (grudge) => {
-    console.log("handleConfirmGrudge", grudge)
     this.setState({ open: false })
     this.createSharedGrudge (grudge)
   }
@@ -60,8 +58,6 @@ class ConfirmGrudgeJoin extends Component {
   handleCancel = () => this.setState({ open: false })
 
   render() {
-    console.log("Cofirm Grudge Join state", this.state)
-    console.log("Confirm Grudge Join props",this.props)
     return (
       <div>
         <Button onClick={this.show}>Join</Button>

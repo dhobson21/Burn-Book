@@ -22,12 +22,9 @@ export default class GrudgeCard extends Component {
     return date;
   };
 
-  componentDidMount = () => {
-    console.log("grudge card component did mount")
-  }
+
 
   render() {
-    console.log("grudge card render")
     const { active } = this.state;
     const content = (
       <div>
@@ -114,7 +111,6 @@ export default class GrudgeCard extends Component {
     else if ((!this.props.grudge.shared) ||  this.props.grudge.sharedGrudges.forEach (grudge => {
 
         if(grudge.userId !== activeUser) {
-          console.log("notMeNotShared", grudge)
          return true
         }
       }))
@@ -147,5 +143,5 @@ export default class GrudgeCard extends Component {
       //OR NOTHING
     }
     else{return null}
-  }
+    }
 }
