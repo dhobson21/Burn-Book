@@ -12,7 +12,6 @@ import ExploreGrudges from "./users/ExploreGrudge"
 
 
 
-const activeUser = +sessionStorage.getItem("activeUser")
 
 
 class ApplicationViews extends Component {
@@ -108,7 +107,7 @@ curse = (words1, words2, words3) => {
   const n = this.randomWord(words3)
   newState["insult"] =`${adj1} ${adj2} ${n}!`;
   this.setState(newState)
-   this.insult = newState.insult
+   console.log("cursemade", this.state.insult)
 }
 
 
@@ -122,7 +121,7 @@ updateItem = (name, editedObject) => {
   return APIManager.put(name, editedObject)
     .then(() =>
       APIManager.getAll(
-        `${name}?userId=${activeUser})}`
+        `${name}?userId=${+sessionStorage.getItem("activeUser")})}`
       )
       )
       .then(item => {
@@ -170,7 +169,7 @@ deleteItem = (name, id) => {
     method: "DELETE"
   })
     .then(e => e.json())
-    .then(() => APIManager.getAll(`${name}?userId=${activeUser}`
+    .then(() => APIManager.getAll(`${name}?userId=${+sessionStorage.getItem("activeUser")}`
     ))
     .then(group => {
       newObj[name] = group
@@ -246,7 +245,7 @@ deleteGrudge = ( id) => {
                     if (!grudge) {
                         grudge = {id:404, EnemyName:"404", incident: "Enemy not found"}}
             if(this.isAuthenticated()) {
-              return <EditGrudgeForm  makeCurse={this.curse} insult={this.insult}  genInsult={this.state.insult} getAndUpdateState={this.getAndUpdateState} grudge={grudge} {...props} updateItem={this.updateGrudge} addItem={this.addItem}/>
+              return <EditGrudgeForm     genInsult={this.state.insult} getAndUpdateState={this.getAndUpdateState} grudge={grudge} {...props} updateItem={this.updateGrudge} addItem={this.addItem}/>
             } else  {
                 return <Redirect to="/login" />
             }
@@ -255,7 +254,7 @@ deleteGrudge = ( id) => {
           exact path="/past"
           render={props => {
             if(this.isAuthenticated()) {
-              console.log("past", activeUser)
+
 
             return <PastGrudges expandGrudges={this.state.expandGrudges.filter(grudge => grudge.isResolved===true)} images={this.state.images} {...props} deleteGrudge={this.deleteGrudge} />
             }
@@ -270,7 +269,7 @@ deleteGrudge = ( id) => {
 
             <ExploreGrudges
               users={this.state.otherUsers}
-              expandGrudges={this.state.expandGrudges.filter(grudge => grudge.userId!==activeUser).filter(grudge=> !grudge.isResolved)}
+              expandGrudges={this.state.expandGrudges.filter(grudge => grudge.userId!==+sessionStorage.getItem("activeUser")).filter(grudge=> !grudge.isResolved)}
               images={this.state.images}
               updateGrudge= {this.updateGrudge}
               addSharedGrudge={this.addSharedGrudge }

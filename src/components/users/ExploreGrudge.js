@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Header, Divider, Container} from "semantic-ui-react"
+import {Header, Divider} from "semantic-ui-react"
 import { CarouselProvider, Slider, ButtonBack, ButtonNext} from "pure-react-carousel";
 
 import "./exploreGrudges.css"
@@ -68,14 +68,16 @@ filterSharedGrudges(){
 
     return (
       <React.Fragment>
-        <Header size="huge" textAlign="center">Other Petty People</Header>
+        <Header size="huge" >Other Petty People</Header>
+
+          <div className="user-container"  >
           {
         this.state.users.map(user =>
-          <div key={user.id} >
-          <Header size="large" textAlign="center">{user.username}'s Grudges</Header>
-          <div className="users">
 
-          <Container>
+          <div key={user.id} className="users">
+          <Header size="large" textAlign="center">{user.username}'s Grudges</Header>
+
+
 
 
           <CarouselProvider
@@ -99,13 +101,14 @@ filterSharedGrudges(){
         <ButtonNext>Next</ButtonNext>
 
   </CarouselProvider>
-            </Container>
-          </div>
+
 
         <Divider />
-        </div>
+          </div>
+
         )
       }
+      </div>
     </React.Fragment>
       )
 
