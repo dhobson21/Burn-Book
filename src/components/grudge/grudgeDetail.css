@@ -24,3 +24,21 @@ em {
 .chatName {
   display: inline-block;
 }
+
+.joinContainer {
+  position: relative;
+
+
+}
+
+.join {
+  position:absolute;
+  bottom:0;
+}
+
+.pettyNumb {
+  color: red;
+  font-size: 46px;
+}
+
+.grayscale {-webkit-filter: grayscale(100%);filter: grayscale(100%);}

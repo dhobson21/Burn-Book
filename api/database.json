@@ -1,149 +1,100 @@
 {
   "grudges": [
     {
-      "enemyName": "Krystal Gates",
-      "date": "2019-12-31",
-      "email": "Mike@gmail.com",
-      "insult": "",
-      "incident": "He stole my seat and made me move to the back of the class ",
-      "pettyLevel": 3,
-      "userId": 1,
-      "isResolved": true,
+      "id": 1,
+      "date": "2019-08-07",
+      "enemyName": "Dustin H",
+      "email": "dhobson21@gmail.com",
+      "incident": "He spilled his drink like an absolute idiot ",
+      "insult": "lumpish rough-hewn flax-wench!",
+      "isResolved": false,
+      "pettyLevel": 6,
       "shared": false,
-      "id": 2
-    },
-    {
-      "id": 7,
-      "date": "2019-07-31",
-      "enemyName": "Mike Jones",
-      "email": "Curt@gmail.com",
-      "incident": "Curt spells his name with a C which is literally the dumbest thing a person can do",
-      "insult": "",
-      "isResolved": false,
-      "pettyLevel": 9,
-      "shared": false,
-      "userId": 1
-    },
-    {
-      "id": 8,
-      "date": "2019-09-30",
-      "enemyName": "Danny Barker",
-      "email": "test",
-      "incident": "test",
-      "insult": "",
-      "isResolved": false,
-      "pettyLevel": 3,
-      "shared": false,
-      "userId": 1,
-      "boo": false
-    },
-    {
-      "shared": true,
-      "enemyName": "Joe Kennerly",
-      "date": "2019-12-31",
-      "email": "idiot@gmail.com",
-      "insult": "",
-      "incident": "Looked at me funny.",
-      "pettyLevel": 4,
-      "userId": 2,
-      "isResolved": false,
-      "id": 9
-    },
-    {
-      "shared": true,
-      "enemyName": "Adam Knowles",
-      "date": "2019-08-01",
-      "email": "randomGuy@walkBy.com",
-      "insult": "",
-      "incident": "He had too much confidence as he strolled past. Really infuriated me.",
-      "pettyLevel": 2,
-      "userId": 2,
-      "isResolved": false,
-      "id": 10
-    },
-    {
-      "enemyName": "Joe",
-      "date": "2019-12-31",
-      "email": "Joe@joe.com",
-      "insult": "",
-      "incident": "He made fun of me",
-      "pettyLevel": 5,
-      "userId": 1,
-      "isResolved": false,
-      "shared": false,
-      "id": 14
+      "userId": 3
     },
     {
       "shared": false,
       "enemyName": "Curt Cato",
-      "date": "2019-08-01",
-      "email": "Krystal_Sabrina@yahoo.com",
-      "insult": "",
-      "incident": "She's too happy. Also she has a yahoo email account. Gross",
-      "pettyLevel": 4,
-      "userId": 3,
-      "isResolved": false,
-      "id": 15
-    },
-    {
-      "enemyName": "Krystal Gates",
-      "date": "2019-12-31",
-      "email": "Joe@joe.com",
-      "insult": "",
-      "incident": "He made fun of me",
+      "date": "2019-08-06",
+      "email": "Curt@gmail.com",
+      "insult": "spongy pox-marked bladder!",
+      "incident": "Curt made fun of me for being from New York.... He also vaped in my face.",
       "pettyLevel": 5,
+      "userId": 1,
+      "isResolved": false,
+      "id": 2
+    },
+    {
+      "shared": false,
+      "enemyName": "Drew  Palazola",
+      "date": "2019-08-04",
+      "email": "",
+      "insult": "surly dread-bolted scantling!",
+      "incident": "Drew spiked a ping pong ball into my chest and laughed a little too hard about it.",
+      "pettyLevel": 3,
+      "userId": 1,
+      "isResolved": false,
+      "id": 3
+    },
+    {
+      "enemyName": "Madi Peper",
+      "date": "2019-06-21",
+      "email": "madi@gmail.com",
+      "insult": "infectious reeling-ripe horn-beast!",
+      "incident": "She kept saying the word 'bagel' like it was spelled bag-el....super annoying",
+      "pettyLevel": 8,
       "userId": 3,
       "isResolved": false,
       "shared": false,
-      "id": 16
+      "id": 4
     },
     {
-      "id": 17,
-      "date": "2019-12-31",
-      "enemyName": "ok go",
-      "email": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
-      "incident": "gggggggggggggggggggggggggggggggggggggggggg",
-      "insult": "dankish fen-sucked crutch!",
-      "isResolved": false,
-      "pettyLevel": 6,
       "shared": false,
-      "userId": 1
+      "enemyName": "Blake Davis",
+      "date": "2019-08-01",
+      "email": "Blake@gmail.com",
+      "insult": "",
+      "incident": "He is merciless when we play ping pong. ",
+      "pettyLevel": 6,
+      "userId": 4,
+      "isResolved": false,
+      "id": 5
     },
     {
-      "enemyName": "test",
-      "date": "2019-12-31",
-      "email": "f",
-      "insult": "yeasty motley-minded egg-shell!",
-      "incident": "bbbb",
-      "pettyLevel": 6,
+      "shared": false,
+      "enemyName": "Steve Brownlee",
+      "date": "2019-06-06",
+      "email": "steve@nss.com",
+      "insult": "",
+      "incident": "He walks around the building like he owns it",
+      "pettyLevel": 9,
+      "userId": 4,
+      "isResolved": false,
+      "id": 6
+    },
+    {
+      "enemyName": "Mrs.Collins--My 1st grade teacher",
+      "date": "1996-04-06",
+      "email": "MrsColins@school.com",
+      "insult": "vain eye-offending hempseed!",
+      "incident": "She told me I wasn't allowed to pull all the beans out of the bean bag...I did it anyway ",
+      "pettyLevel": 2,
       "userId": 1,
-      "isResolved": false,
+      "isResolved": true,
       "shared": false,
-      "id": 18
+      "id": 7
     },
     {
-      "id": 19,
-      "date": "2019-01-01",
-      "enemyName": "f",
-      "email": "okay",
-      "incident": "cool",
-      "insult": "prating bat-fowling mammet!",
-      "isResolved": false,
-      "pettyLevel": 6,
       "shared": false,
-      "userId": 1
-    },
-    {
-      "enemyName": "go",
-      "date": "2019-01-01",
-      "email": "oka",
-      "insult": "pernicious rude-growing mumble-news!",
-      "incident": "yea",
-      "pettyLevel": 7,
-      "userId": 1,
+      "enemyName": "Ashley Canino",
+      "date": "2019-07-30",
+      "email": "Ashley@nss.com",
+      "insult": "",
+      "incident": "She keeps trying to make me do career building stuff when I'm inundated with capstone",
+      "pettyLevel": 5,
+      "userId": 2,
       "isResolved": false,
-      "shared": false,
-      "id": 20
+      "id": 8
     }
   ],
   "images": [
@@ -190,63 +141,45 @@
   ],
   "resolvedGrudges": [
     {
-      "resolveReason": "Hes a nice bot",
-      "compliment": "Great eyes",
-      "grudgeId": 2,
-      "date": "06/08/2019",
-      "id": 5
-    },
-    {
-      "resolveReason": "He's a nice boy",
-      "compliment": "With a kind heat",
+      "resolveReason": "It was a long time ago",
+      "compliment": "Mrs. Collins taught me to read.",
       "grudgeId": 7,
-      "date": "06/08/2019",
-      "id": 6
+      "date": "09/08/2019",
+      "id": 1
     }
   ],
-  "sharedGrudges": [
-    {
-      "id": 1,
-      "grudgeId": 10,
-      "userId": 3
-    },
-    {
-      "id": 2,
-      "grudgeId": 9,
-      "userId": 1
-    }
-  ],
+  "sharedGrudges": [],
   "users": [
     {
       "id": 1,
-      "username": "newUser",
-      "email": "newUser@newUser.com",
+      "username": "DustinH",
+      "email": "dhobson21@gmail.com",
       "password": "password123",
-      "firstname": "New",
-      "lastname": "User"
+      "firstname": "Dustin",
+      "lastname": "Hobson"
     },
     {
-      "firstname": "Dustin",
-      "lastname": "Hobson",
-      "username": "dhob21",
+      "firstname": "Curt ",
+      "lastname": "Cato",
+      "username": "Curt1225",
       "password": "password123",
-      "email": "dhobson21@gmail.com",
+      "email": "kurt@yahoo.com",
       "id": 2
     },
     {
-      "firstname": "D",
-      "lastname": "H",
-      "username": "dhob",
-      "password": "new",
-      "email": "rock",
+      "firstname": "Krystal",
+      "lastname": "Gates",
+      "username": "Kgatez",
+      "password": "password123",
+      "email": "kg@gmail.com",
       "id": 3
     },
     {
-      "firstname": "Steph",
-      "lastname": "Rondo",
-      "username": "srondo14",
-      "password": "hilton2007",
-      "email": "stephanierondo@gmail.com",
+      "firstname": "Ben",
+      "lastname": "Parker",
+      "username": "Bparker1",
+      "password": "password123",
+      "email": "bdog@@gmail.com",
       "id": 4
     }
   ]

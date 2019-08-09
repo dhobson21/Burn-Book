@@ -9,7 +9,7 @@ import "./curseGenerator.css"
 
 
     state = {
-              insult: this.props.genInsult,
+              insult: this.props.editFormStateInsult,
               disabled: false
 
               // this.props.editFormStateInsult,
@@ -98,8 +98,8 @@ import "./curseGenerator.css"
             id="insult"
             onChange= {this.handleFieldChange}
             name= "insult"
-            defaultValue= {this.state.insult}
-            placeholder = {this.props.editFormStateInsult}
+            defaultValue= {this.props.editFormStateInsult}
+            // placeholder =
 
 
 
@@ -110,7 +110,7 @@ import "./curseGenerator.css"
 
 
         <Button disabled={this.state.disabled} size="mini"    onClick={() => this.props.makeCurse(this.adjective1, this.adjective2, this.noun)}>Generate Insult></Button>
-        <Checkbox  label= "Save Insult" size="mini" onClick={() => this.saveInsult(this.props.insult)} />
+        <Checkbox  label= "Save Insult" size="mini" onClick={() => this.saveInsult(this.props.editFormStateInsult)} />
       </div>
 
 

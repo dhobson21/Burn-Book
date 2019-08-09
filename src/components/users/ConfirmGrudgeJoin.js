@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Confirm } from 'semantic-ui-react'
 import APIManager from '../../modules/APIManager';
-const activeUser = +sessionStorage.getItem("activeUser")
+
 class ConfirmGrudgeJoin extends Component {
   state = {
     open: false,
@@ -23,12 +23,12 @@ class ConfirmGrudgeJoin extends Component {
    id: grudge.id
    }
     newState["grudgeId"]= grudge.id
-    newState.userId = activeUser
+    newState.userId = +sessionStorage.getItem("activeUser")
 
     this.props.addSharedGrudge(newState)
     this.updateGrudgeShare(trueShared )
     .then(() => this.props.getAndUpdateState())
-    .then(() => this.props.history.push("/explore"))
+    .then(() => this.props.history.push("/"))
 
 
 
@@ -59,8 +59,8 @@ class ConfirmGrudgeJoin extends Component {
 
   render() {
     return (
-      <div>
-        <Button onClick={this.show}>Join</Button>
+      <div >
+        <Button cloated="right" onClick={this.show}>Join Grudge</Button>
         <Confirm
           open={this.state.open}
           content= {`Are you sure you want to join ${this.props.grudge.user.username}'s grudge against ${this.props.grudge.enemyName}?`}

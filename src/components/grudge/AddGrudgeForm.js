@@ -65,7 +65,7 @@ export default class AddGrudgeForm extends Component {
     if (
       this.state.enemyName === "" ||
       this.state.date === "" ||
-      this.state.email === "" ||
+      // this.state.email === "" ||
       // this.state.insult === "" ||
       this.state.incident === "" ||
       this.state.pettyLevel === ""
@@ -89,13 +89,13 @@ export default class AddGrudgeForm extends Component {
     return (
       <Form>
         <Form.Group widths='equal'>
-          <Form.Input
+          <Form.Input required
             fluid label='Enemy Name'
             id="enemyName"
             onChange={this.handleFieldChange}
             name="enemyName"
             placeholder='Enemy Name' />
-          <Form.Input
+          <Form.Input required
             fluid label= 'Date of Incident'
             type= "date"
             onChange={this.handleFieldChange}
@@ -105,7 +105,7 @@ export default class AddGrudgeForm extends Component {
         </Form.Group>
         <Form.Group widths='equal'>
           <Form.Input
-            fluid label="Enemy's Email for...purposes"
+            fluid label="Enemy's Email"
             placeholder='dummy@stupid.com'
             onChange={this.handleFieldChange}
             id="email"
@@ -117,14 +117,16 @@ export default class AddGrudgeForm extends Component {
           </Form.Group>
         </Form.Group>
           <Form.TextArea
+            required
             label='What Happened:'
             options={options}
-            placeholder='An indefensible act'
+            placeholder='Something truly outrageous, no doubt'
             onChange={this.handleFieldChange}
             id="incident"
             name="incident"
              />
           <Form.Select
+            required
             label="How Petty Am I Being?"
             options= {options}
             onChange= {this.handleSelectChange}
