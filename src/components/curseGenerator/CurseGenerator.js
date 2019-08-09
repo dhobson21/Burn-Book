@@ -90,7 +90,7 @@ import "./curseGenerator.css"
   render() {
     return (
       <React.Fragment>
-      <Form.Input width={4}
+      <Form.Input width={8}
          label= 'Insult thy enemy'
             id="insult"
             onChange= {this.handleFieldChange}

@@ -28,7 +28,7 @@ class ConfirmGrudgeJoin extends Component {
     this.props.addSharedGrudge(newState)
     this.updateGrudgeShare(trueShared )
     .then(() => this.props.getAndUpdateState())
-    .then(() => this.props.history.push("/explore"))
+    .then(() => this.props.history.push("/"))
 
 
 
@@ -59,8 +59,8 @@ class ConfirmGrudgeJoin extends Component {
 
   render() {
     return (
-      <div>
-        <Button onClick={this.show}>Join</Button>
+      <div >
+        <Button cloated="right" onClick={this.show}>Join Grudge</Button>
         <Confirm
           open={this.state.open}
           content= {`Are you sure you want to join ${this.props.grudge.user.username}'s grudge against ${this.props.grudge.enemyName}?`}

@@ -16,6 +16,27 @@ export default class Dash extends Component {
   }
 
 
+  componentDidMount() {
+    let exploreGrudges= []
+ this.props.expandGrudges.forEach(grudge => grudge.userId===+sessionStorage.getItem("activeUser") ? exploreGrudges.push(grudge) : {})
+
+ this.props.expandGrudges.filter(grudge => grudge.userId!==+sessionStorage.getItem("activeUser")).filter(g => g.shared).forEach (oneGrudge => {
+  let notMe = true
+  oneGrudge.sharedGrudges.forEach(g => {
+    if(g.userId !== +sessionStorage.getItem("activeUser")) {
+      notMe=false
+    }
+
+  })
+  if(notMe===true) {exploreGrudges.push(oneGrudge)}
+
+
+ })
+this.setState({expandGrudges: exploreGrudges})
+console.log("state", this.state)
+}
+
+
   deleteGrudge = ( id) => {
 
     let newObj = {}

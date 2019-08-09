@@ -25,7 +25,7 @@ export default class EditGrudgeForm extends Component {
     enemyName: "",
     email: "",
     incident: "",
-    insult: this.props.genInsult,
+    insult: "",
     isResolved: "",
     pettyLevel: "",
     shared: "",
@@ -34,11 +34,7 @@ export default class EditGrudgeForm extends Component {
   };
 
 
-  changeInsultState = (foo) => {
-    const newObj = {}
-    newObj["insult"] = foo
-    this.setState(newObj)
-  }
+
 
 
   handleFieldChange = event => {
@@ -115,7 +111,22 @@ export default class EditGrudgeForm extends Component {
       boo: !prevState.boo
     }))
 
+
+
   }
+  cancelChanges = () => {
+    const newState = {}
+    newState["insult"] = ""
+    this.setState(newState)
+    this.props.history.push ("/")
+
+  }
+  changeInsultState = (foo) => {
+    const newObj = {}
+    newObj["insult"] = foo
+    this.setState(newObj)
+  }
+
 
   //grab individual grudge for value fields of edited input fields
   componentDidMount() {
@@ -134,6 +145,22 @@ export default class EditGrudgeForm extends Component {
       });
     });
   }
+
+  curse = (words1, words2, words3) => {
+    const newState = {}
+    const adj1 = this.randomWord(words1)
+    const adj2 = this.randomWord(words2)
+    const n = this.randomWord(words3)
+    newState["insult"] =`${adj1} ${adj2} ${n}!`;
+    this.setState(newState)
+     console.log("cursemade", this.state.insult)
+  }
+
+  randomWord = (arr) => {
+    const word = arr[Math.round(Math.random(1) * arr.length-1)]
+    return word
+  }
+
   render() {
 
     const { open } = this.notOpen;
@@ -170,7 +197,7 @@ export default class EditGrudgeForm extends Component {
               name="email"
               value={this.state.email}
             />
-              <CurseGeneratorEdit   editFormStateInsult={this.state.insult} changeInsultState={this.changeInsultState} {...this.props}  />
+              <CurseGeneratorEdit   editFormStateInsult={this.state.insult} changeInsultState={this.changeInsultState} makeCurse={this.curse} {...this.props}  />
           </Form.Group>
 
 
@@ -221,12 +248,17 @@ export default class EditGrudgeForm extends Component {
               <Icon name="left chevron" /> Cancel
             </Form.Button>
             <Modal.Actions>
-              <GrudgeResolveModal  changeState={this.changeState}{...this.state} {...this.props}/>
+              <GrudgeResolveModal  makeCurse={this.curse} changeState={this.changeState}{...this.state} {...this.props}/>
             </Modal.Actions>
           </Modal>
+          <div>
           <Form.Button size="mini" onClick={this.checkFields}>
-            Save
+            Save Changes
           </Form.Button>
+          <Form.Button size="mini" onClick={this.cancelChanges}>
+            Cancel Changes
+          </Form.Button>
+          </div>
         </Form>
       </div>
     );

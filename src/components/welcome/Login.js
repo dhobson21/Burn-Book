@@ -27,7 +27,7 @@ export default class Login extends Component {
 
           this.props.setUser(user[0].id)
           //routing to dashboard
-          this.props.history.push("/")
+          this.props.history.push("/  ")
         }
         else window.alert("That password is incorrect")
 
