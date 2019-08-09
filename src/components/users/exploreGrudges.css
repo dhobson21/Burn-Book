@@ -1,5 +1,13 @@
+.user-container {
+  display: flex;
+  justify-content: space-around
+}
+
 .users {
   display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap
+  flex-direction: column;
+  justify-content: space- around;
 }
+
+
+

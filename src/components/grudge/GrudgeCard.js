@@ -39,20 +39,20 @@ export default class GrudgeCard extends Component {
     if  (this.props.grudge.userId === +sessionStorage.getItem("activeUser") &&
       !this.props.grudge.isResolved) {
       return (
-        <Card  className="card"  color= 'red'    centered raised key={this.props.grudge.id}>
-          <Card.Content>
-            <Card.Header>
-              <div className="card-header">
+        <Card  className="card"   color= 'red'    centered raised key={this.props.grudge.id}>
+          <Card.Content className="container">
+            <Card.Header  textAlign= "center">
+              <div  >
                 {this.props.grudge.enemyName}
                 <div className="icon">
                   {this.sharedGrudge(this.props.grudge)}
                 </div>
               </div>
-            </Card.Header>
-            <Card.Meta>{this.props.grudge.insult}</Card.Meta>
+            </Card.Header >
+            <Card.Meta textAlign='center'>{this.props.grudge.insult}</Card.Meta>
           </Card.Content>
-          <div className="img">
-          <Dimmer.Dimmable
+          <div className="crop">
+          <Dimmer.Dimmable className="img"
             key={`image-${this.props.grudge.id}`}
             as={Image}
             dimmed={active}
@@ -78,7 +78,7 @@ export default class GrudgeCard extends Component {
       this.props.grudge.isResolved
     ) {
       return (
-        <Card key={this.props.grudge.id}>
+        <Card className="card" key={this.props.grudge.id}>
           <Card.Content>
             <Card.Header >
               <div className="card-header">
@@ -90,7 +90,7 @@ export default class GrudgeCard extends Component {
             </Card.Header>
             <Card.Meta>{this.props.grudge.resolvedGrudges[0].compliment}</Card.Meta>
           </Card.Content>
-          <Dimmer.Dimmable circular
+          <Dimmer.Dimmable circular className = "grayscale"
             key={`image-${this.props.grudge.id}`}
             as={Image}
             dimmed={active}
@@ -103,7 +103,7 @@ export default class GrudgeCard extends Component {
               .map(image => image.url)}
           />
 
-          <Card.Content extra className="card-footer">
+          <Card.Content   textAlign="center" extra className="card-footer">
             GRUDGE RESOLVED
           </Card.Content>
         </Card>
@@ -119,7 +119,7 @@ export default class GrudgeCard extends Component {
       }))
      {
       return (
-        <Card key={this.props.grudge.id}>
+        <Card className="card" ey={this.props.grudge.id}>
           <Card.Content textAlign="center">
             <Card.Header textAlign="center">
              {this.props.grudge.enemyName}

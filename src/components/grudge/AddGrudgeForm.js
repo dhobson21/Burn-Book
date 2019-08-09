@@ -117,6 +117,7 @@ export default class AddGrudgeForm extends Component {
           </Form.Group>
         </Form.Group>
           <Form.TextArea
+            required
             label='What Happened:'
             options={options}
             placeholder='Something truly outrageous, no doubt'
@@ -125,6 +126,7 @@ export default class AddGrudgeForm extends Component {
             name="incident"
              />
           <Form.Select
+            required
             label="How Petty Am I Being?"
             options= {options}
             onChange= {this.handleSelectChange}

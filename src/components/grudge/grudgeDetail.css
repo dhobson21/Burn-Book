@@ -40,3 +40,5 @@ em {
   color: red;
   font-size: 46px;
 }
+
+.grayscale {-webkit-filter: grayscale(100%);filter: grayscale(100%);}

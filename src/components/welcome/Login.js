@@ -1,6 +1,16 @@
 import React, { Component } from 'react'
 import { Button, Container, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
 import "./login.css"
+import Background from '../welcome/burnbook.jpg';
+
+const sectionStyle = {
+  width: "100%",
+  height: "100%",
+  backgroundImage: `url(${Background})`,
+  backgroundPosition: 'center',
+  backgroundAttachment:'scroll'
+
+};
 export default class Login extends Component {
 
   state= {
@@ -35,12 +45,15 @@ export default class Login extends Component {
     .then(this.props.setUser(parseInt(sessionStorage.getItem("activeUser"))))
     //post
     //fetch
+
 }
 
   render() {
     return (
+      <section style={ sectionStyle }>
+
       <Container className="login_image">
-        <Header as='h1' color='red' textAlign='center'>
+        <Header as='h1' color='red' textAlign='center' className="logHead" >
                At this hour lie at my mercy all mine enemies
             </Header>
           <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
@@ -73,6 +86,7 @@ export default class Login extends Component {
         </Grid>
 
     </Container>
+      </section>
     )
   }
 }

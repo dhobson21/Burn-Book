@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Confirm } from 'semantic-ui-react'
 import APIManager from '../../modules/APIManager';
-const activeUser = +sessionStorage.getItem("activeUser")
+
 class ConfirmGrudgeJoin extends Component {
   state = {
     open: false,
@@ -23,7 +23,7 @@ class ConfirmGrudgeJoin extends Component {
    id: grudge.id
    }
     newState["grudgeId"]= grudge.id
-    newState.userId = activeUser
+    newState.userId = +sessionStorage.getItem("activeUser")
 
     this.props.addSharedGrudge(newState)
     this.updateGrudgeShare(trueShared )

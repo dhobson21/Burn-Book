@@ -7,7 +7,6 @@ import {
   Image,
   Modal,
   Grid,
-  Form
 } from "semantic-ui-react";
 import "./grudgeDetail.css";
 import ConfirmGrudgeJoin from "./../users/ConfirmGrudgeJoin"
@@ -128,6 +127,7 @@ export default class GrudgeDetailsModal extends Component {
               <Grid.Column>
                 <Modal.Content>
                   <Image
+
                     wrapped
                     size="medium"
                     floated="right"
@@ -335,7 +335,7 @@ export default class GrudgeDetailsModal extends Component {
                     open={open}
                     onCancel={this.handleCancel}
                     onConfirm={this.handleConfirm}
-                    content={!this.props.grudge.isResolved ? "Are you sure you want to delete an Unresolved grudge?" : "Think of something funny here"}
+                    content={!this.props.grudge.isResolved ? "Are you sure you want to delete an Unresolved grudge?" : ""}
                   />
                 </div>
               </Grid.Column>

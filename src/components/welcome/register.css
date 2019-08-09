@@ -1,0 +1,12 @@
+.regInput {
+  display: flex;
+  justify-content: space-around;
+  padding: 40px;
+}
+
+.loneItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 20px;
+}
