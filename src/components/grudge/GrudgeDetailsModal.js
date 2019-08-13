@@ -11,6 +11,8 @@ import {
 import "./grudgeDetail.css";
 import ConfirmGrudgeJoin from "./../users/ConfirmGrudgeJoin"
 import APIManager from "./../../modules/APIManager"
+import MailInsult from "./../email/MailInsult"
+import MailCompliment from "./../email/MailCompliment"
 
 
 export default class GrudgeDetailsModal extends Component {
@@ -120,7 +122,7 @@ export default class GrudgeDetailsModal extends Component {
             <Grid.Row>
               <Grid.Column verticalAlign="middle">
                 <Modal.Content>
-                  <Header as="h4">What did this motherfucker do? </Header>
+                  <Header as="h4">What did this jerk do? </Header>
                   {this.props.grudge.incident}
                 </Modal.Content>
               </Grid.Column>
@@ -143,9 +145,7 @@ export default class GrudgeDetailsModal extends Component {
                 <Header as="h4">Classy Insult for a rotten Person:</Header>
                 <Container fluid>
                   <em>"{this.props.grudge.insult}"</em>
-                  <Button size="tiny" floated="right">
-                    Escalate Things
-                  </Button>
+                  <MailInsult {...this.props} grudge={this.props.grudge} />
                 </Container>
               </Grid.Column>
             </Grid.Row>
@@ -311,7 +311,7 @@ export default class GrudgeDetailsModal extends Component {
 
   //if grudge belongs to +sessionStorage.getItem("activeUserr, and is resolved (past grudges), render this: DONE
   } else if (
-      this.props.grudge.isResolved === true && this.props.grudge.userId === +sessionStorage.getItem("activeUser")     ) {
+      this.props.grudge.isResolved === true && this.props.grudge.userId === +sessionStorage.getItem("activeUser")     ) { console.log("grudge", this.props.grudge)
       return (
         <Modal size='fullscreen'trigger={<Button primary>Details</Button>}>
           <Grid columns={4} divided padded textAlign="center">
@@ -370,7 +370,7 @@ export default class GrudgeDetailsModal extends Component {
                 <Header as="h4">What i've come to realize about {this.props.grudge.enemyName}: </Header>
                 {this.props.grudge.resolvedGrudges[0].compliment}
                 </Modal.Content>
-                <Button>Spread Goodwill</Button>
+               <MailCompliment {...this.props} grudge={this.props.grudge}/>
               </Grid.Column>
               </Grid.Row>
               </Grid>
