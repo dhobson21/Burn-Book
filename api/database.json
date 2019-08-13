@@ -13,27 +13,27 @@
       "userId": 3
     },
     {
-      "shared": false,
-      "enemyName": "Curt Cato",
+      "id": 2,
       "date": "2019-08-06",
+      "enemyName": "Curt Cato",
       "email": "Curt@gmail.com",
-      "insult": "spongy pox-marked bladder!",
       "incident": "Curt made fun of me for being from New York.... He also vaped in my face.",
-      "pettyLevel": 5,
-      "userId": 1,
+      "insult": "droning clapper-clawed ruffian!",
       "isResolved": false,
-      "id": 2
+      "pettyLevel": 5,
+      "shared": false,
+      "userId": 1
     },
     {
-      "shared": false,
       "enemyName": "Drew  Palazola",
       "date": "2019-08-04",
       "email": "",
       "insult": "surly dread-bolted scantling!",
       "incident": "Drew spiked a ping pong ball into my chest and laughed a little too hard about it.",
-      "pettyLevel": 3,
+      "pettyLevel": 9,
       "userId": 1,
-      "isResolved": false,
+      "isResolved": true,
+      "shared": false,
       "id": 3
     },
     {
@@ -95,6 +95,54 @@
       "userId": 2,
       "isResolved": false,
       "id": 8
+    },
+    {
+      "shared": false,
+      "enemyName": "Test",
+      "date": "2019-06-06",
+      "email": "steve@nss.com",
+      "insult": "",
+      "incident": "I don't like his attitude",
+      "pettyLevel": 9,
+      "userId": 2,
+      "isResolved": false,
+      "id": 10
+    },
+    {
+      "enemyName": "Biff",
+      "date": "1996-04-06",
+      "email": "MrsColins@school.com",
+      "insult": "vain eye-offending hempseed!",
+      "incident": "Took my lunch money in 2nd grade ",
+      "pettyLevel": 4,
+      "userId": 3,
+      "isResolved": true,
+      "shared": false,
+      "id": 11
+    },
+    {
+      "shared": false,
+      "enemyName": "Random Guy",
+      "date": "2019-07-30",
+      "email": "Ashley@nss.com",
+      "insult": "",
+      "incident": "Stepped on my shoe",
+      "pettyLevel": 7,
+      "userId": 4,
+      "isResolved": false,
+      "id": 12
+    },
+    {
+      "enemyName": "Scott Silveer",
+      "date": "2019-08-09",
+      "email": "scott@gmail.com",
+      "insult": "gnarling sheep-biting coxcomb!",
+      "incident": "Scott called me an asshole",
+      "pettyLevel": 3,
+      "userId": 1,
+      "isResolved": false,
+      "shared": false,
+      "id": 13
     }
   ],
   "images": [
@@ -146,6 +194,13 @@
       "grudgeId": 7,
       "date": "09/08/2019",
       "id": 1
+    },
+    {
+      "resolveReason": "I realized I was being an asshole",
+      "compliment": "Drew has nice eyes and a kind heart",
+      "grudgeId": 3,
+      "date": "09/08/2019",
+      "id": 2
     }
   ],
   "sharedGrudges": [],
