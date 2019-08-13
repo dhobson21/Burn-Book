@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Button, Container, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
+import {withRouter} from "react-router-dom"
 import "./login.css"
 import Background from '../welcome/burnbook.jpg';
 
@@ -11,10 +12,10 @@ const sectionStyle = {
   backgroundAttachment:'scroll'
 
 };
-export default class Login extends Component {
+ class Login extends Component {
 
   state= {
-    username: "",
+    email: "",
     password: ""
   }
 
@@ -26,7 +27,7 @@ export default class Login extends Component {
 
   handleChange = (event) => {
     //fetch
-    fetch(`http://localhost:5002/users?username=${this.state.username}`)
+    fetch(`http://localhost:5002/users?email=${this.state.email}`)
       .then(res => res.json())
       .then(user => {
         //check for matching
@@ -37,7 +38,7 @@ export default class Login extends Component {
 
           this.props.setUser(user[0].id)
           //routing to dashboard
-          this.props.history.push("/  ")
+          this.props.history.push("/")
         }
         else window.alert("That password is incorrect")
 
@@ -63,7 +64,7 @@ export default class Login extends Component {
             </Header>
             <Form size='large'>
               <Segment stacked>
-                <Form.Input fluid icon='user' iconPosition='left' placeholder='Username' id="username" onChange={this.handleFieldChange} />
+                <Form.Input fluid icon='mail' iconPosition='left' placeholder='Email' id="email" onChange={this.handleFieldChange} />
                 <Form.Input
                   fluid
                   icon='lock'
@@ -90,3 +91,5 @@ export default class Login extends Component {
     )
   }
 }
+
+export default withRouter(Login)
