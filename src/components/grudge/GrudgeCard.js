@@ -39,7 +39,7 @@ export default class GrudgeCard extends Component {
     if  (this.props.grudge.userId === +sessionStorage.getItem("activeUser") &&
       !this.props.grudge.isResolved) {
       return (
-        <Card  className="card"   color= 'red'    centered raised key={this.props.grudge.id}>
+        <Card    className= "sqr" color= 'red' style={{ 'width': 250, 'padding': 3, 'margin': 2, 'backgroundColor': '#eeeeee' }}   centered raised key={this.props.grudge.id}>
           <Card.Content className="container">
             <Card.Header  textAlign= "center">
               <div  >
@@ -49,7 +49,7 @@ export default class GrudgeCard extends Component {
                 </div>
               </div>
             </Card.Header >
-            <Card.Meta textAlign='center'>{this.props.grudge.insult}</Card.Meta>
+            <Card.Meta style={{'color': 'red'}} textAlign='center'>{this.props.grudge.insult}</Card.Meta>
           </Card.Content>
           <div className="crop">
           <Dimmer.Dimmable className="img"
@@ -65,9 +65,9 @@ export default class GrudgeCard extends Component {
               .map(image => image.url)}
           />
           </div>
-          <Card.Description>{this.props.grudge.incident}</Card.Description>
+          <Card.Description textAlign='center'>{this.props.grudge.incident}</Card.Description>
 
-          <Card.Content extra className="card-footer">
+          <Card.Content textAlign='center' extra className="card-footer">
             {this.grudgeDate()}
           </Card.Content>
         </Card>
@@ -78,7 +78,7 @@ export default class GrudgeCard extends Component {
       this.props.grudge.isResolved
     ) {
       return (
-        <Card className="card" key={this.props.grudge.id}>
+        <Card className="card" key={this.props.grudge.id} style={{ 'width': 250, 'padding': 3, 'margin': 2, }}>
           <Card.Content>
             <Card.Header >
               <div className="card-header">
@@ -119,7 +119,7 @@ export default class GrudgeCard extends Component {
       }))
      {
       return (
-        <Card className="card" ey={this.props.grudge.id}>
+        <Card className="card" key={this.props.grudge.id} style={{ 'width': 250, 'padding': 3, 'margin': 2, }}>
           <Card.Content textAlign="center">
             <Card.Header textAlign="center">
              {this.props.grudge.enemyName}

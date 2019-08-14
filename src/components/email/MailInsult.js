@@ -17,11 +17,7 @@ export default class MailInsult extends Component {
             const template_id = "insult_email";
 
 
-      const emailObj = {
-            enemyEmail:grudge.email,
-            enemyName: grudge.enemyName,
-            insult: grudge.insult
-      }
+
 
 
       // this.setState(emailObj)

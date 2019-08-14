@@ -23,8 +23,10 @@ export default class ExploreGrudges extends Component {
 
 
 componentDidMount(){
+console.log("component mounnted")
+console.log(this.props.expandGrudges)
 
-  this.setState({users: this.props.users})
+  // this.setState({users: this.props.users})
   let exploreGrudges= []
  this.props.expandGrudges.forEach(grudge => !grudge.shared ? exploreGrudges.push(grudge) : {})
 
@@ -43,21 +45,6 @@ this.setState({expandGrudges: exploreGrudges})
 
 }
 
-findAvg = (user) => {
-  const levels = []
-  user.grudges.forEach( grudge => levels.push(grudge.pettyLevel)
-
-  )
-}
-
-
-filterSharedGrudges(){
-
-  this.props.expandGrudges.forEach(grudge => {
-    if (!grudge.shared || (grudge.sharedGrudges.for)) {return grudge}
-  }
-  )
-}
 
 
   show = () => this.setState({ open: true })
@@ -72,7 +59,7 @@ filterSharedGrudges(){
 
           <div className="user-container"  >
           {
-        this.state.users.map(user =>
+        this.props.users.map(user =>
 
           <div key={user.id} className="users">
           <Header size="large" textAlign="center">{user.username}'s Grudges</Header>
@@ -88,9 +75,9 @@ filterSharedGrudges(){
                 >
           <Slider>
           {
-              this.state.expandGrudges.filter(grudge => grudge.userId ===user.id).map(grudge=>
+              this.props.expandGrudges.filter(grudge => grudge.userId ===user.id).map(grudge=>
 
-              <CustomCardSlide index={user.grudges.indexOf(grudge)} key={grudge.id}>  <GrudgeCard  grudge={grudge} images ={this.props.images} {...this.props}/></CustomCardSlide>
+              <CustomCardSlide  index={user.grudges.indexOf(grudge)} key={grudge.id}>  <GrudgeCard  grudge={grudge} images ={this.props.images} {...this.props}/></CustomCardSlide>
 
 
             )

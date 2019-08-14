@@ -33,38 +33,7 @@ export default class GrudgeDetailsModal extends Component {
 
 
 
-  createSharedGrudge = (grudge) => {
-    const newState = {}
-    const trueShared = {shared: true,
-     enemyName: grudge.enemyName,
-    date: grudge.date,
-    email: grudge.email,
-    insult: grudge.insult,
-    incident: grudge.incident,
-    pettyLevel: grudge.pettyLevel,
-    userId: grudge.userId,
-    isResolved: grudge.isResolved,
-    id: grudge.id
-    }
-     newState["grudgeId"]= grudge.id
-     newState.userId = +sessionStorage.getItem("activeUser")
 
-     this.props.addSharedGrudge(newState)
-     this.updateGrudgeShare(trueShared )
-     .then(() => this.props.getAndUpdateState())
-     .then(() => this.props.history.push("/explore"))
-
-   }
-   updateGrudgeShare = (obj) => {
-    let newObj={}
-    return APIManager.put("grudges", obj)
-    .then(() => APIManager.getAll("sharedGrudges"))
-    .then(item => {
-      newObj["sharedGrudges"] = item
-      this.setState(newObj)
-    })
-
-  }
 
   //functions to show Confirm box upon clicking button to delete grudge
   show = () => this.setState({ open: true });
@@ -75,6 +44,12 @@ export default class GrudgeDetailsModal extends Component {
     this.setState({ open: false });
     this.props.deleteGrudge(this.props.grudge.id);
   };
+  handleJoin = () => {
+    this.setState({ open: false })
+    console.log("This button works")
+    // this.props.createSharedGrudge(grudge)
+    // this.props.history.push("/explore")
+  }
   //if user decides to cancel delete on confirm, confirm closed and user brought back to details Modal
   handleCancel = () => this.setState({ result: "cancelled", open: false });
 
@@ -293,9 +268,16 @@ export default class GrudgeDetailsModal extends Component {
 
               </Container>
               <Container >
+                    {/* <ConfirmGrudgeJoin grudge={this.props.grudge} {...this.props} /> */}
+                    <Button onClick={this.show}>Join Grudge</Button>
+                    <Confirm
+                    open={this.state.open}
+                    onCancel={this.handleCancel}
+                    onConfirm={this.handleJoin}
+                    content= {`Are you sure you want to join ${this.props.grudge.user.username} in a grudge against ${this.props.grudge.enemyName}`}
+                  />
 
 
-                <ConfirmGrudgeJoin  createSharedGrudge={this.createSharedGrudge} floated="right" className="join"  hide={this.hide} grudge={this.props.grudge}{...this.props}/>
 
               </Container>
 
@@ -311,7 +293,7 @@ export default class GrudgeDetailsModal extends Component {
 
   //if grudge belongs to +sessionStorage.getItem("activeUserr, and is resolved (past grudges), render this: DONE
   } else if (
-      this.props.grudge.isResolved === true && this.props.grudge.userId === +sessionStorage.getItem("activeUser")     ) { console.log("grudge", this.props.grudge)
+      this.props.grudge.isResolved === true && this.props.grudge.userId === +sessionStorage.getItem("activeUser")     ) {
       return (
         <Modal size='fullscreen'trigger={<Button primary>Details</Button>}>
           <Grid columns={4} divided padded textAlign="center">

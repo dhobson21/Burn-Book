@@ -65,9 +65,9 @@ class NavBar extends Component {
           </Menu.Menu>
         </Menu>
 
-        <Segment>
+        {/* <Segment>
           <img src='https://react.semantic-ui.com/images/wireframe/media-paragraph.png' alt="this" />
-        </Segment>
+        </Segment> */}
       </div>
     )
   }

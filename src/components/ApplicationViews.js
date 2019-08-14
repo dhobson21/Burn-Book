@@ -92,6 +92,8 @@ addSharedGrudge = ( item) => {
       this.setState(newSharedObj)
     })
 
+    console.log("check shared grudges state", this.state)
+
 
 
 }
@@ -161,6 +163,17 @@ getAndUpdateState = () => {
 
 }
 
+
+updateGrudgeShare = (obj) => {
+  let newObj={}
+  return APIManager.put("grudges", obj)
+  .then(() => APIManager.getAll("sharedGrudges"))
+  .then(item => {
+    newObj["sharedGrudges"] = item
+    this.setState(newObj)
+  })
+
+}
 
 deleteItem = (name, id) => {
 
@@ -269,6 +282,7 @@ deleteGrudge = ( id) => {
 
             <ExploreGrudges
               users={this.state.otherUsers}
+              updateGrudgeShare={this.updateGrudgeShare}
               expandGrudges={this.state.expandGrudges.filter(grudge => grudge.userId!==+sessionStorage.getItem("activeUser")).filter(grudge=> !grudge.isResolved)}
               images={this.state.images}
               updateGrudge= {this.updateGrudge}

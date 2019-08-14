@@ -58,7 +58,7 @@ render() {
   // {this.getAllGrudges()}
   return (
       <React.Fragment>
-        <Header size="huge" textAlign="center">My Active Grudges</Header>
+        <Header size="huge" textAlign="center" style={{'paddingBottom': '100px', 'paddingTop': '50px', 'fontSize': '40px', 'fontFamily': 'Monaco'}}>My Active Grudges</Header>
         <div className="grudges">
         {
            this.props.expandGrudges.filter(grudge => grudge.userId===+sessionStorage.getItem("activeUser")).filter(grudge => !grudge.isResolved).map(grudge => <GrudgeCard className="dash-card" key={grudge.id}  grudge={grudge} deleteGrudge={this.deleteGrudge} images={this.props.images} {...this.props}/>)
