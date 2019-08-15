@@ -1,7 +1,7 @@
 {
   "grudges": [
     {
-      "shared": false,
+      "shared": true,
       "enemyName": "Dustin H",
       "date": "2019-08-07",
       "email": "dhobson21@gmail.com",
@@ -37,7 +37,7 @@
       "id": 4
     },
     {
-      "shared": false,
+      "shared": true,
       "enemyName": "Blake Davis",
       "date": "2019-08-01",
       "email": "Blake@gmail.com",
@@ -61,18 +61,6 @@
       "id": 6
     },
     {
-      "enemyName": "Mrs.Collins--My 1st grade teacher",
-      "date": "1996-04-06",
-      "email": "MrsColins@school.com",
-      "insult": "vain eye-offending hempseed!",
-      "incident": "She told me I wasn't allowed to pull all the beans out of the bean bag...I did it anyway ",
-      "pettyLevel": 2,
-      "userId": 1,
-      "isResolved": true,
-      "shared": false,
-      "id": 7
-    },
-    {
       "shared": false,
       "enemyName": "Ashley Canino",
       "date": "2019-07-30",
@@ -85,7 +73,7 @@
       "id": 8
     },
     {
-      "shared": false,
+      "shared": true,
       "enemyName": "Test",
       "date": "2019-06-06",
       "email": "steve@nss.com",
@@ -97,6 +85,7 @@
       "id": 10
     },
     {
+      "shared": true,
       "enemyName": "Biff",
       "date": "1996-04-06",
       "email": "MrsColins@school.com",
@@ -104,8 +93,7 @@
       "incident": "Took my lunch money in 2nd grade ",
       "pettyLevel": 4,
       "userId": 3,
-      "isResolved": true,
-      "shared": false,
+      "isResolved": false,
       "id": 11
     },
     {
@@ -121,26 +109,26 @@
       "id": 12
     },
     {
-      "id": 13,
+      "enemyName": "Scott Silver",
       "date": "2019-08-09",
-      "enemyName": "Scott Silveer",
       "email": "scott@gmail.com",
-      "incident": "Scott called me an asshole",
       "insult": "gnarling sheep-biting coxcomb!",
-      "isResolved": false,
+      "incident": "Scott called me an asshole",
       "pettyLevel": 7,
+      "userId": 1,
+      "isResolved": true,
       "shared": false,
-      "userId": 1
+      "id": 13
     },
     {
-      "enemyName": "Test",
+      "enemyName": "test",
       "date": "2019-01-01",
-      "email": "test",
-      "insult": "unmuzzled pox-marked gull-catcher!",
-      "incident": "He did something",
+      "email": "test@test.com",
+      "insult": "warped earth-vexing pumpion!",
+      "incident": "He stepped on me",
       "pettyLevel": 5,
       "userId": 1,
-      "isResolved": false,
+      "isResolved": true,
       "shared": false,
       "id": 14
     }
@@ -189,21 +177,49 @@
   ],
   "resolvedGrudges": [
     {
-      "resolveReason": "It was a long time ago",
-      "compliment": "Mrs. Collins taught me to read.",
-      "grudgeId": 7,
-      "date": "09/08/2019",
+      "resolveReason": "I was wrong",
+      "compliment": "he is nice",
+      "grudgeId": 3,
+      "date": "14/08/2019",
       "id": 1
     },
     {
-      "resolveReason": "I realized I was being an asshole",
-      "compliment": "Drew has nice eyes and a kind heart",
-      "grudgeId": 3,
-      "date": "09/08/2019",
+      "resolveReason": "I was wrong",
+      "compliment": "Nice",
+      "grudgeId": 14,
+      "date": "14/08/2019",
       "id": 2
+    },
+    {
+      "resolveReason": "I was grumpy that day",
+      "compliment": "He is sweet",
+      "grudgeId": 13,
+      "date": "14/08/2019",
+      "id": 3
     }
   ],
-  "sharedGrudges": [],
+  "sharedGrudges": [
+    {
+      "userId": 1,
+      "grudgeId": 1,
+      "id": 1
+    },
+    {
+      "userId": 1,
+      "grudgeId": 10,
+      "id": 2
+    },
+    {
+      "userId": 1,
+      "grudgeId": 5,
+      "id": 3
+    },
+    {
+      "userId": 1,
+      "grudgeId": 11,
+      "id": 4
+    }
+  ],
   "users": [
     {
       "id": 1,

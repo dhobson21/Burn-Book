@@ -7,7 +7,7 @@ export default class ResolvedGrudgeForm extends Component {
   state = {
     resolveReason: "",
     compliment: "",
-    grudgeId: +this.props.grudge.id,
+    grudgeId: +this.props.id,
     date: moment().format("DD/MM/YYYY")
 
 
@@ -59,6 +59,7 @@ resolveGrudge = () => {
 
 }
   render() {
+    console.log("rgP", this.props)
     return (
     <Form>
       <Header textAlign="center"  as="h3">Resolve Grudge</Header>

@@ -119,7 +119,7 @@ export default class GrudgeCard extends Component {
       }))
      {
       return (
-        <Card className="card" key={this.props.grudge.id} style={{ 'width': 250, 'padding': 3, 'margin': 2, }}>
+        <Card className="card" key={this.props.grudge.id} style={{ 'width': 250, 'height': 300, 'padding': 3, 'margin': 2, 'backgroundColor': '#eeeeee' }}>
           <Card.Content textAlign="center">
             <Card.Header textAlign="center">
              {this.props.grudge.enemyName}

@@ -4,7 +4,7 @@ import { CarouselProvider, Slider, ButtonBack, ButtonNext} from "pure-react-caro
 
 import "./exploreGrudges.css"
 import CustomCardSlide from "./CustomCardSlide"
-import GrudgeCard from "../grudge/GrudgeCard"
+import ExploreGrudgeCard from "./ExploreGrudgeCard"
 import 'pure-react-carousel/dist/react-carousel.es.css';
 
 
@@ -24,7 +24,7 @@ export default class ExploreGrudges extends Component {
 
 componentDidMount(){
 console.log("component mounnted")
-console.log(this.props.expandGrudges)
+console.log(this.props)
 
   // this.setState({users: this.props.users})
   let exploreGrudges= []
@@ -65,19 +65,23 @@ this.setState({expandGrudges: exploreGrudges})
           <Header size="large" textAlign="center">{user.username}'s Grudges</Header>
 
 
-
+          {/* {this.props.expandGrudges.filter(grudge => grudge.userId ===user.id).map(grudge=>
+            <ExploreGrudgeCard key={grudge.id} grudge={grudge} images ={this.props.images} {...this.props}/>
+          )
+          } */}
 
           <CarouselProvider
             naturalSlideWidth={1}
             naturalSlideHeight={1}
-            totalSlides={user.grudges.length}
-            style={{ width: "250px", height: "auto"  }}
+            totalSlides={this.props.expandGrudges.filter(grudge => grudge.userId ===user.id).length}
+            style={{ width: 300, height: "auto"  }}
                 >
           <Slider>
           {
               this.props.expandGrudges.filter(grudge => grudge.userId ===user.id).map(grudge=>
 
-              <CustomCardSlide  index={user.grudges.indexOf(grudge)} key={grudge.id}>  <GrudgeCard  grudge={grudge} images ={this.props.images} {...this.props}/></CustomCardSlide>
+              <CustomCardSlide  style={{ 'width': 250, 'height': 300,  'padding': 3, 'margin': 2, }}
+              index={user.grudges.indexOf(grudge)} key={grudge.id}>  <ExploreGrudgeCard  grudge={grudge} images ={this.props.images} {...this.props}/></CustomCardSlide>
 
 
             )

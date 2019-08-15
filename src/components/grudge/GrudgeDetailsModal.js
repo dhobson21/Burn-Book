@@ -54,7 +54,7 @@ export default class GrudgeDetailsModal extends Component {
   handleCancel = () => this.setState({ result: "cancelled", open: false });
 
   render() {
-    const { open } = this.state;
+    const { open } = this.state.open
     //If grudge belongs to active user, is not resolved (active grudges), and is not shared render this: DONE
     if (
       ((!this.props.grudge.isResolved) &&
@@ -248,7 +248,7 @@ export default class GrudgeDetailsModal extends Component {
             </Grid.Column>
             <Grid.Column>
               <Modal.Content>
-                <Image
+                {/* <Image
                   wrapped
                   size="medium"
                   floated="right"
@@ -257,7 +257,7 @@ export default class GrudgeDetailsModal extends Component {
                       image => image.id === this.props.grudge.pettyLevel
                     )
                     .map(image => image.url)}
-                />
+                /> */}
               </Modal.Content>
             </Grid.Column>
             <Grid.Column stretched>
@@ -267,19 +267,13 @@ export default class GrudgeDetailsModal extends Component {
 
 
               </Container>
-              <Container >
+                   <ConfirmGrudgeJoin handleJoin={this.handleJoin} grudge={this.props.grudge} />
+
                     {/* <ConfirmGrudgeJoin grudge={this.props.grudge} {...this.props} /> */}
-                    <Button onClick={this.show}>Join Grudge</Button>
-                    <Confirm
-                    open={this.state.open}
-                    onCancel={this.handleCancel}
-                    onConfirm={this.handleJoin}
-                    content= {`Are you sure you want to join ${this.props.grudge.user.username} in a grudge against ${this.props.grudge.enemyName}`}
-                  />
 
 
 
-              </Container>
+
 
             </Grid.Column>
           </Grid.Row>

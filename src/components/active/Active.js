@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import "./dash.css"
-import GrudgeCard from "../grudge/GrudgeCard"
+import "./active.css"
+import ActiveGrudgeCard from "./ActiveGrudgeCard"
 import {Header} from "semantic-ui-react"
 import APIManager from "../../modules/APIManager"
 
 
-export default class Dash extends Component {
+export default class Active extends Component {
   state = {
     expandGrudges: [],
     images:[],
@@ -61,7 +61,7 @@ render() {
         <Header size="huge" textAlign="center" style={{'paddingBottom': '100px', 'paddingTop': '50px', 'fontSize': '40px', 'fontFamily': 'Monaco'}}>My Active Grudges</Header>
         <div className="grudges">
         {
-           this.props.expandGrudges.filter(grudge => grudge.userId===+sessionStorage.getItem("activeUser")).filter(grudge => !grudge.isResolved).map(grudge => <GrudgeCard className="dash-card" key={grudge.id}  grudge={grudge} deleteGrudge={this.deleteGrudge} images={this.props.images} {...this.props}/>)
+           this.props.expandGrudges.filter(grudge => !grudge.isResolved).map(grudge => <ActiveGrudgeCard className="dash-card" key={grudge.id}  grudge={grudge} deleteGrudge={this.deleteGrudge} images={this.props.images} {...this.props}/>)
 
         }
 

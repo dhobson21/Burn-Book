@@ -9,7 +9,8 @@ const sectionStyle = {
   height: "100%",
   backgroundImage: `url(${Background})`,
   backgroundPosition: 'center',
-  backgroundAttachment:'scroll'
+  backgroundAttachment:'scroll',
+  position: 'relative'
 
 };
  class Login extends Component {
@@ -53,11 +54,11 @@ const sectionStyle = {
     return (
       <section style={ sectionStyle }>
 
-      <Container className="login_image">
-        <Header as='h1' color='red' textAlign='center' className="logHead" >
-               At this hour lie at my mercy all mine enemies
+      <Container className="loginContainer" style={{'position': 'relative'}} >
+        <Header  as='h1' color='red' textAlign='center' className="logHead" style={{'fontSize': 50, 'fontFamily': 'Brush Script MT, cursive', 'position': 'absolute', 'top': 100, 'left': 200}} >
+               "At this hour lie at my mercy all mine enemies"
             </Header>
-          <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+          <Grid textAlign='center' style={{ height: '100vh', }} verticalAlign='middle'>
           <Grid.Column style={{ maxWidth: 450 }}>
             <Header as='h2' color='red' textAlign='center'>
                Log-in to your account

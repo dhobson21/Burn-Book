@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import GrudgeCard from "./GrudgeCard"
+import PastGrudgeCard from "./PastGrudgeCard"
 import {Header} from "semantic-ui-react"
-import APIManager from "../../modules/APIManager"
+import APIManager from "./../../modules/APIManager"
 
 export default class PastGrudges extends Component {
   state = {
@@ -23,7 +23,7 @@ APIManager.get("grudges", "?_expand=user&_embed=resolvedGrudges&_embed=sharedGru
       <Header size="huge" textAlign="center">My Past Grudges</Header>
       <div className="grudges">
       {
-        this.props.expandGrudges.filter(grudge => (grudge.userId === +sessionStorage.getItem("activeUser"))).map(grudge => <GrudgeCard deleteGrudge={this.props.deleteGrudge} key={grudge.id}  grudge={grudge} images={this.props.images} {...this.props} />
+        this.props.resolvedGrudges.filter(grudge => grudge.userId === +sessionStorage.getItem("activeUser")).filter(grudge => grudge.isResolved).map(grudge => <PastGrudgeCard deleteGrudge={this.props.deleteGrudge} key={grudge.id}  grudge={grudge} images={this.props.images} {...this.props} />
 
         )
       }
