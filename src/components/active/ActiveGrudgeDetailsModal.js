@@ -172,7 +172,6 @@ export default class ActiveGrudgeDetailsModal extends Component {
                 <Header as="h4">{this.props.grudge.user.username} thinks {this.props.grudge.enemyName} is a:</Header>
                 <Container fluid>
                   <b>"{this.props.grudge.insult}"</b>
-                  <MailInsult {...this.props} grudge={this.props.grudge} />
                 </Container>
               </Grid.Column>
             </Grid.Row>
