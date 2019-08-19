@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, Modal, Icon, Header} from "semantic-ui-react";
+import { Form, Button, Modal, Icon, Header} from "semantic-ui-react";
 import APIManager from "../../modules/APIManager";
 import GrudgeResolveModal from "./GrudgeResolveModal";
 import CurseGeneratorEdit from "./../curseGenerator/CurseGeneratorEdit"
@@ -221,7 +221,7 @@ export default class EditGrudgeForm extends Component {
           />
           {/* <GrudgeResolveCheckbox  /> */}
 
-          <Modal
+          <Modal style={{'backgroundColor': '#e34234'}}
             open={open}
             onClose={this.close}
             size="mini"
@@ -235,22 +235,23 @@ export default class EditGrudgeForm extends Component {
               />
             }
           >
-            <Modal.Header>Resolve Grudge</Modal.Header>
-            <Modal.Content>
+            <Modal.Header  style={{'backgroundColor': '#e34234', 'textAlign': 'center'}} >Resolve Grudge</Modal.Header>
+            <Modal.Content style={{'backgroundColor': '#e34234'}}>
               <p>Are you sure you're ready to be the bigger person?</p>
             </Modal.Content>
 
-            <Form.Button
-              floated="left"
+            <Modal.Actions style={{'backgroundColor': '#e34234'}}>
+            <Button
+              floated='left'
+              color='grey'
               onClick={() => {
                 this.close();
               }}
-              negative
+
             >
               <Icon name="left chevron" /> Cancel
-            </Form.Button>
-            <Modal.Actions>
-              <GrudgeResolveModal  makeCurse={this.curse} changeState={this.changeState}{...this.state} {...this.props}/>
+            </Button>
+              <GrudgeResolveModal  grudge={this.state}  makeCurse={this.curse} changeState={this.changeState}{...this.state} {...this.props}/>
             </Modal.Actions>
           </Modal>
           <div style={{'display': 'flex', 'flexDirection': 'row', 'justifyContent':  'center'}}>
