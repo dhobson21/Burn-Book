@@ -6,9 +6,16 @@
 .grudges {
   background-color: #292930;
   display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
-  margin: 0px;
+  padding-right: 85px;
+  padding-left: 100px;
+  padding-bottom: 50px;
+  min-height: 405px
+
+
+
 
 }
 

@@ -36,7 +36,7 @@ class ConfirmGrudgeJoin extends Component {
 
     this.props.updateGrudge(grudgeObj)
     .then(() => this.props.addSharedGrudge(sharedGrudgeObj))
-    .then (this.props.getAndUpdateState())
+    .then (() => this.props.getAndUpdateState())
 
     .then(() => this.props.history.push("/explore"))
   }

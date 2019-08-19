@@ -35,7 +35,7 @@ export default class ActiveGrudgeCard extends Component {
         return (
 
 
-          <Card     color= 'red' style={{ 'width': 250  , 'padding': 3,  'marginTop': 100, 'marginBottom': 50, 'margiRight': 100, 'backgroundColor': '#e34234' }}   centered raised key={this.props.grudge.id}>
+          <Card     className='child' color= 'red' style={{ 'width': 250, 'padding': 2, 'marginRight': 25, 'marginLeft': 25, 'marginTop': 50,  'backgroundColor': '#e34234' }}    centered raised key={this.props.grudge.id}>
             <Card.Content className="container">
               <Card.Header  textAlign= "center">
                 <div >
@@ -60,7 +60,7 @@ export default class ActiveGrudgeCard extends Component {
                 .map(image => image.url)}
             />
             </div>
-            <Card.Description textAlign='center'>{this.props.grudge.incident}</Card.Description>
+            <Card.Description  textAlign='center'>Pettiness Level: {this.props.grudge.pettyLevel}</Card.Description>
 
             <Card.Content textAlign='center' extra className="card-footer">
               {this.grudgeDate()}
@@ -71,7 +71,7 @@ export default class ActiveGrudgeCard extends Component {
       } else {
         return (
 
-          <Card      className= "sqr" color= 'red'  style={{ 'width': 250, 'padding': 3, 'marginRight': 100, 'marginTop': 100, 'marginBottom': 50, 'backgroundColor': '#e25822' }}   centered raised key={this.props.grudge.id}>
+          <Card     className='child' color= 'red'  style={{ 'width': 250, 'padding': 2, 'marginRight': 25, 'marginLeft': 25, 'marginTop': 50,  'backgroundColor': '#e25822' }}   centered raised key={this.props.grudge.id}>
             <Card.Content className="container">
               <Card.Header  textAlign= "center">
                 <div >
@@ -96,9 +96,9 @@ export default class ActiveGrudgeCard extends Component {
                 .map(image => image.url)}
             />
             </div>
-            <Card.Description textAlign='center'>{this.props.grudge.incident}</Card.Description>
+            <Card.Description  textAlign='center'>Pettiness Level: {this.props.grudge.pettyLevel}</Card.Description>
 
-            <Card.Content textAlign='center' extra className="card-footer">
+            <Card.Content textAlign='center' >
               {this.grudgeDate()}
             </Card.Content>
           </Card>

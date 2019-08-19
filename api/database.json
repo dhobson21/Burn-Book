@@ -6,7 +6,7 @@
       "date": "2019-08-07",
       "email": "dhobson21@gmail.com",
       "insult": "lumpish rough-hewn flax-wench!",
-      "incident": "He spilled his drink like an absolute idiot ",
+      "incident": "He spilled his drink like an absolute idiot and ruined the new carpet at the NSS hackery ",
       "pettyLevel": 6,
       "userId": 3,
       "isResolved": false,
@@ -61,7 +61,7 @@
       "id": 6
     },
     {
-      "shared": false,
+      "shared": true,
       "enemyName": "Ashley Canino",
       "date": "2019-07-30",
       "email": "Ashley@nss.com",
@@ -70,7 +70,7 @@
       "pettyLevel": 5,
       "userId": 2,
       "isResolved": false,
-      "id": 8
+      "id": 17
     },
     {
       "shared": false,
@@ -128,7 +128,7 @@
       "incident": "He called me the wrong first name 3 times in the span of 45 seconds",
       "pettyLevel": 2,
       "userId": 1,
-      "isResolved": false,
+      "isResolved": true,
       "shared": false,
       "id": 14
     },
@@ -155,6 +155,114 @@
       "isResolved": true,
       "shared": false,
       "id": 16
+    },
+    {
+      "id": 8,
+      "date": "2019-05-20",
+      "enemyName": "Alex Rumsey",
+      "email": "AlexR@gmail.com",
+      "incident": "Alex persistently disrespects me for being a 30 year old man and doesn't respect the wisdom and insight that comes with being 3 whole years older.",
+      "insult": "greasy fen-sucked ruffian!",
+      "isResolved": false,
+      "pettyLevel": 8,
+      "shared": false,
+      "userId": 1
+    },
+    {
+      "id": 18,
+      "date": "2019-08-08",
+      "enemyName": "Scott Silver",
+      "email": "Scott@gmail.com",
+      "incident": "Scott cussed at me in front of everyone and besmirched my good name.",
+      "insult": "",
+      "isResolved": false,
+      "pettyLevel": 7,
+      "shared": false,
+      "userId": 1
+    },
+    {
+      "shared": true,
+      "enemyName": "Jon Wark",
+      "date": "2019-08-05",
+      "email": "Jwark@nss.com",
+      "insult": "queasy raw-boned scullion!",
+      "incident": "Jon made us move to a building without air conditioning",
+      "pettyLevel": 3,
+      "userId": 5,
+      "isResolved": false,
+      "id": 19
+    },
+    {
+      "enemyName": "Jeremiah Vasquez",
+      "date": "2019-07-23",
+      "email": "JVasquez@nss.com",
+      "insult": "mangled swag-bellied baggage!",
+      "incident": "Jeremiah beat me at whatever that game is that we play during lunch. He was quite rude about it and taunted me for the rest of the day",
+      "pettyLevel": 7,
+      "userId": 5,
+      "isResolved": false,
+      "shared": false,
+      "id": 20
+    },
+    {
+      "enemyName": "Martin Skerelli",
+      "date": "2018-07-01",
+      "email": "MS@MS.com",
+      "insult": "fobbing fat-kidneyed rampallion!",
+      "incident": "He has a very punchable face.",
+      "pettyLevel": 3,
+      "userId": 6,
+      "isResolved": false,
+      "shared": false,
+      "id": 21
+    },
+    {
+      "enemyName": "Mark Zuckerburg",
+      "date": "2009-05-01",
+      "email": "mZuch@facebook.com",
+      "insult": "knavish sheep-biting foot-licker!",
+      "incident": "Mark created a dumb social media app that is way too positive and connects people TOO well.",
+      "pettyLevel": 5,
+      "userId": 6,
+      "isResolved": false,
+      "shared": false,
+      "id": 22
+    },
+    {
+      "enemyName": "Tom Petty",
+      "date": "1982-07-01",
+      "email": "Tpetty@tompetty.com",
+      "insult": "dankish full-gorged egg-shell!",
+      "incident": "Tom thinks he has a monopoly on having the word 'petty' in your name. He wasn't even a petty person....Also, Rest in Peace",
+      "pettyLevel": 4,
+      "userId": 7,
+      "isResolved": false,
+      "shared": false,
+      "id": 23
+    },
+    {
+      "enemyName": "The Mailman",
+      "date": "1998-04-01",
+      "email": "mailguy@mail.us",
+      "insult": "loggerheaded toad-spotted pumpion!",
+      "incident": "He ruined my mail when he forced it through the mail slot that was clogged with hot tar because of a trap i set for the WetBandits who were trying to break into my house",
+      "pettyLevel": 2,
+      "userId": 7,
+      "isResolved": false,
+      "shared": false,
+      "id": 24
+    },
+    {
+      "id": 25,
+      "date": "2019-06-05",
+      "enemyName": "Joy Ittycheriah",
+      "email": "joy@gmail.com",
+      "incident": "Joy kept asking questions for 25 straight minutes during a lecture and it caused us to stay later after school.....I was late to Dave and Busters.",
+      "insult": "cockered mad-bread foot-licker!",
+      "isResolved": false,
+      "pettyLevel": 10,
+      "shared": false,
+      "userId": 1
     }
   ],
   "images": [
@@ -176,7 +284,7 @@
     },
     {
       "id": 5,
-      "url": "https://i.dailymail.co.uk/i/pix/2015/11/12/05/2E5D46DB00000578-3314864-image-a-112_1447305421906.jpg?w=1200-h=800"
+      "url": "https://static.tvtropes.org/pmwiki/pub/images/baratheon_joffrey_2675.jpg?w=1200-h=800"
     },
     {
       "id": 6,
@@ -192,11 +300,11 @@
     },
     {
       "id": 9,
-      "url": "https://starschanges.com/wp-content/uploads/2016/08/alex-jones-height-weight-age.jpg?w=1800-h=800"
+      "url": "https://starschanges.com/wp-content/uploads/2016/08/alex-jones-height-weight-age.jpg?w=1200-h=800"
     },
     {
       "id": 10,
-      "url": ""
+      "url":"http://media4.s-nbcnews.com/j/newscms/2014_38/676051/140919-roger-goodell-nfl-1523_6e1f530afa5e14105aca241ffa1485c5.nbcnews-fp-1200-800.jpg"
     }
   ],
   "resolvedGrudges": [
@@ -220,6 +328,13 @@
       "grudgeId": 16,
       "date": "18/08/2019",
       "id": 5
+    },
+    {
+      "resolveReason": "I was wrong ",
+      "compliment": "I was wrong",
+      "grudgeId": 14,
+      "date": "19/08/2019",
+      "id": 6
     }
   ],
   "sharedGrudges": [
@@ -232,6 +347,16 @@
       "userId": 1,
       "grudgeId": 4,
       "id": 2
+    },
+    {
+      "userId": 1,
+      "grudgeId": 17,
+      "id": 3
+    },
+    {
+      "userId": 1,
+      "grudgeId": 19,
+      "id": 4
     }
   ],
   "users": [
@@ -266,6 +391,33 @@
       "password": "password123",
       "email": "bdog@@gmail.com",
       "id": 4
+    },
+    {
+      "firstname": "Joe",
+      "lastname": "Shepherd",
+      "username": "Jshep1",
+      "password": "password123",
+      "email": "jshep1@nss.com",
+      "terms": "",
+      "id": 5
+    },
+    {
+      "firstname": "Test",
+      "lastname": "User",
+      "username": "testUser",
+      "password": "password123",
+      "email": "testUser@gmail.com",
+      "terms": "",
+      "id": 6
+    },
+    {
+      "firstname": "Petty",
+      "lastname": "Guy",
+      "username": "PettyGuy11",
+      "password": "passwrod123",
+      "email": "pettyguy@gmail.com",
+      "terms": "",
+      "id": 7
     }
   ]
 }

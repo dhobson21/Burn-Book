@@ -1,6 +1,7 @@
 .user-container {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
   background-color: #292930;
   margin: 0px;
 }

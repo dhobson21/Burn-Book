@@ -171,7 +171,6 @@ updateItem = (name, editedObject) => {
       )
       )
       .then(item => {
-        newObj[name] = item
         this.setState(newObj)
       })
       .then(()=> {
@@ -372,7 +371,7 @@ deleteGrudge = ( id) => {
             if(this.isAuthenticated()) {
 
 
-            return <PastGrudges  resolvedGrudges={this.state.allMyGrudges.filter(grudge => grudge.isResolved===true)} images={this.state.images} {...props} deleteGrudge={this.deleteGrudge} />
+            return <PastGrudges  getAndUpdateState = {this.getAndUpdateState} resolvedGrudges={this.state.allMyGrudges.filter(grudge => grudge.isResolved===true)} images={this.state.images} {...props} />
             }
             else  {
               return <Redirect to="/login" />

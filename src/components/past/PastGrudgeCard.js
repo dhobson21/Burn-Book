@@ -31,17 +31,15 @@ export default class PastGrudgeCard extends Component {
       </div>
     )
     return (
-      <Card  key={this.props.grudge.id} style={{ 'width': 250, 'padding': 3, 'marginRight': 100, 'marginTop': 100, 'marginBottom': 50, 'backgroundColor': '#5cdb95' }} centered raised>
+      <Card  key={this.props.grudge.id} color='green' style={{ 'width': 250, 'padding': 2, 'marginRight': 25, 'marginLeft': 25, 'marginTop': 50, 'backgroundColor': '#5cdb95' }} centered raised>
         <Card.Content>
-          <Card.Header >
+          <Card.Header as='h5' textAlign='center' >
             <div className="card-header">
               {this.props.grudge.enemyName}
-              <div className="icon">
-                {this.sharedGrudge(this.props.grudge)}
-              </div>
+
             </div>
           </Card.Header>
-          <Card.Meta>{this.props.grudge.resolvedGrudges[0].compliment}</Card.Meta>
+          <Card.Content textAlign='center'>{this.props.grudge.resolvedGrudges[0].compliment}</Card.Content>
         </Card.Content>
         <Dimmer.Dimmable circular className = "grayscale"
           key={`image-${this.props.grudge.id}`}

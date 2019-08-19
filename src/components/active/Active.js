@@ -63,7 +63,7 @@ render() {
         <Header  size="huge"  textAlign="center"  style={{'paddingBottom': '50px', 'color': '#e34234', 'paddingTop': '5px', 'fontSize': '40px', 'margin': '0px', 'fontFamily': 'Monaco', 'backgroundColor': '#303029'}}> My Active Grudges</Header>
         <div className="grudges">
         {
-           this.props.expandGrudges.filter(grudge => !grudge.isResolved).sort((curr, next) => next.id-curr.id).map(grudge => <ActiveGrudgeCard  key={grudge.id}  grudge={grudge} deleteGrudge={this.deleteGrudge} images={this.props.images} {...this.props}/>)
+           this.props.expandGrudges.filter(grudge => !grudge.isResolved).sort((curr, next) => next.pettyLevel-curr.pettyLevel).map(grudge => <ActiveGrudgeCard  key={grudge.id}  grudge={grudge} deleteGrudge={this.deleteGrudge} images={this.props.images} {...this.props}/>)
 
         }
 

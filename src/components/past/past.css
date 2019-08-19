@@ -4,8 +4,13 @@
 
   background-color: #292930;
   display: flex;
+  justify-content: space-between;
+  flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
-  margin: 0px;
+  padding-right: 85px;
+  padding-left: 100px;
+  padding-bottom: 25px;
+  min-height: 405px
+
 
 }

@@ -135,7 +135,7 @@ export default class ActiveGrudgeDetailsModal extends Component {
                <p style={{'marginTop': 10}}>
 
             Pettiness level:
-            <b className='pettyNumb'>
+            <b className='round'>
             {this.props.grudge.pettyLevel}
             </b>
                </p>
@@ -166,7 +166,7 @@ export default class ActiveGrudgeDetailsModal extends Component {
                 </Modal.Content>
               </Grid.Column>
               <Grid.Column verticalAlign='middle'>
-                <Header as="h4">{this.props.grudge.user.username} thinks {this.props.grudge.enemyName} is:</Header>
+                <Header as="h4">{this.props.grudge.user.username} thinks {this.props.grudge.enemyName} is a:</Header>
                 <Container fluid>
                   <b>"{this.props.grudge.insult}"</b>
                   <MailInsult {...this.props} grudge={this.props.grudge} />

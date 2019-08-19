@@ -40,7 +40,6 @@ export default class PastGrudgeDetailsModal extends Component {
   handleConfirm = () => {
     this.setState({ open: false });
     this.props.deleteGrudge(this.props.grudge.id);
-    this.props.history.push("/past")
   };
   handleJoin = () => {
     this.setState({ open: false })
