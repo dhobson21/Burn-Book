@@ -37,7 +37,7 @@
       "id": 13
     },
     {
-      "shared": false,
+      "shared": true,
       "enemyName": "Blake Davis",
       "date": "2019-08-01",
       "email": "Blake@gmail.com",
@@ -145,18 +145,6 @@
       "id": 15
     },
     {
-      "enemyName": "Ben Parker",
-      "date": "2019-07-15",
-      "email": "BenP@gmail.com",
-      "insult": "paunchy reeling-ripe minnow!",
-      "incident": "He was smug while playing Catan.",
-      "pettyLevel": 8,
-      "userId": 1,
-      "isResolved": true,
-      "shared": false,
-      "id": 16
-    },
-    {
       "id": 8,
       "date": "2019-05-20",
       "enemyName": "Alex Rumsey",
@@ -176,12 +164,12 @@
       "incident": "Scott cussed at me in front of everyone and besmirched my good name.",
       "insult": "jaded bunched-backed remnant!",
       "isResolved": false,
-      "pettyLevel": 7,
+      "pettyLevel": 3,
       "shared": false,
       "userId": 1
     },
     {
-      "shared": true,
+      "shared": false,
       "enemyName": "Jon Wark",
       "date": "2019-08-05",
       "email": "Jwark@nss.com",
@@ -193,6 +181,7 @@
       "id": 19
     },
     {
+      "shared": false,
       "enemyName": "Jeremiah Vasquez",
       "date": "2019-07-23",
       "email": "JVasquez@nss.com",
@@ -201,7 +190,6 @@
       "pettyLevel": 7,
       "userId": 5,
       "isResolved": false,
-      "shared": false,
       "id": 20
     },
     {
@@ -323,13 +311,6 @@
       "id": 4
     },
     {
-      "resolveReason": "Catan is a cuthroat game.",
-      "compliment": "Ben is above average at ping pong.",
-      "grudgeId": 16,
-      "date": "08/18/2019",
-      "id": 5
-    },
-    {
       "resolveReason": "I was wrong ",
       "compliment": "I was wrong",
       "grudgeId": 14,
@@ -359,11 +340,6 @@
       "userId": 1,
       "grudgeId": 17,
       "id": 3
-    },
-    {
-      "userId": 1,
-      "grudgeId": 19,
-      "id": 4
     }
   ],
   "users": [
