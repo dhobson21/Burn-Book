@@ -38,7 +38,7 @@ class ConfirmGrudgeJoin extends Component {
     .then(() => this.props.addSharedGrudge(sharedGrudgeObj))
     .then (this.props.getAndUpdateState())
 
-    .then(() => this.props.history.push("/"))
+    .then(() => this.props.history.push("/explore"))
   }
 
   handleCancel = () => this.setState({ open: false })
@@ -48,7 +48,7 @@ class ConfirmGrudgeJoin extends Component {
     console.log("JP", this.props)
     return (
       <div >
-        <Button onClick= {this.show} >Join Grudge</Button>
+        <Button color='grey' onClick= {this.show} >Join Grudge</Button>
         <Confirm
                     open={this.state.open}
                     onCancel={this.handleCancel}

@@ -51,7 +51,7 @@ export default class ExploreGrudgeDetailsModal extends Component {
 
   render() {
     return (
-      <Modal trigger={<Button primary>Details</Button>}>
+      <Modal trigger={<Button primary>Details</Button>} style={{'backgroundColor': '#e25822', 'borderRadius': 50}}>
         <Grid columns={3} divided padded textAlign="center">
           <Grid.Row>
             <Grid.Column>
@@ -64,12 +64,14 @@ export default class ExploreGrudgeDetailsModal extends Component {
               <Header as="h2">{this.props.grudge.enemyName}</Header>
             </Grid.Column>
             <Grid.Column>
-            This grudge by {this.props.grudge.user.username} has a pettiness level of <p className="pettyNumb">
-            <b>
+            Grudge Owner: <b>{this.props.grudge.user.username}</b>
+               <p  style={{'marginTop': 10}}>
+
+            Pettiness level:
+            <b className= 'pettyNumb'>
             {this.props.grudge.pettyLevel}
             </b>
-
-            </p>
+               </p>
 
             </Grid.Column>
           </Grid.Row>
@@ -81,27 +83,16 @@ export default class ExploreGrudgeDetailsModal extends Component {
               </Modal.Content>
             </Grid.Column>
             <Grid.Column>
-              <Modal.Content>
-                {/* <Image
-                  wrapped
-                  size="medium"
-                  floated="right"
-                  src={this.props.images
-                    .filter(
-                      image => image.id === this.props.grudge.pettyLevel
-                    )
-                    .map(image => image.url)}
-                /> */}
-              </Modal.Content>
+            <ConfirmGrudgeJoin  grudge={this.props.grudge} {...this.props} addSharedGrudge= {this.props.addSharedGrudge} updateGrudge={this.props.updateGrudge} />
             </Grid.Column>
             <Grid.Column stretched>
               <Header as="h4">{this.props.grudge.user.username} thinks {this.props.grudge.enemyName} is:</Header>
               <Container textAlign='center' >
-                <em>" a {this.props.grudge.insult}"</em>
+                <b>" a {this.props.grudge.insult}"</b>
 
 
               </Container>
-                   <ConfirmGrudgeJoin  grudge={this.props.grudge} {...this.props} addSharedGrudge= {this.props.addSharedGrudge} updateGrudge={this.props.updateGrudge} />
+
 
 
 

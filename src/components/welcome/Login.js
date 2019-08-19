@@ -5,12 +5,10 @@ import "./login.css"
 import Background from '../welcome/burnbook.jpg';
 
 const sectionStyle = {
-  width: "100%",
-  height: "100%",
+
   backgroundImage: `url(${Background})`,
   backgroundPosition: 'center',
-  backgroundAttachment:'scroll',
-  position: 'relative'
+  backgroundSize: 'cover'
 
 };
  class Login extends Component {
@@ -54,8 +52,8 @@ const sectionStyle = {
     return (
       <section style={ sectionStyle }>
 
-      <Container className="loginContainer" style={{'position': 'relative'}} >
-        <Header  as='h1' color='red' textAlign='center' className="logHead" style={{'fontSize': 50, 'fontFamily': 'Brush Script MT, cursive', 'position': 'absolute', 'top': 100, 'left': 200}} >
+      <Container className="loginContainer"  >
+        <Header  as='h1' color='red' textAlign='center' className="logHead" style={{'fontSize': 50, 'fontFamily': 'Brush Script MT, cursive', 'position': 'relative', 'top': 105}} >
                "At this hour lie at my mercy all mine enemies"
             </Header>
           <Grid textAlign='center' style={{ height: '100vh', }} verticalAlign='middle'>

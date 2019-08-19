@@ -7,6 +7,7 @@ import {
   Image,
   Modal,
   Grid,
+  Segment
 } from "semantic-ui-react";
 import MailCompliment from "./../email/MailCompliment"
 
@@ -39,6 +40,7 @@ export default class PastGrudgeDetailsModal extends Component {
   handleConfirm = () => {
     this.setState({ open: false });
     this.props.deleteGrudge(this.props.grudge.id);
+    this.props.history.push("/past")
   };
   handleJoin = () => {
     this.setState({ open: false })
@@ -51,24 +53,36 @@ export default class PastGrudgeDetailsModal extends Component {
 
   render() {
     return (
-      <Modal size='fullscreen'trigger={<Button primary>Details</Button>}>
+      <Modal size='fullscreen' style={{'backgroundColor': '#5cdb95', 'borderRadius': 50}} trigger={<Button primary>Details</Button>}>
         <Grid columns={4} divided padded textAlign="center">
           <Grid.Row>
             <Grid.Column>
               <Modal.Content>
-                <Header as="h4">Grudge started: </Header>
+              <Segment style={{'backgroundColor': '#5cdb95'}}>
+
+                <Header as="h4" style={{'marginBottom': '5px'}}>Grudge started: </Header>
                 {this.props.grudgeDate()}
-                <Header as="h4">Pride Swallowed: </Header>
+              </Segment>
+              <Segment style={{'backgroundColor': '#5cdb95'}}>
+
+                <Header style={{'marginBottom': '5px'}} as="h4">Pride Swallowed: </Header>
                 {this.props.grudge.resolvedGrudges[0].date}
+              </Segment>
               </Modal.Content>
             </Grid.Column>
-            <Grid.Column>
+            <Grid.Column verticalAlign='middle'>
+
+
               <Header as="h2">{this.props.grudge.enemyName}</Header>
+
             </Grid.Column>
             <Grid.Column>
+            <Segment style={{'backgroundColor': '#5cdb95'}}>
+
             <Header as="h4">My level of pettiness in this grudge:  <b>{this.props.grudge.pettyLevel}</b></Header>
-            <div>
-                <Button onClick={this.open}>Delete Grudge</Button>
+            </Segment>
+            <div >
+                <Button  color='grey' onClick={this.open}>Delete Grudge</Button>
                 <Confirm
                   open={this.state.open}
                   onCancel={this.handleCancel}
@@ -82,17 +96,24 @@ export default class PastGrudgeDetailsModal extends Component {
           <Grid.Row>
             <Grid.Column verticalAlign="middle">
               <Modal.Content >
-                <Header  textAlign='left' as="h4">What was the misunderstanding ? </Header>
+              <Segment style={{'backgroundColor': '#5cdb95'}}>
+
+                <Header   as="h4">What was the misunderstanding ? </Header>
                 <Container  fluid text={true} textAlign='center'>{this.props.grudge.incident}</Container>
-                <Header  textAlign='left' as="h4">What made you resolve this grudge? </Header>
+              </Segment>
+                <Segment style={{'backgroundColor': '#5cdb95'}}>
+
+                <Header   as="h4">What made you resolve this grudge? </Header>
                 <Container fluid text={true} textAlign='center'>{this.props.grudge.resolvedGrudges[0].resolveReason}</Container>
+                </Segment>
 
               </Modal.Content>
             </Grid.Column>
-            <Grid.Column>
+            <Grid.Column verticalAlign='bottom'>
               <Modal.Content>
                 <Image
                   wrapped
+                  className='grayscale'
                   size="medium"
                   floated="right"
                   src={this.props.images
@@ -103,10 +124,13 @@ export default class PastGrudgeDetailsModal extends Component {
                 />
               </Modal.Content>
             </Grid.Column>
-            <Grid.Column>
+            <Grid.Column verticalAlign= 'middle'>
               <Modal.Content>
+              <Segment style={{'backgroundColor': '#5cdb95'}}>
+
               <Header as="h4">What i've come to realize about {this.props.grudge.enemyName}: </Header>
               {this.props.grudge.resolvedGrudges[0].compliment}
+              </Segment>
               </Modal.Content>
              <MailCompliment {...this.props} grudge={this.props.grudge}/>
             </Grid.Column>

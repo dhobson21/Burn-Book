@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, Modal, Icon } from "semantic-ui-react";
+import { Form, Modal, Icon, Header} from "semantic-ui-react";
 import APIManager from "../../modules/APIManager";
 import GrudgeResolveModal from "./GrudgeResolveModal";
 import CurseGeneratorEdit from "./../curseGenerator/CurseGeneratorEdit"
@@ -168,7 +168,8 @@ export default class EditGrudgeForm extends Component {
 
     return (
       <div>
-        <Form>
+       <Header  size="huge"  textAlign="center"  style={{'paddingBottom': '50px', 'color': '#e34234', 'fontSize': '40px', 'margin': '0px', 'fontFamily': 'Monaco', 'backgroundColor': '#303029'}}>Edit Grudge Against {this.state.enemyName}</Header>
+        <Form inverted style={{'backgroundColor': '#292930', 'marginBottom': '0px', 'paddingBottom': '50px' }}>
           <Form.Group widths="equal">
             <Form.Input
               fluid
@@ -188,8 +189,9 @@ export default class EditGrudgeForm extends Component {
               value={this.state.date}
             />
           </Form.Group>
-          <Form.Group widths="equal">
+          <Form.Group >
             <Form.Input
+              width={8}
               fluid
               label="Enemy's Email for...purposes"
               onChange={this.handleFieldChange}
@@ -251,14 +253,16 @@ export default class EditGrudgeForm extends Component {
               <GrudgeResolveModal  makeCurse={this.curse} changeState={this.changeState}{...this.state} {...this.props}/>
             </Modal.Actions>
           </Modal>
-          <div>
-          <Form.Button size="mini" onClick={this.checkFields}>
+          <div style={{'display': 'flex', 'flexDirection': 'row', 'justifyContent':  'center'}}>
+
+          <Form.Button style={{'width': 141, 'marginRight': 15}}size="medium" color='grey' onClick={this.checkFields}>
             Save Changes
           </Form.Button>
-          <Form.Button size="mini" onClick={this.cancelChanges}>
+          <Form.Button  style={{'width': 141}}size="medium" color='grey' onClick={this.cancelChanges}>
             Cancel Changes
           </Form.Button>
           </div>
+
         </Form>
       </div>
     );

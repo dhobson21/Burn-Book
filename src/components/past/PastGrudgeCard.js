@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Card, Icon, Image, Header, Dimmer } from "semantic-ui-react";
 import PastGrudgeDetailsModal from "./PastGrudgeDetailsModal";
+import "./pastGrudgeCard.css"
 
 export default class PastGrudgeCard extends Component {
   state = {};
@@ -30,7 +31,7 @@ export default class PastGrudgeCard extends Component {
       </div>
     )
     return (
-      <Card className="card" key={this.props.grudge.id} style={{ 'width': 250, 'padding': 3, 'margin': 2, }}>
+      <Card  key={this.props.grudge.id} style={{ 'width': 250, 'padding': 3, 'marginRight': 100, 'marginTop': 100, 'marginBottom': 50, 'backgroundColor': '#5cdb95' }} centered raised>
         <Card.Content>
           <Card.Header >
             <div className="card-header">

@@ -55,20 +55,17 @@ this.setState({expandGrudges: exploreGrudges})
 
     return (
       <React.Fragment>
-        <Header size="huge" >Other Petty People</Header>
+        <Header size="huge" textAlign="center" style={{'paddingBottom':  '50px', 'color': '#e25822', 'fontSize': '40px', 'fontFamily': 'Monaco', 'margin': '0px', 'backgroundColor': '#303029'}}>User Grudges</Header>
 
-          <div className="user-container"  >
+
+          <div className="user-container"   >
           {
         this.props.users.map(user =>
 
-          <div key={user.id} className="users">
-          <Header size="large" textAlign="center">{user.username}'s Grudges</Header>
+          <div key={user.id} className="allusers" style={{ 'marginTop': 100, 'marginBottom': 50, 'margiRight': 100,}}>
+          <Header size="large"  style={{'color': '#e25822'}} textAlign="center">{user.username}'s Grudges</Header>
 
 
-          {/* {this.props.expandGrudges.filter(grudge => grudge.userId ===user.id).map(grudge=>
-            <ExploreGrudgeCard key={grudge.id} grudge={grudge} images ={this.props.images} {...this.props}/>
-          )
-          } */}
 
           <CarouselProvider
             naturalSlideWidth={1}
@@ -88,8 +85,14 @@ this.setState({expandGrudges: exploreGrudges})
           }
 
     </Slider>
-    <ButtonBack>Back</ButtonBack>
-        <ButtonNext>Next</ButtonNext>
+    <div className='back'>
+
+    <ButtonBack   className= "scrollbt">Back</ButtonBack>
+    </div>
+    <div className='next'>
+        <ButtonNext className="scrollbt">Next</ButtonNext>
+
+    </div>
 
   </CarouselProvider>
 

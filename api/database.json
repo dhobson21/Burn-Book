@@ -32,12 +32,12 @@
       "insult": "infectious reeling-ripe horn-beast!",
       "incident": "She kept saying the word 'bagel' like it was spelled bag-el....super annoying",
       "pettyLevel": 8,
-      "userId": 3,
+      "userId": 1,
       "isResolved": false,
-      "id": 4
+      "id": 13
     },
     {
-      "shared": true,
+      "shared": false,
       "enemyName": "Blake Davis",
       "date": "2019-08-01",
       "email": "Blake@gmail.com",
@@ -73,7 +73,7 @@
       "id": 8
     },
     {
-      "shared": true,
+      "shared": false,
       "enemyName": "Test",
       "date": "2019-06-06",
       "email": "steve@nss.com",
@@ -85,7 +85,7 @@
       "id": 10
     },
     {
-      "shared": true,
+      "shared": false,
       "enemyName": "Biff",
       "date": "1996-04-06",
       "email": "MrsColins@school.com",
@@ -109,28 +109,52 @@
       "id": 12
     },
     {
-      "enemyName": "Scott Silver",
-      "date": "2019-08-09",
-      "email": "scott@gmail.com",
-      "insult": "gnarling sheep-biting coxcomb!",
-      "incident": "Scott called me an asshole",
-      "pettyLevel": 7,
-      "userId": 1,
-      "isResolved": true,
+      "enemyName": "Sydney Noh",
+      "date": "2019-05-21",
+      "email": "Sydney@gmail.com",
+      "insult": "churlish fen-sucked death-token!",
+      "incident": "She stole my seat on the second day of class....and then again on the 8th and 25th day. And once more yesterday.",
+      "pettyLevel": 4,
+      "userId": 3,
+      "isResolved": false,
       "shared": false,
-      "id": 13
+      "id": 4
     },
     {
-      "enemyName": "test",
-      "date": "2019-01-01",
-      "email": "test@test.com",
-      "insult": "warped earth-vexing pumpion!",
-      "incident": "He stepped on me",
-      "pettyLevel": 5,
+      "enemyName": "Danny Barker",
+      "date": "2019-08-06",
+      "email": "DannyB@gmail.com",
+      "insult": "venomed full-gorged strumpet!",
+      "incident": "He called me the wrong first name 3 times in the span of 45 seconds",
+      "pettyLevel": 2,
+      "userId": 1,
+      "isResolved": false,
+      "shared": false,
+      "id": 14
+    },
+    {
+      "enemyName": "Mrs. Collins",
+      "date": "1995-04-03",
+      "email": "MrsC@hilton.edu",
+      "insult": "",
+      "incident": "She told me I'd never be able to read good.",
+      "pettyLevel": 6,
       "userId": 1,
       "isResolved": true,
       "shared": false,
-      "id": 14
+      "id": 15
+    },
+    {
+      "enemyName": "Ben Parker",
+      "date": "2019-07-15",
+      "email": "BenP@gmail.com",
+      "insult": "paunchy reeling-ripe minnow!",
+      "incident": "He was smug while playing Catan.",
+      "pettyLevel": 8,
+      "userId": 1,
+      "isResolved": true,
+      "shared": false,
+      "id": 16
     }
   ],
   "images": [
@@ -180,22 +204,22 @@
       "resolveReason": "I was wrong",
       "compliment": "he is nice",
       "grudgeId": 3,
-      "date": "14/08/2019",
-      "id": 1
-    },
-    {
-      "resolveReason": "I was wrong",
-      "compliment": "Nice",
-      "grudgeId": 14,
-      "date": "14/08/2019",
-      "id": 2
-    },
-    {
-      "resolveReason": "I was grumpy that day",
-      "compliment": "He is sweet",
-      "grudgeId": 13,
-      "date": "14/08/2019",
+      "date": "15/08/2019",
       "id": 3
+    },
+    {
+      "resolveReason": "I grew up",
+      "compliment": "Mrs. Collins read us good books",
+      "grudgeId": 15,
+      "date": "18/08/2019",
+      "id": 4
+    },
+    {
+      "resolveReason": "Catan is a cuthroat game.",
+      "compliment": "Ben is above average at ping pong.",
+      "grudgeId": 16,
+      "date": "18/08/2019",
+      "id": 5
     }
   ],
   "sharedGrudges": [
@@ -206,18 +230,8 @@
     },
     {
       "userId": 1,
-      "grudgeId": 10,
+      "grudgeId": 4,
       "id": 2
-    },
-    {
-      "userId": 1,
-      "grudgeId": 5,
-      "id": 3
-    },
-    {
-      "userId": 1,
-      "grudgeId": 11,
-      "id": 4
     }
   ],
   "users": [

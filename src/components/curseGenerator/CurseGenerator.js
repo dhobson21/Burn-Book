@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Button, Form, Checkbox} from "semantic-ui-react"
+import {Button, Form, Checkbox, Container} from "semantic-ui-react"
 import "./curseGenerator.css"
 
 
@@ -90,7 +90,7 @@ import "./curseGenerator.css"
   render() {
     return (
       <React.Fragment>
-      <Form.Input width={8}
+      <Form.Input width={6}
          label= 'Insult thy enemy'
             id="insult"
             onChange= {this.handleFieldChange}
@@ -102,12 +102,14 @@ import "./curseGenerator.css"
             />
 
 
-      <div>
 
+        <div style={{'display':'flex', 'flexDirection': 'column', 'alignItems': 'center', 'justifyContent': 'center', 'marginLeft': '5px'}}>
 
-        <Button disabled={this.state.disabled} size="mini" id={this.props.Geninsult}   onClick={() => this.props.curse(this.adjective1, this.adjective2, this.noun)}>Generate Insult></Button>
+        <Button   disabled={this.state.disabled} size='medium' color='grey' style={{'marginBottom': '1px'}}  id={this.props.Geninsult}   onClick={() => this.props.curse(this.adjective1, this.adjective2, this.noun)}>Curse thy Enemy</Button>
         <Checkbox  label= "Save Insult" size="mini" onClick={() => this.saveInsult(this.props.insult)} />
-      </div>
+        </div>
+
+
 
 
       </React.Fragment>

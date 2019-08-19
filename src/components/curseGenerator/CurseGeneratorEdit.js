@@ -93,7 +93,7 @@ import "./curseGenerator.css"
 
     return (
       <React.Fragment>
-      <Form.Input width={4}
+      <Form.Input width={6}
          label= 'Insult thy enemy'
             id="insult"
             onChange= {this.handleFieldChange}
@@ -106,10 +106,10 @@ import "./curseGenerator.css"
             />
 
 
-      <div>
+      <div style={{'display':'flex', 'flexDirection': 'column', 'alignItems': 'center', 'justifyContent': 'center', 'marginLeft': '5px'}}>
 
 
-        <Button disabled={this.state.disabled} size="mini"    onClick={() => this.props.makeCurse(this.adjective1, this.adjective2, this.noun)}>Generate Insult></Button>
+        <Button disabled={this.state.disabled} size="mini"    onClick={() => this.props.makeCurse(this.adjective1, this.adjective2, this.noun)}>Generate Insult</Button>
         <Checkbox  label= "Save Insult" size="mini" onClick={() => this.saveInsult(this.props.editFormStateInsult)} />
       </div>
 

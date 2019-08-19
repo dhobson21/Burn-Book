@@ -51,7 +51,7 @@ emailjs.send(service_id, template_id, this.state )
 render() {
 return (
 <div>
-  <Button onClick= {this.open}>Spread Goodwill </Button>
+  <Button  color='grey' style={{'marginTop': 25}} onClick= {this.open}>Spread Goodwill </Button>
   <Confirm open={this.state.open} onCancel={this.close} onConfirm={() => this.sendCompliment(this.props.grudge)} content="Are you sure you want to email this compliment to your former enemy?" />
 
 

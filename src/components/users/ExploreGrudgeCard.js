@@ -37,7 +37,8 @@ export default class ExploreGrudgeCard extends Component {
       </div>
     );
     return (
-      <Card className="card" key={this.props.grudge.id} style={{ 'width': 250, 'height': 300, 'padding': 3, 'margin': 2, 'backgroundColor': '#eeeeee' }}>
+      <Card className="card" key={this.props.grudge.id} style={{ 'width': 250, 'height': 300, 'padding': 3, 'margin': 2, 'backgroundColor': '#e25822' }}>
+       {/* style={{ 'width': 250, 'padding': 3, 'marginRight': 100, 'marginTop': 100, 'marginBottom': 50, */}
         <Card.Content textAlign="center">
           <Card.Header textAlign="center">
            {this.props.grudge.enemyName}

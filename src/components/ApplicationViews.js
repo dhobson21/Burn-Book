@@ -372,7 +372,7 @@ deleteGrudge = ( id) => {
             if(this.isAuthenticated()) {
 
 
-            return <PastGrudges resolvedGrudges={this.state.allMyGrudges.filter(grudge => grudge.isResolved===true)} images={this.state.images} {...props} deleteGrudge={this.deleteGrudge} />
+            return <PastGrudges  resolvedGrudges={this.state.allMyGrudges.filter(grudge => grudge.isResolved===true)} images={this.state.images} {...props} deleteGrudge={this.deleteGrudge} />
             }
             else  {
               return <Redirect to="/login" />
