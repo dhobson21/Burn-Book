@@ -147,7 +147,10 @@ export default class ActiveGrudgeDetailsModal extends Component {
               <Grid.Column verticalAlign="middle">
                 <Modal.Content>
                   <Header as="h4">What {this.props.grudge.enemyName} did to {this.props.grudge.user.username}?</Header>
+                  <p>
+
                   {this.props.grudge.incident}
+                  </p>
                 </Modal.Content>
               </Grid.Column>
               <Grid.Column>

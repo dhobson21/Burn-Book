@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import {  Menu, Container } from 'semantic-ui-react'
+import {  Menu, Icon } from 'semantic-ui-react'
 import {withRouter } from "react-router"
 import "./navbar.css"
-import logo from "./../img/BBLogo.png"
+import bicon from "../img/BBIcon.png"
 
 class NavBar extends Component {
   state = { activeItem: 'my grudge' }
@@ -66,11 +66,11 @@ class NavBar extends Component {
               onClick={this.logout}
 
             />
+            <Icon size='mini' style={{'paddingRight': "10px"}} as= "img"
+            src= {bicon}/>
           </Menu.Menu>
         </Menu>
-        <Container fluid textAlign='center' style={{'backgroundColor': '#303029', 'margin': '0px','borderRadius': '0%'}}>
-          <img  src={logo} alt='logo'/>
-        </Container>
+
 
         </div>
 

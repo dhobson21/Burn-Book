@@ -77,7 +77,7 @@ this.setState({expandGrudges: exploreGrudges})
           {
               this.props.expandGrudges.filter(grudge => grudge.userId ===user.id).map(grudge=>
 
-              <CustomCardSlide  style={{ 'width': 250, 'height': 300,  'padding': 3, 'margin': 2, }}
+              <CustomCardSlide  style={{ 'width': 250, 'height': 300,  'padding': 3, 'margin': 2, 'backgroundColor': '#e25822'}}
               index={user.grudges.indexOf(grudge)} key={grudge.id}>  <ExploreGrudgeCard  grudge={grudge} images ={this.props.images} {...this.props}/></CustomCardSlide>
 
 

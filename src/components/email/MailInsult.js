@@ -36,8 +36,8 @@ export default class MailInsult extends Component {
     return (
       <div>
         <Button  color='grey' style={{'marginTop': 25  }}  onClick= {this.open}>
-          Escalate Grudge</Button>
-          <Confirm open={this.state.open} onCancel={this.close} onConfirm={() => this.sendInsult(this.props.grudge)} content="Are you sure you want to annonymously email an insult to your enemy?" />
+          Hurl Insult</Button>
+          <Confirm style={{'textAlign': 'center' }} open={this.state.open} onCancel={this.close} onConfirm={() => this.sendInsult(this.props.grudge)} content="Are you sure you want to annonymously email an insult to your enemy?" />
       </div>
     );
   }

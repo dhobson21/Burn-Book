@@ -8,7 +8,7 @@ export default class ResolvedGrudgeForm extends Component {
     resolveReason: "",
     compliment: "",
     grudgeId: +this.props.id,
-    date: moment().format("DD/MM/YYYY")
+    date: moment().format("MM/DD/YYYY")
 
 
   }
@@ -61,8 +61,9 @@ resolveGrudge = () => {
   render() {
     console.log("rgP", this.props)
     return (
-    <Form>
-      <Header textAlign="center"  as="h3">Resolve Grudge</Header>
+
+    <Form  style={{'backgroundColor': "#5cdb95",}}>
+      <Header textAlign="center"  as="h3">Resolution Details</Header>
        <Form.Group widths='equal'>
       <Form.TextArea
         id= "resolveReason"
@@ -72,14 +73,14 @@ resolveGrudge = () => {
       />
       <Form.TextArea
         id='compliment'
-        label= "How about a compliment for your former enemy?"
-        placeholder={`Phrase in 3rd person...ex: ${this.props.grudge.enemyName} has kind eyes and a big heart`}
+        label= {`What is the best compliment you can give ${this.props.enemyName}?`}
+        placeholder={`Phrase in 3rd person...ex: ${this.props.enemyName} has kind eyes and a big heart`}
         onChange={this.handleFieldChange}
 
       />
     </Form.Group>
 
-    <Form.Button  icon="check" content="Submit" onClick={this.checkFields} />
+    <Form.Button  style= {{'position': 'relative', 'left': '42%', 'bottom': '50%'}} icon="check" content="Submit" onClick={this.checkFields} />
 
 
   </Form>

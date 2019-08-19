@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {Button, Confirm} from "semantic-ui-react"
 import * as emailjs from "emailjs-com"
 
+
 export default class MailCompliment extends Component {
 
 
@@ -26,14 +27,7 @@ sendCompliment = (grudge) => {
       const template_id = "template_OvsGWTYl";
 
 
-// const emailObj = {
-//       enemyEmail:grudge.email,
-//       enemyName: grudge.enemyName,
-//       compliment: grudge.insult
-// }
 
-
-// this.setState(emailObj)
 console.log(this.state)
 
 this.close()
@@ -41,7 +35,7 @@ emailjs.init( "user_8FiOWu9kADcq5A3HqhaCu");
 
 emailjs.send(service_id, template_id, this.state )
 .then(function(response) {
-  window.alert("Success! Compliment Sent", response.text)
+  window.alert("Success! The world is a better place because of you!", response.text)
 }, function(error) {
   window.alert('Compliment Email Failed...', error);
 });
@@ -51,8 +45,8 @@ emailjs.send(service_id, template_id, this.state )
 render() {
 return (
 <div>
-  <Button  color='grey' style={{'marginTop': 25}} onClick= {this.open}>Spread Goodwill </Button>
-  <Confirm open={this.state.open} onCancel={this.close} onConfirm={() => this.sendCompliment(this.props.grudge)} content="Are you sure you want to email this compliment to your former enemy?" />
+  <Button  color='grey' style={{'marginTop': 25}} onClick= {this.open}>Give Compliment </Button>
+  <Confirm className='conf' style={{'textAlign': 'center'}} open={this.state.open} onCancel={this.close} onConfirm={() => this.sendCompliment(this.props.grudge)} content="Are you sure you want to email this compliment to your former enemy?" />
 
 
 

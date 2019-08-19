@@ -128,7 +128,10 @@ export default class PastGrudgeDetailsModal extends Component {
               <Segment style={{'backgroundColor': '#5cdb95'}}>
 
               <Header as="h4">What i've come to realize about {this.props.grudge.enemyName}: </Header>
+              <p>
+
               {this.props.grudge.resolvedGrudges[0].compliment}
+              </p>
               </Segment>
               </Modal.Content>
              <MailCompliment {...this.props} grudge={this.props.grudge}/>
