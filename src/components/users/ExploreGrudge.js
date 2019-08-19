@@ -4,7 +4,7 @@ import { CarouselProvider, Slider, ButtonBack, ButtonNext} from "pure-react-caro
 
 import "./exploreGrudges.css"
 import CustomCardSlide from "./CustomCardSlide"
-import GrudgeCard from "../grudge/GrudgeCard"
+import ExploreGrudgeCard from "./ExploreGrudgeCard"
 import 'pure-react-carousel/dist/react-carousel.es.css';
 
 
@@ -23,8 +23,10 @@ export default class ExploreGrudges extends Component {
 
 
 componentDidMount(){
+console.log("component mounnted")
+console.log(this.props)
 
-  this.setState({users: this.props.users})
+  // this.setState({users: this.props.users})
   let exploreGrudges= []
  this.props.expandGrudges.forEach(grudge => !grudge.shared ? exploreGrudges.push(grudge) : {})
 
@@ -43,21 +45,6 @@ this.setState({expandGrudges: exploreGrudges})
 
 }
 
-findAvg = (user) => {
-  const levels = []
-  user.grudges.forEach( grudge => levels.push(grudge.pettyLevel)
-
-  )
-}
-
-
-filterSharedGrudges(){
-
-  this.props.expandGrudges.forEach(grudge => {
-    if (!grudge.shared || (grudge.sharedGrudges.for)) {return grudge}
-  }
-  )
-}
 
 
   show = () => this.setState({ open: true })
@@ -68,37 +55,44 @@ filterSharedGrudges(){
 
     return (
       <React.Fragment>
-        <Header size="huge" >Other Petty People</Header>
+        <Header size="huge" textAlign="center" style={{'paddingBottom':  '50px', 'color': '#e25822', 'fontSize': '40px', 'fontFamily': 'Monaco', 'margin': '0px', 'backgroundColor': '#303029'}}>User Grudges</Header>
 
-          <div className="user-container"  >
+
+          <div className="user-container"   >
           {
-        this.state.users.map(user =>
+        this.props.users.map(user =>
 
-          <div key={user.id} className="users">
-          <Header size="large" textAlign="center">{user.username}'s Grudges</Header>
-
+          <div key={user.id} className="allusers" style={{ 'marginTop': 100, 'marginBottom': 50, 'margiRight': 100,}}>
+          <Header size="large"  style={{'color': '#e25822'}} textAlign="center">{user.username}'s Grudges</Header>
 
 
 
           <CarouselProvider
             naturalSlideWidth={1}
             naturalSlideHeight={1}
-            totalSlides={user.grudges.length}
-            style={{ width: "250px", height: "auto"  }}
+            totalSlides={this.props.expandGrudges.filter(grudge => grudge.userId ===user.id).length}
+            style={{ width: 300, height: "auto"  }}
                 >
           <Slider>
           {
-              this.state.expandGrudges.filter(grudge => grudge.userId ===user.id).map(grudge=>
+              this.props.expandGrudges.filter(grudge => grudge.userId ===user.id).map(grudge=>
 
-              <CustomCardSlide index={user.grudges.indexOf(grudge)} key={grudge.id}>  <GrudgeCard  grudge={grudge} images ={this.props.images} {...this.props}/></CustomCardSlide>
+              <CustomCardSlide  style={{ 'width': 250, 'height': 300,  'padding': 3, 'margin': 2, }}
+              index={user.grudges.indexOf(grudge)} key={grudge.id}>  <ExploreGrudgeCard  grudge={grudge} images ={this.props.images} {...this.props}/></CustomCardSlide>
 
 
             )
           }
 
     </Slider>
-    <ButtonBack>Back</ButtonBack>
-        <ButtonNext>Next</ButtonNext>
+    <div className='back'>
+
+    <ButtonBack   className= "scrollbt">Back</ButtonBack>
+    </div>
+    <div className='next'>
+        <ButtonNext className="scrollbt">Next</ButtonNext>
+
+    </div>
 
   </CarouselProvider>
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import {Form} from "semantic-ui-react"
+import {Form, Header} from "semantic-ui-react"
 import CurseGenerator from "./../curseGenerator/CurseGenerator"
-
+import "./addGrudge.css"
 
 //refactor to pull options from DB
 const options = [
@@ -87,15 +87,18 @@ export default class AddGrudgeForm extends Component {
   render() {
     // const { enemyName, date, email, insult, incident, pettyLevel } = this.state
     return (
-      <Form>
+      <React.Fragment >
+
+      <Header  size="huge"  textAlign="center"  style={{'paddingBottom': '50px', 'color': '#e34234', 'fontSize': '40px', 'margin': '0px', 'fontFamily': 'Monaco', 'backgroundColor': '#303029'}}>Add New Grudge</Header>
+      <Form  className='allform' inverted style={{'backgroundColor': '#292930', 'marginBottom': '0px', 'paddingBottom': '50px' }}>
         <Form.Group widths='equal'>
-          <Form.Input required
+          <Form.Input
             fluid label='Enemy Name'
             id="enemyName"
             onChange={this.handleFieldChange}
             name="enemyName"
             placeholder='Enemy Name' />
-          <Form.Input required
+          <Form.Input
             fluid label= 'Date of Incident'
             type= "date"
             onChange={this.handleFieldChange}
@@ -103,9 +106,11 @@ export default class AddGrudgeForm extends Component {
             name= "date"
             />
         </Form.Group>
-        <Form.Group widths='equal'>
+        <Form.Group >
           <Form.Input
-            fluid label="Enemy's Email"
+            width={8}
+
+            label="Enemy's Email"
             placeholder='dummy@stupid.com'
             onChange={this.handleFieldChange}
             id="email"
@@ -117,7 +122,7 @@ export default class AddGrudgeForm extends Component {
           </Form.Group>
         </Form.Group>
           <Form.TextArea
-            required
+
             label='What Happened:'
             options={options}
             placeholder='Something truly outrageous, no doubt'
@@ -126,7 +131,7 @@ export default class AddGrudgeForm extends Component {
             name="incident"
              />
           <Form.Select
-            required
+
             label="How Petty Am I Being?"
             options= {options}
             onChange= {this.handleSelectChange}
@@ -135,11 +140,12 @@ export default class AddGrudgeForm extends Component {
             name="pettyLevel"
             />
 
-        <Form.Button
-          size="mini"
+        <Form.Button color='grey'
+          size="large"
           onClick= {this.checkFields}
           >Submit</Form.Button>
       </Form>
+      </React.Fragment>
     )
   }
 }

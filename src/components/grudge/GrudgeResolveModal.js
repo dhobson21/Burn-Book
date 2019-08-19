@@ -58,7 +58,7 @@ export default class GrudgeResolveModal extends Component {
         <Modal.Header as="h2">"Prodigious birth of love it is to me,
 That I must love a loathèd enemy"</Modal.Header>
           <Modal.Content >
-          <ResolvedGrudgeForm {...this.props}  />
+          <ResolvedGrudgeForm {...this.props} grudge={this.props.grudge}  />
         </Modal.Content>
         {/* </TransitionablePortal> */}
       </Modal>

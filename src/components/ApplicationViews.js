@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { Route, Redirect } from "react-router-dom"
 import { withRouter } from 'react-router'
-import Dash from "./dash/Dash"
+import Active from "./active/Active"
 import Login from "./welcome/Login"
 import Register from "./welcome/Register"
 import APIManager from '../modules/APIManager';
 import AddGrudgeForm from './grudge/AddGrudgeForm';
 import EditGrudgeForm from './grudge/EditGrudgeForm';
-import PastGrudges from "./grudge/PastGrudges"
+import PastGrudges from "./past/PastGrudges"
 import ExploreGrudges from "./users/ExploreGrudge"
 
 
@@ -23,6 +23,8 @@ class ApplicationViews extends Component {
     resolvedGrudges:[],
     sharedGrudges: [],
     grudges:[],
+    exploreGrudges: [],
+    allMyGrudges: [],
     insult: ""
   }
  notSharedNotOwned = []
@@ -32,7 +34,27 @@ componentDidMount(){
   const notYou= []
   //get all Grudges expanded
 APIManager.get("grudges", "?_expand=user&_embed=resolvedGrudges&_embed=sharedGrudges")
-  .then(allGrudges => newState.expandGrudges = allGrudges)
+  .then(allGrudges => {
+
+    // this.setState({users: this.props.users})
+  let ownAndShare= []
+  allGrudges.forEach(grudge => grudge.userId ===+sessionStorage.getItem("activeUser") ? ownAndShare.push(grudge) : {})
+
+  allGrudges.filter(grudge => grudge.shared).forEach (oneGrudge => {
+   let Me = true
+   oneGrudge.sharedGrudges.forEach(g => {
+     if(g.userId !== +sessionStorage.getItem("activeUser")) {
+       Me=false
+     }
+
+   })
+   if(Me===true) {ownAndShare.push(oneGrudge)}
+
+  })
+  newState.allMyGrudges = ownAndShare
+
+
+  })
 
 // get all images
   .then(() => APIManager.getAll("images"))
@@ -53,6 +75,28 @@ APIManager.get("grudges", "?_expand=user&_embed=resolvedGrudges&_embed=sharedGru
 
   .then(() => APIManager.get("sharedGrudges", "?_expand=grudge&_expand=user"))
   .then(allSharedGrudges => (newState.sharedGrudges= allSharedGrudges))
+  .then(() => APIManager.get("grudges", "?_expand=user&_embed=resolvedGrudges&_embed=sharedGrudges"))
+  .then(allGrudges => {
+
+    // this.setState({users: this.props.users})
+  let exploreGrudges= []
+  allGrudges.forEach(grudge => !grudge.shared ? exploreGrudges.push(grudge) : {})
+
+  allGrudges.filter(grudge => grudge.shared).forEach (oneGrudge => {
+   let notMe = true
+   oneGrudge.sharedGrudges.forEach(g => {
+     if(g.userId === +sessionStorage.getItem("activeUser")) {
+       notMe=false
+     }
+
+   })
+   if(notMe===true) {exploreGrudges.push(oneGrudge)}
+
+  })
+  newState.exploreGrudges = exploreGrudges
+
+
+  })
   .then(() =>this.setState(newState))
 }
 
@@ -91,6 +135,8 @@ addSharedGrudge = ( item) => {
       newSharedObj["sharedGrudges"] = items
       this.setState(newSharedObj)
     })
+
+
 
 
 
@@ -148,19 +194,89 @@ updateGrudge = (editedObject) => {
 
 
 getAndUpdateState = () => {
-  const stateToChange = {}
-      APIManager.get("grudges", "?_expand=user&_embed=resolvedGrudges&_embed=sharedGrudges")
-    .then(grudges => stateToChange["expandGrudges"] = grudges)
-    .then(() => APIManager.get("sharedGrudges", "?_expand=grudge&_expand=user") )
-    .then(sharedgrudges => stateToChange["sharedGrudges"] = sharedgrudges)
-    .then(() => APIManager.get("resolvedGrudges", "?_expand=grudge"))
-    .then(resolvedGrudges => {
-      stateToChange["resolvedGrudges"] = resolvedGrudges
-      this.setState(stateToChange)})
+  const newState = {}
+  const notYou= []
+  //get all Grudges expanded
+APIManager.get("grudges", "?_expand=user&_embed=resolvedGrudges&_embed=sharedGrudges")
+  .then(allGrudges => {
+
+    // this.setState({users: this.props.users})
+  let ownAndShare= []
+  allGrudges.forEach(grudge => grudge.userId ===+sessionStorage.getItem("activeUser") ? ownAndShare.push(grudge) : {})
+
+  allGrudges.filter(grudge => grudge.shared).forEach (oneGrudge => {
+   let Me = true
+   oneGrudge.sharedGrudges.forEach(g => {
+     if(g.userId !== +sessionStorage.getItem("activeUser")) {
+       Me=false
+     }
+
+   })
+   if(Me===true) {ownAndShare.push(oneGrudge)}
+
+  })
+  newState.allMyGrudges = ownAndShare
+
+
+  })
+
+// get all images
+  .then(() => APIManager.getAll("images"))
+  .then(allImages => (newState.images = allImages))
+//get all users and filter so that activec user is not included
+  .then(() => APIManager.get("users", "?_embed=grudges"))
+  .then(allUsers => allUsers.forEach(user => {
+     if (user.id !== +sessionStorage.getItem("activeUser")) {
+        notYou.push(user)
+      } else {}
+     (newState.otherUsers = notYou)
+    }))
+    //get all resolved grudges
+  .then(() => APIManager.getAll("resolvedGrudges"))
+  .then(allResolvedGrudges => (newState.resolvedGrudges = allResolvedGrudges))
+
+  //get all sharedGrudges
+
+  .then(() => APIManager.get("sharedGrudges", "?_expand=grudge&_expand=user"))
+  .then(allSharedGrudges => (newState.sharedGrudges= allSharedGrudges))
+  .then(() => APIManager.get("grudges", "?_expand=user&_embed=resolvedGrudges&_embed=sharedGrudges"))
+  .then(allGrudges => {
+
+    // this.setState({users: this.props.users})
+  let exploreGrudges= []
+  allGrudges.forEach(grudge => !grudge.shared ? exploreGrudges.push(grudge) : {})
+
+  allGrudges.filter(grudge => grudge.shared).forEach (oneGrudge => {
+   let notMe = true
+   oneGrudge.sharedGrudges.forEach(g => {
+     if(g.userId === +sessionStorage.getItem("activeUser")) {
+       notMe=false
+     }
+
+   })
+   if(notMe===true) {exploreGrudges.push(oneGrudge)}
+
+  })
+  newState.exploreGrudges = exploreGrudges
+
+
+  })
+  .then(() =>this.setState(newState))
 
 
 }
 
+
+updateGrudgeShare = (obj) => {
+  let newObj={}
+  return APIManager.put("grudges", obj)
+  .then(() => APIManager.getAll("sharedGrudges"))
+  .then(item => {
+    newObj["sharedGrudges"] = item
+    this.setState(newObj)
+  })
+
+}
 
 deleteItem = (name, id) => {
 
@@ -209,7 +325,7 @@ deleteGrudge = ( id) => {
             if(this.isAuthenticated()) {
             return (
 
-              <Dash expandGrudges={this.state.expandGrudges} sharedGrudges= {this.state.sharedGrudges} getAndUpdateState={this.getAndUpdateState}  clearInsult={this.clearInsult}
+              <Active expandGrudges={this.state.allMyGrudges} sharedGrudges= {this.state.sharedGrudges} getAndUpdateState={this.getAndUpdateState}  clearInsult={this.clearInsult}
               updateResolve= {this.updateResolve} updateItem={this.updateGrudge}
                images={this.state.images} {...props} />
             )
@@ -256,7 +372,7 @@ deleteGrudge = ( id) => {
             if(this.isAuthenticated()) {
 
 
-            return <PastGrudges expandGrudges={this.state.expandGrudges.filter(grudge => grudge.isResolved===true)} images={this.state.images} {...props} deleteGrudge={this.deleteGrudge} />
+            return <PastGrudges  resolvedGrudges={this.state.allMyGrudges.filter(grudge => grudge.isResolved===true)} images={this.state.images} {...props} deleteGrudge={this.deleteGrudge} />
             }
             else  {
               return <Redirect to="/login" />
@@ -269,7 +385,8 @@ deleteGrudge = ( id) => {
 
             <ExploreGrudges
               users={this.state.otherUsers}
-              expandGrudges={this.state.expandGrudges.filter(grudge => grudge.userId!==+sessionStorage.getItem("activeUser")).filter(grudge=> !grudge.isResolved)}
+              updateGrudgeShare={this.updateGrudgeShare}
+              expandGrudges={this.state.exploreGrudges.filter(grudge => grudge.userId!==+sessionStorage.getItem("activeUser")).filter(grudge=> !grudge.isResolved)}
               images={this.state.images}
               updateGrudge= {this.updateGrudge}
               addSharedGrudge={this.addSharedGrudge }

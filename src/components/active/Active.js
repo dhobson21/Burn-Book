@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import "./dash.css"
-import GrudgeCard from "../grudge/GrudgeCard"
-import {Header} from "semantic-ui-react"
+import "./active.css"
+import ActiveGrudgeCard from "./ActiveGrudgeCard"
+import {Header, Image} from "semantic-ui-react"
 import APIManager from "../../modules/APIManager"
 
 
-export default class Dash extends Component {
+
+export default class Active extends Component {
   state = {
     expandGrudges: [],
     images:[],
@@ -57,11 +58,12 @@ console.log("state", this.state)
 render() {
   // {this.getAllGrudges()}
   return (
-      <React.Fragment>
-        <Header size="huge" textAlign="center">My Active Grudges</Header>
+      <React.Fragment >
+
+        <Header  size="huge"  textAlign="center"  style={{'paddingBottom': '50px', 'color': '#e34234', 'paddingTop': '5px', 'fontSize': '40px', 'margin': '0px', 'fontFamily': 'Monaco', 'backgroundColor': '#303029'}}> My Active Grudges</Header>
         <div className="grudges">
         {
-           this.props.expandGrudges.filter(grudge => grudge.userId===+sessionStorage.getItem("activeUser")).filter(grudge => !grudge.isResolved).map(grudge => <GrudgeCard className="dash-card" key={grudge.id}  grudge={grudge} deleteGrudge={this.deleteGrudge} images={this.props.images} {...this.props}/>)
+           this.props.expandGrudges.filter(grudge => !grudge.isResolved).sort((curr, next) => next.id-curr.id).map(grudge => <ActiveGrudgeCard  key={grudge.id}  grudge={grudge} deleteGrudge={this.deleteGrudge} images={this.props.images} {...this.props}/>)
 
         }
 

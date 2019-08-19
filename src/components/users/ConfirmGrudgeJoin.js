@@ -4,69 +4,58 @@ import APIManager from '../../modules/APIManager';
 
 class ConfirmGrudgeJoin extends Component {
   state = {
-    open: false,
-    sharedGrudges: []
-
-  }
-
-  createSharedGrudge = (grudge) => {
-   const newState = {}
-   const trueShared = {shared: true,
-    enemyName: grudge.enemyName,
-   date: grudge.date,
-   email: grudge.email,
-   insult: grudge.insult,
-   incident: grudge.incident,
-   pettyLevel: grudge.pettyLevel,
-   userId: grudge.userId,
-   isResolved: grudge.isResolved,
-   id: grudge.id
-   }
-    newState["grudgeId"]= grudge.id
-    newState.userId = +sessionStorage.getItem("activeUser")
-
-    this.props.addSharedGrudge(newState)
-    this.updateGrudgeShare(trueShared )
-    .then(() => this.props.getAndUpdateState())
-    .then(() => this.props.history.push("/"))
-
-
+    open: false
 
 
 
   }
 
-  updateGrudgeShare = (obj) => {
-    let newObj={}
-    return APIManager.put("grudges", obj)
-    .then(() => APIManager.getAll("sharedGrudges"))
-    .then(item => {
-      newObj["sharedGrudges"] = item
-      this.setState(newObj)
-    })
-
-  }
 
 
-  show = () => this.setState({ open: true })
+  show = () =>this.setState({ open: true })
 
-  handleConfirm = (grudge) => {
+  handleConfirm = () => {
     this.setState({ open: false })
-    this.createSharedGrudge (grudge)
+
+    let grudgeObj = {
+        shared: true,
+        enemyName: this.props.grudge.enemyName,
+        date: this.props.grudge.date,
+        email: this.props.grudge.email,
+        insult: this.props.grudge.insult,
+        incident: this.props.grudge.incident,
+        pettyLevel: this.props.grudge.pettyLevel,
+        userId: this.props.grudge.userId,
+        isResolved: this.props.grudge.isResolved,
+        id: this.props.grudge.id
+    }
+    let sharedGrudgeObj = {
+      userId: +sessionStorage.getItem("activeUser"),
+      grudgeId: this.props.grudge.id
+    }
+
+    this.props.updateGrudge(grudgeObj)
+    .then(() => this.props.addSharedGrudge(sharedGrudgeObj))
+    .then (this.props.getAndUpdateState())
+
+    .then(() => this.props.history.push("/explore"))
   }
 
   handleCancel = () => this.setState({ open: false })
 
+
   render() {
+    console.log("JP", this.props)
     return (
       <div >
-        <Button cloated="right" onClick={this.show}>Join Grudge</Button>
+        <Button color='grey' onClick= {this.show} >Join Grudge</Button>
         <Confirm
-          open={this.state.open}
-          content= {`Are you sure you want to join ${this.props.grudge.user.username}'s grudge against ${this.props.grudge.enemyName}?`}
-          onCancel={this.handleCancel}
-          onConfirm= {() => {this.handleConfirm(this.props.grudge)}}
-        />
+                    open={this.state.open}
+                    onCancel={this.handleCancel}
+                    onConfirm={this.handleConfirm}
+                    content= {`Are you sure you want to join ${this.props.grudge.user.username} in a grudge against ${this.props.grudge.enemyName}`}
+                  />
+        {/*  */}
       </div>
     )
   }

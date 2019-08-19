@@ -9,7 +9,6 @@ import {
   Button,
 
 } from "semantic-ui-react";
-import { element } from "prop-types";
 
 export default class Register extends Component {
   state = {
