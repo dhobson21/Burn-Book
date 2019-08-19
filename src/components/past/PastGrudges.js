@@ -17,6 +17,23 @@ APIManager.get("grudges", "?_expand=user&_embed=resolvedGrudges&_embed=sharedGru
     this.setState(newState)})
 }
 
+deleteGrudge = ( id) => {
+
+  let newObj = {}
+  return fetch(`http://localhost:5002/grudges/${id}`, {
+    method: "DELETE"
+  })
+    .then(e => e.json())
+    .then(() => APIManager.get("grudges", "?_expand=user&_embed=resolvedGrudges&_embed=sharedGrudges"
+    ))
+    .then(group => {
+      newObj["expandGrudges"] = group
+      this.setState(newObj)
+    })
+    .then(() => {this.props.getAndUpdateState()
+    this.props.history.push("/past")})
+}
+
   render() {
     return (
 
@@ -27,7 +44,7 @@ APIManager.get("grudges", "?_expand=user&_embed=resolvedGrudges&_embed=sharedGru
 
       <div className="past">
       {
-        this.props.resolvedGrudges.filter(grudge => grudge.userId === +sessionStorage.getItem("activeUser")).filter(grudge => grudge.isResolved).map(grudge => <PastGrudgeCard deleteGrudge={this.props.deleteGrudge} key={grudge.id}  grudge={grudge} images={this.props.images} {...this.props} />
+        this.props.resolvedGrudges.filter(grudge => grudge.userId === +sessionStorage.getItem("activeUser")).filter(grudge => grudge.isResolved).map(grudge => <PastGrudgeCard deleteGrudge={this.deleteGrudge} key={grudge.id}  grudge={grudge} images={this.props.images} {...this.props} />
 
         )
       }

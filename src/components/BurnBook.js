@@ -2,6 +2,8 @@ import React, { Component } from "react"
 import ApplicationViews from "./ApplicationViews"
 import { withRouter } from 'react-router'
 import NavBar from "./nav/NavBar"
+import Footer from "./footer/Footer"
+
 
 
 
@@ -28,6 +30,7 @@ class BurnBook extends Component {
           <ApplicationViews
             isAuthenticated={this.isAuthenticated}
             setUser={this.setUser} />
+          <Footer />
         </React.Fragment>
       )
     } else{

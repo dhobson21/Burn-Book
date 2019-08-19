@@ -59,7 +59,10 @@ export default class ExploreGrudgeCard extends Component {
             .filter(image => image.id === this.props.grudge.pettyLevel)
             .map(image => image.url)}
         />
+        <Card.Description style={{'paddingTop': '1px', 'paddingBottom': '1px'}}textAlign='center'>
+
         Petty Level: {this.props.grudge.pettyLevel}
+        </Card.Description>
       </Card>
     );
   }
