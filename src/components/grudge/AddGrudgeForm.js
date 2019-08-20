@@ -89,7 +89,7 @@ export default class AddGrudgeForm extends Component {
     return (
       <React.Fragment >
 
-      <Header  size="huge"  textAlign="center"  style={{'paddingBottom': '50px', 'color': '#e34234', 'fontSize': '40px', 'margin': '0px', 'fontFamily': 'Monaco', 'backgroundColor': '#303029'}}>Add New Grudge</Header>
+      <Header  size="huge"  textAlign="center"  style={{'paddingBottom': '50px', 'color': '#e34234', 'fontSize': '40px', 'margin': '0px', 'fontFamily': "'Arvo', serif", 'fontWeight': 1000, 'backgroundColor': '#303029'}}>Add New Grudge</Header>
       <Form  className='allform' inverted style={{'backgroundColor': '#292930', 'marginBottom': '0px', 'paddingBottom': '50px' }}>
         <Form.Group widths='equal'>
           <Form.Input

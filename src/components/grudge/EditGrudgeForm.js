@@ -168,7 +168,7 @@ export default class EditGrudgeForm extends Component {
 
     return (
       <div>
-       <Header  size="huge"  textAlign="center"  style={{'paddingBottom': '50px', 'color': '#e34234', 'fontSize': '40px', 'margin': '0px', 'fontFamily': 'Monaco', 'backgroundColor': '#303029'}}>Edit Grudge Against {this.state.enemyName}</Header>
+       <Header  size="huge"  textAlign="center"  style={{'paddingBottom': '50px', 'color': '#e34234', 'fontSize': '40px', 'margin': '0px', 'fontFamily': "'Arvo', serif", 'fontWeight': 1000, 'backgroundColor': '#303029'}}>Edit Grudge Against {this.state.enemyName}</Header>
         <Form inverted style={{'backgroundColor': '#292930', 'marginBottom': '0px', 'paddingBottom': '50px' }}>
           <Form.Group widths="equal">
             <Form.Input
