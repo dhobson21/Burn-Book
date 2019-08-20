@@ -62,7 +62,7 @@ export default class ActiveGrudgeCard extends Component {
             </div>
             <Card.Description  textAlign='center'>Pettiness Level: {this.props.grudge.pettyLevel}</Card.Description>
 
-            <Card.Content textAlign='center' extra className="card-footer">
+            <Card.Content textAlign='center' >
               {this.grudgeDate()}
             </Card.Content>
           </Card>
