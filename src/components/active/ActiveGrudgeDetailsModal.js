@@ -43,7 +43,7 @@ export default class ActiveGrudgeDetailsModal extends Component {
     if (this.props.grudge.userId ===+sessionStorage.getItem("activeUser")) {
 
       return (
-        <Modal trigger={<Button primary>Details</Button>} style={{'backgroundColor': '#e34234', 'borderRadius': 50}}>
+        <Modal trigger={<Button color='grey'>Details</Button>} style={{'backgroundColor': '#e34234', 'borderRadius': 50}}>
           <Grid columns={3} divided padded textAlign="center">
             <Grid.Row>
               <Grid.Column>
@@ -105,7 +105,7 @@ export default class ActiveGrudgeDetailsModal extends Component {
               <Grid.Column verticalAlign='middle'>
                 <Header as="h4">{this.props.grudge.enemyName} is a:</Header>
                 <Container fluid>
-                  <em>"{this.props.grudge.insult}"</em>
+                  <b className="insult" style={{'color': '#34e5d3'}}>"{this.props.grudge.insult}"</b>
                   <div>
 
                   <MailInsult  {...this.props} grudge={this.props.grudge} />
@@ -118,7 +118,7 @@ export default class ActiveGrudgeDetailsModal extends Component {
       );
     } else {
       return (
-        <Modal trigger={<Button primary>Details</Button>} style={{'backgroundColor': '#e25822', 'borderRadius': 50}}>
+        <Modal trigger={<Button color='grey'>Details</Button>} style={{'backgroundColor': '#e25822', 'borderRadius': 50}}>
           <Grid columns={3} divided padded textAlign="center">
             <Grid.Row>
               <Grid.Column>
@@ -130,12 +130,12 @@ export default class ActiveGrudgeDetailsModal extends Component {
               <Grid.Column>
                 <Header as="h2">{this.props.grudge.enemyName}</Header>
               </Grid.Column>
-              <Grid.Column>
-              Grudge Owner: <b>{this.props.grudge.user.username}</b>
+              <Grid.Column textAlign='left'>
+              Grudge Owner: <b className='pettyNumb'>{this.props.grudge.user.username}</b>
                <p style={{'marginTop': 10}}>
 
             Pettiness level:
-            <b className='round'>
+            <b className='pettyNumb'>
             {this.props.grudge.pettyLevel}
             </b>
                </p>
@@ -171,7 +171,7 @@ export default class ActiveGrudgeDetailsModal extends Component {
               <Grid.Column verticalAlign='middle'>
                 <Header as="h4">{this.props.grudge.user.username} thinks {this.props.grudge.enemyName} is a:</Header>
                 <Container fluid>
-                  <b>"{this.props.grudge.insult}"</b>
+                  <b className='insult' style={{'color': 'white', 'textSize': 20}}>"{this.props.grudge.insult}"</b>
                 </Container>
               </Grid.Column>
             </Grid.Row>

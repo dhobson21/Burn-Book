@@ -43,7 +43,7 @@
       "email": "Blake@gmail.com",
       "insult": "mammering fen-sucked apple-john!",
       "incident": "He is merciless when we play ping pong. ",
-      "pettyLevel": 6,
+      "pettyLevel": 1,
       "userId": 4,
       "isResolved": false,
       "id": 5
@@ -121,18 +121,6 @@
       "id": 4
     },
     {
-      "enemyName": "Danny Barker",
-      "date": "2019-08-06",
-      "email": "DannyB@gmail.com",
-      "insult": "venomed full-gorged strumpet!",
-      "incident": "He called me the wrong first name 3 times in the span of 45 seconds",
-      "pettyLevel": 2,
-      "userId": 1,
-      "isResolved": true,
-      "shared": false,
-      "id": 14
-    },
-    {
       "enemyName": "Mrs. Collins",
       "date": "1995-04-03",
       "email": "MrsC@hilton.edu",
@@ -170,11 +158,11 @@
     },
     {
       "shared": false,
-      "enemyName": "Jon Wark",
+      "enemyName": "John Wark",
       "date": "2019-08-05",
       "email": "Jwark@nss.com",
       "insult": "queasy raw-boned scullion!",
-      "incident": "Jon made us move to a building without air conditioning",
+      "incident": "John made us move to a building without air conditioning",
       "pettyLevel": 3,
       "userId": 5,
       "isResolved": false,
@@ -241,28 +229,52 @@
       "id": 24
     },
     {
-      "enemyName": "Joy Ittycheriah",
+      "id": 25,
       "date": "2019-06-05",
+      "enemyName": "Curt Cato",
       "email": "dustinhobson21@gmail.com",
-      "insult": "cockered mad-bread foot-licker!",
-      "incident": "Joy kept asking questions for 25 straight minutes during a lecture and it caused us to stay later after school.....I was late to Dave and Busters.",
+      "incident": "Curt asked me what I spilled on my shirt and when I looked down he bopped me right on the nose. Such a bully.",
+      "insult": "gorbellied earth-vexing ratsbane!",
+      "isResolved": false,
       "pettyLevel": 10,
-      "userId": 1,
-      "isResolved": true,
       "shared": false,
-      "id": 25
+      "userId": 1
     },
     {
-      "enemyName": "testtest",
-      "date": "2019-01-01",
-      "email": "dustinhobson21@gmail.com",
-      "insult": "",
-      "incident": "you know",
-      "pettyLevel": 2,
-      "userId": 1,
-      "isResolved": true,
+      "enemyName": "Curt Cato",
+      "date": "2019-06-01",
+      "email": "curt@gmail.com",
+      "insult": "cockered mad-bread foot-licker!",
+      "incident": "Curt vaped in my face and didn't even apologize. On top of that I never see him using the designated vape areas...thats just so rude",
+      "pettyLevel": 4,
+      "userId": 4,
+      "isResolved": false,
       "shared": false,
       "id": 26
+    },
+    {
+      "id": 27,
+      "date": "2019-08-04",
+      "enemyName": "Ben Parker",
+      "email": "Ben@gmail.com",
+      "incident": "Ben was smug when we played Catan. He refused to negotiate in trades and instead laughed me into embarrassment. Very rude.",
+      "insult": "yeasty milk-livered strumpet!",
+      "isResolved": false,
+      "pettyLevel": 2,
+      "shared": false,
+      "userId": 1
+    },
+    {
+      "id": 27,
+      "date": "2019-08-04",
+      "enemyName": "Mark",
+      "email": "Mark@gmail.com",
+      "incident": "Mark gives me beard envy. Every time I look at his stupid face I get very jealous that I can't grow a beard as lucious and perfect.",
+      "insult": "yeasty milk-livered strumpet!",
+      "isResolved": false,
+      "pettyLevel": 3,
+      "shared": false,
+      "userId": 1
     }
   ],
   "images": [
@@ -323,32 +335,11 @@
       "id": 4
     },
     {
-      "resolveReason": "I was wrong ",
-      "compliment": "I was wrong",
-      "grudgeId": 14,
-      "date": "08/19/2019",
-      "id": 6
-    },
-    {
       "resolveReason": "I was wrong",
       "compliment": "Madi was right",
       "grudgeId": 13,
       "date": "08/19/2019",
       "id": 7
-    },
-    {
-      "resolveReason": "I was wrong",
-      "compliment": "wrong I was",
-      "grudgeId": 25,
-      "date": "08/19/2019",
-      "id": 8
-    },
-    {
-      "resolveReason": "I am so wrong",
-      "compliment": "he is so rignt",
-      "grudgeId": 26,
-      "date": "08/19/2019",
-      "id": 9
     }
   ],
   "sharedGrudges": [

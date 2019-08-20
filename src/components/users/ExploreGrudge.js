@@ -63,7 +63,7 @@ this.setState({expandGrudges: exploreGrudges})
         this.props.users.map(user =>
 
           <div key={user.id} className="allusers" style={{ 'marginTop': 50, 'marginBottom': 25, 'margiRight': 100,}}>
-          <Header size="large"  style={{'color': '#e25822'}} textAlign="center">{user.username}'s Grudges</Header>
+          <Header size="large"  style={{'color': 'white'}} textAlign="center">{user.username}'s Grudges</Header>
 
 
 
