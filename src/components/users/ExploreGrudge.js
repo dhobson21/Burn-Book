@@ -55,7 +55,7 @@ this.setState({expandGrudges: exploreGrudges})
 
     return (
       <React.Fragment>
-        <Header size="huge" textAlign="center" style={{'paddingBottom':  '50px', 'color': '#e25822', 'fontSize': '40px', 'fontFamily': 'Monaco', 'margin': '0px', 'backgroundColor': '#303029'}}>User Grudges</Header>
+        <Header size="huge" textAlign="center" style={{'paddingBottom':  '50px', 'color': '#e25822', 'fontSize': '40px', 'fontFamily': "'Arvo', serif", 'fontWeight': 1000, 'margin': '0px', 'backgroundColor': '#303029'}}>User Grudges</Header>
 
 
           <div className="user-container"   >

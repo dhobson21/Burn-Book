@@ -38,7 +38,7 @@ deleteGrudge = ( id) => {
     return (
 
       <React.Fragment>
-     <Header size="huge" textAlign="center" style={{'color': '#5cdb95', 'paddingBottom': '50px', 'fontSize': '40px', 'fontFamily': 'Monaco', 'backgroundColor': '#303029', 'margin': '0px'}}>My Resolved Grudges</Header>
+     <Header size="huge" textAlign="center" style={{'color': '#5cdb95', 'paddingBottom': '50px', 'fontSize': '40px', 'fontFamily': "'Arvo', serif", 'fontWeight': 1000, 'backgroundColor': '#303029', 'margin': '0px'}}>My Resolved Grudges</Header>
 
 
 
