@@ -241,16 +241,28 @@
       "id": 24
     },
     {
-      "id": 25,
-      "date": "2019-06-05",
       "enemyName": "Joy Ittycheriah",
-      "email": "joy@gmail.com",
-      "incident": "Joy kept asking questions for 25 straight minutes during a lecture and it caused us to stay later after school.....I was late to Dave and Busters.",
+      "date": "2019-06-05",
+      "email": "dustinhobson21@gmail.com",
       "insult": "cockered mad-bread foot-licker!",
-      "isResolved": false,
+      "incident": "Joy kept asking questions for 25 straight minutes during a lecture and it caused us to stay later after school.....I was late to Dave and Busters.",
       "pettyLevel": 10,
+      "userId": 1,
+      "isResolved": true,
       "shared": false,
-      "userId": 1
+      "id": 25
+    },
+    {
+      "enemyName": "testtest",
+      "date": "2019-01-01",
+      "email": "dustinhobson21@gmail.com",
+      "insult": "",
+      "incident": "you know",
+      "pettyLevel": 2,
+      "userId": 1,
+      "isResolved": true,
+      "shared": false,
+      "id": 26
     }
   ],
   "images": [
@@ -323,6 +335,20 @@
       "grudgeId": 13,
       "date": "08/19/2019",
       "id": 7
+    },
+    {
+      "resolveReason": "I was wrong",
+      "compliment": "wrong I was",
+      "grudgeId": 25,
+      "date": "08/19/2019",
+      "id": 8
+    },
+    {
+      "resolveReason": "I am so wrong",
+      "compliment": "he is so rignt",
+      "grudgeId": 26,
+      "date": "08/19/2019",
+      "id": 9
     }
   ],
   "sharedGrudges": [

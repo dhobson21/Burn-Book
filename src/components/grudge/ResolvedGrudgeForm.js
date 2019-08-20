@@ -73,7 +73,7 @@ resolveGrudge = () => {
       />
       <Form.TextArea
         id='compliment'
-        label= {`What is the best compliment you can give ${this.props.enemyName}?`}
+        label= {`What is the best compliment you can give this person?`}
         placeholder={`Phrase in 3rd person...ex: ${this.props.enemyName} has kind eyes and a big heart`}
         onChange={this.handleFieldChange}
 
